@@ -5,6 +5,7 @@
 
 class VectorXdTest : public UnitTest
 {
+    Q_OBJECT
 public:
     VectorXdTest(const std::string& name);
 
