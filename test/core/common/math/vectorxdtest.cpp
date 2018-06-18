@@ -35,3 +35,31 @@ void VectorXdTest::constuctorTest() const{
 
     QVERIFY(vec3==vec4);
 }
+
+void VectorXdTest::assignOperatorTest() const{
+    std::vector<double> vals{3.0,7.0,11.0,13.0};
+    VectorXd vec1(vals);
+    VectorXd vec2(3,3.0);
+
+    QCOMPARE(3.0,vec1.at(0));
+    QCOMPARE(7.0,vec1.at(1));
+    QCOMPARE(11.0,vec1.at(2));
+    QCOMPARE(13.0,vec1.at(3));
+
+    QVERIFY(vec1.size()==4);
+
+    QCOMPARE(3.0,vec2.at(0));
+    QCOMPARE(3.0,vec2.at(1));
+    QCOMPARE(3.0,vec2.at(2));
+
+    QVERIFY(vec2.size()==3);
+
+    vec2 = vec1;
+
+    QCOMPARE(3.0,vec2.at(0));
+    QCOMPARE(7.0,vec2.at(1));
+    QCOMPARE(11.0,vec2.at(2));
+    QCOMPARE(13.0,vec2.at(3));
+
+    QVERIFY(vec2.size()==4);
+}
