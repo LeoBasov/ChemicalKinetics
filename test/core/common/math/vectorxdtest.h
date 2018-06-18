@@ -14,4 +14,5 @@ private slots:
 
     void assignOperatorTest() const;
     void compareOperatorTest() const;
+    void arithmeticOperatorTest() const;
 };
