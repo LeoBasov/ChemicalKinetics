@@ -23,6 +23,14 @@ MatrixXd::~MatrixXd(){
 
 }
 
+MatrixXd& MatrixXd::operator=(const MatrixXd& other){
+    if(this!=&other){
+        this->values = other.getValues();
+    }
+
+    return *this;
+}
+
 const std::vector<std::vector<double>>& MatrixXd::getValues() const{
     return this->values;
 }

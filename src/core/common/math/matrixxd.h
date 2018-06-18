@@ -11,6 +11,8 @@ public:
     MatrixXd(const MatrixXd& other);
     ~MatrixXd();
 
+    MatrixXd& operator=(const MatrixXd& other);
+
     const std::vector<std::vector<double>>& getValues() const;
 
 private:
