@@ -55,10 +55,84 @@ bool VectorXd::operator>=(const VectorXd& other) const{
     return !(*this<other);
 }
 
+VectorXd VectorXd::operator+(const VectorXd& other) const{
+    VectorXd returnVals(this->values);
+
+    validate(other);
+
+    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+        returnVals.at(i) += other.at(i);
+    }
+
+    return returnVals;
+}
+
+VectorXd VectorXd::operator-(const VectorXd& other) const{
+    VectorXd returnVals(this->values);
+
+    validate(other);
+
+    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+        returnVals.at(i) -= other.at(i);
+    }
+
+    return returnVals;
+}
+
+VectorXd VectorXd::operator*(const double& value) const{
+    VectorXd returnVals(this->values);
+
+    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+        returnVals.at(i) *= value;
+    }
+
+    return returnVals;
+}
+
+double VectorXd::operator*(const VectorXd& other) const{
+    double returnVal(0.0);
+
+    validate(other);
+
+    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+        returnVal += at(i)*other.at(i);
+    }
+
+    return returnVal;
+}
+
+double& VectorXd::operator[](std::size_t idx){
+    return this->values[idx];
+}
+
+const double& VectorXd::operator[](std::size_t idx) const{
+    return this->values[idx];
+}
+
+double& VectorXd::at(std::size_t idx){
+    try{
+        return this->values.at(idx);
+    }catch(std::out_of_range& e){
+        throw OutOfRange(e.what(),std::string(__FUNCTION__));
+    }catch(std::exception& e){
+        throw Exception(e.what(),std::string(__FUNCTION__));
+    }
+}
+
+const double& VectorXd::at(std::size_t idx) const{
+    try{
+        return this->values.at(idx);
+    }catch(std::out_of_range& e){
+        throw OutOfRange(e.what(),std::string(__FUNCTION__));
+    }catch(std::exception& e){
+        throw Exception(e.what(),std::string(__FUNCTION__));
+    }
+}
+
 double VectorXd::module() const{
     double module(0.0);
 
-    for(std::vector<double>::size_type i;i<this->values.size();++i){
+    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
         module += this->values.at(i)*this->values.at(i);
     }
 

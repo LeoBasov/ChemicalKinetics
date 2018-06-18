@@ -3,6 +3,7 @@
 #include <vector>
 #include <cmath>
 
+#include "../../exceptions/exception.h"
 #include "../../exceptions/logic_errors/outofrange.h"
 
 class VectorXd
@@ -22,6 +23,17 @@ public:
     bool operator> (const VectorXd& other) const;
     bool operator<=(const VectorXd& other) const;
     bool operator>=(const VectorXd& other) const;
+
+    VectorXd operator+(const VectorXd& other) const;
+    VectorXd operator-(const VectorXd& other) const;
+    VectorXd operator*(const double& value) const;
+    double operator*(const VectorXd& other) const;
+
+    double& operator[](std::size_t idx);
+    const double& operator[](std::size_t idx) const;
+
+    double& at(std::size_t idx);
+    const double& at(std::size_t idx) const;
 
     double module() const;
 
