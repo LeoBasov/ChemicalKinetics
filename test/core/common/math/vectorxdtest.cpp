@@ -63,3 +63,22 @@ void VectorXdTest::assignOperatorTest() const{
 
     QVERIFY(vec2.size()==4);
 }
+
+void VectorXdTest::compareOperatorTest() const{
+    std::vector<double> vals{3.0,7.0,11.0,13.0};
+    VectorXd vec1(vals);
+    VectorXd vec2(3,3.0);
+    VectorXd vec3(vec2);
+
+    QVERIFY(vec1>vec2);
+    QVERIFY(vec1>=vec2);
+
+    QVERIFY(vec2<vec1);
+    QVERIFY(vec2<=vec1);
+
+    QVERIFY(vec2<=vec3);
+    QVERIFY(vec2>=vec3);
+    QVERIFY(vec2==vec3);
+    QVERIFY(!(vec2>vec3));
+    QVERIFY(!(vec2<vec3));
+}
