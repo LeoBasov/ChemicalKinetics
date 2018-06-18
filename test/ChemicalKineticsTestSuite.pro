@@ -10,11 +10,13 @@ SOURCES += main.cpp \
     ../src/core/common/math/vectorxd.cpp \
     ../src/core/exceptions/exception.cpp \
     ../src/core/exceptions/logic_errors/outofrange.cpp \
-    core/common/math/vectorxdtest.cpp
+    core/common/math/vectorxdtest.cpp \
+    ../src/core/common/math/matrixxd.cpp
 
 HEADERS += \
     unittest.h \
     ../src/core/common/math/vectorxd.h \
     ../src/core/exceptions/exception.h \
     ../src/core/exceptions/logic_errors/outofrange.h \
-    core/common/math/vectorxdtest.h
+    core/common/math/vectorxdtest.h \
+    ../src/core/common/math/matrixxd.h
