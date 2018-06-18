@@ -114,3 +114,10 @@ void VectorXdTest::arithmeticOperatorTest() const{
 
     QCOMPARE(val2,411);
 }
+
+void VectorXdTest::moduleTest() const{
+    const std::vector<double> vals1{1.0,2.0,3.0};
+    const VectorXd vec1(vals1);
+
+    QCOMPARE(vec1.module(),std::sqrt(14.0));
+}
