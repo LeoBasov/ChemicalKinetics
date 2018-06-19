@@ -1,12 +1,14 @@
 #include <iostream>
 
 #include "core/common/math/vectorxdtest.h"
+#include "core/common/math/matrixxdtest.h"
 
 int main(int argc, char **argv){
     std::vector<std::shared_ptr<UnitTest>> tests;
     int totalErrors(0);
 
     tests.push_back(std::make_shared<VectorXdTest>("VectorXdTest"));
+    tests.push_back(std::make_shared<MatrixXdTest>("MatrixXdTest"));
 
     for(std::shared_ptr<UnitTest> test : tests){
         int errors = QTest::qExec(test.get(),argc,argv);

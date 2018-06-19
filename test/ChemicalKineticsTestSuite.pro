@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     ../src/core/exceptions/exception.cpp \
     ../src/core/exceptions/logic_errors/outofrange.cpp \
     core/common/math/vectorxdtest.cpp \
-    ../src/core/common/math/matrixxd.cpp
+    ../src/core/common/math/matrixxd.cpp \
+    core/common/math/matrixxdtest.cpp
 
 HEADERS += \
     unittest.h \
@@ -19,4 +20,5 @@ HEADERS += \
     ../src/core/exceptions/exception.h \
     ../src/core/exceptions/logic_errors/outofrange.h \
     core/common/math/vectorxdtest.h \
-    ../src/core/common/math/matrixxd.h
+    ../src/core/common/math/matrixxd.h \
+    core/common/math/matrixxdtest.h
