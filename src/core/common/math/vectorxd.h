@@ -9,8 +9,11 @@
 class VectorXd
 {
 public:
+    using size_v = std::vector<double>::size_type;
+
+public:
     VectorXd();
-    VectorXd(const std::vector<double>::size_type& size,const double& initVal = 0.0);
+    VectorXd(const size_v& size,const double& initVal = 0.0);
     VectorXd(const std::vector<double>& values);
     VectorXd(const VectorXd& other);
     ~VectorXd();
@@ -37,9 +40,9 @@ public:
 
     double module() const;
 
-    std::vector<double>::size_type size() const;
-    void resize(const std::vector<double>::size_type& size,const double &values);
-    void resize(const std::vector<double>::size_type& size);
+    size_v size() const;
+    void resize(const size_v& size,const double &values);
+    void resize(const size_v& size);
     void clear();
 
     const std::vector<double>& getValues() const;

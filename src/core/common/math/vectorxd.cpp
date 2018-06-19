@@ -4,7 +4,7 @@ VectorXd::VectorXd(){
 
 }
 
-VectorXd::VectorXd(const std::vector<double>::size_type& size,const double& initVal)
+VectorXd::VectorXd(const size_v& size,const double& initVal)
                   :values(size,initVal){
 
 }
@@ -60,7 +60,7 @@ VectorXd VectorXd::operator+(const VectorXd& other) const{
 
     validate(other);
 
-    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+    for(size_v i(0);i<this->values.size();++i){
         returnVals.at(i) += other.at(i);
     }
 
@@ -72,7 +72,7 @@ VectorXd VectorXd::operator-(const VectorXd& other) const{
 
     validate(other);
 
-    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+    for(size_v i(0);i<this->values.size();++i){
         returnVals.at(i) -= other.at(i);
     }
 
@@ -82,7 +82,7 @@ VectorXd VectorXd::operator-(const VectorXd& other) const{
 VectorXd VectorXd::operator*(const double& value) const{
     VectorXd returnVals(this->values);
 
-    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+    for(size_v i(0);i<this->values.size();++i){
         returnVals.at(i) *= value;
     }
 
@@ -94,7 +94,7 @@ double VectorXd::operator*(const VectorXd& other) const{
 
     validate(other);
 
-    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+    for(size_v i(0);i<this->values.size();++i){
         returnVal += at(i)*other.at(i);
     }
 
@@ -132,22 +132,22 @@ const double& VectorXd::at(std::size_t idx) const{
 double VectorXd::module() const{
     double module(0.0);
 
-    for(std::vector<double>::size_type i(0);i<this->values.size();++i){
+    for(size_v i(0);i<this->values.size();++i){
         module += this->values.at(i)*this->values.at(i);
     }
 
     return std::sqrt(module);
 }
 
-std::vector<double>::size_type VectorXd::size() const{
+VectorXd::size_v VectorXd::size() const{
     return this->values.size();
 }
 
-void VectorXd::resize(const std::vector<double>::size_type& size,const double &values){
+void VectorXd::resize(const size_v& size,const double &values){
     this->values.resize(size,values);
 }
 
-void VectorXd::resize(const std::vector<double>::size_type& size){
+void VectorXd::resize(const size_v& size){
     this->values.resize(size);
 }
 
