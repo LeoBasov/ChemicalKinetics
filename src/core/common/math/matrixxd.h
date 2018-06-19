@@ -40,13 +40,22 @@ public:
 
     MatrixXd& operator=(const MatrixXd& other);
 
+    MatrixXd operator+(const MatrixXd& other) const;
+    MatrixXd operator-(const MatrixXd& other) const;
+    MatrixXd operator*(const double& value) const;
+
     Proxy operator[](const size_r& row);
 
     double& at(const size_r& row,const size_c& column);
     const double& at(const size_r& row,const size_c& column) const;
 
+    size_r sizeRow() const;
+    size_c sizeColumn() const;
+
     const std::vector<std::vector<double>>& getValues() const;
 
 private:
     std::vector<std::vector<double>> values;
+
+    void validate(const MatrixXd& other) const;
 };

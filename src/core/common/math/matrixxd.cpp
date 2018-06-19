@@ -31,6 +31,46 @@ MatrixXd& MatrixXd::operator=(const MatrixXd& other){
     return *this;
 }
 
+MatrixXd MatrixXd::operator+(const MatrixXd& other) const{
+    MatrixXd returnVals(this->values);
+
+    validate(other);
+
+    for(size_r i(0);i<this->values.size();++i){
+        for(size_c j(0);j<this->values.front().size();++j){
+            returnVals.at(i,j) += other.at(i,j);
+        }
+    }
+
+    return returnVals;
+}
+
+MatrixXd MatrixXd::operator-(const MatrixXd& other) const{
+    MatrixXd returnVals(this->values);
+
+    validate(other);
+
+    for(size_r i(0);i<this->values.size();++i){
+        for(size_c j(0);j<this->values.front().size();++j){
+            returnVals.at(i,j) -= other.at(i,j);
+        }
+    }
+
+    return returnVals;
+}
+
+MatrixXd MatrixXd::operator*(const double& value) const{
+    MatrixXd returnVals(this->values);
+
+    for(size_r i(0);i<this->values.size();++i){
+        for(size_c j(0);j<this->values.front().size();++j){
+            returnVals.at(i,j) *= value;
+        }
+    }
+
+    return returnVals;
+}
+
 MatrixXd::Proxy MatrixXd::operator[](const size_r& row){
     return Proxy(this->values.at(row));
 }
@@ -55,6 +95,28 @@ const double& MatrixXd::at(const size_r& row,const size_c& column) const{
     }
 }
 
+MatrixXd::size_r MatrixXd::sizeRow() const{
+    return this->values.size();
+}
+
+MatrixXd::size_c MatrixXd::sizeColumn() const{
+    if(!this->values.size()){
+        return 0;
+    }else{
+        return this->values.front().size();
+    }
+}
+
 const std::vector<std::vector<double>>& MatrixXd::getValues() const{
     return this->values;
+}
+
+void MatrixXd::validate(const MatrixXd& other) const{
+    if((sizeRow()!=other.sizeRow()) || (sizeColumn()!=other.sizeColumn())){
+        throw OutOfRange( "Matrizes are not of compatible size. This row size<"
+                        + std::to_string(sizeRow()) + "> other <"
+                        + std::to_string(other.sizeRow()) + ">. This column size<"
+                        + std::to_string(sizeColumn()) + "> other <"
+                        + std::to_string(other.sizeColumn()) + ">.",std::string(__FUNCTION__));
+    }
 }
