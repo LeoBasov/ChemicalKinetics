@@ -32,11 +32,11 @@ public:
     VectorXd operator*(const double& value) const;
     double operator*(const VectorXd& other) const;
 
-    double& operator[](std::size_t idx);
-    const double& operator[](std::size_t idx) const;
+    double& operator[](size_v idx);
+    const double& operator[](size_v idx) const;
 
-    double& at(std::size_t idx);
-    const double& at(std::size_t idx) const;
+    double& at(size_v idx);
+    const double& at(size_v idx) const;
 
     double module() const;
 

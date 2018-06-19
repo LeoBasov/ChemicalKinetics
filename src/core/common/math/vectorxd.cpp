@@ -101,15 +101,15 @@ double VectorXd::operator*(const VectorXd& other) const{
     return returnVal;
 }
 
-double& VectorXd::operator[](std::size_t idx){
+double& VectorXd::operator[](size_v idx){
     return this->values[idx];
 }
 
-const double& VectorXd::operator[](std::size_t idx) const{
+const double& VectorXd::operator[](size_v idx) const{
     return this->values[idx];
 }
 
-double& VectorXd::at(std::size_t idx){
+double& VectorXd::at(size_v idx){
     try{
         return this->values.at(idx);
     }catch(std::out_of_range& e){
@@ -119,7 +119,7 @@ double& VectorXd::at(std::size_t idx){
     }
 }
 
-const double& VectorXd::at(std::size_t idx) const{
+const double& VectorXd::at(size_v idx) const{
     try{
         return this->values.at(idx);
     }catch(std::out_of_range& e){
