@@ -5,6 +5,7 @@
 #include "vectorxd.h"
 
 #include <vector>
+#include <memory>
 
 class MatrixXd
 {
@@ -16,7 +17,7 @@ private:
     class Proxy
     {
     public:
-        explicit Proxy(std::vector<double>& column):values(column){
+        explicit Proxy(std::vector<double>& row):values(row){
 
         }
 
@@ -24,13 +25,25 @@ private:
             return this->values[column];
         }
 
+    private:
+        std::vector<double>& values;
+    };
+
+    class ConstProxy
+    {
+    public:
+        explicit ConstProxy(const std::vector<double>& row):values(row){
+
+        }
+
         double operator[](const size_c& column) const{
             return this->values[column];
         }
 
     private:
-        std::vector<double>& values;
+        const std::vector<double>& values;
     };
+
 
 public:
     MatrixXd();
@@ -47,6 +60,7 @@ public:
     VectorXd operator*(const VectorXd& vec) const;
 
     Proxy operator[](const size_r& row);
+    ConstProxy operator[](const size_r& row) const;
 
     double& at(const size_r& row,const size_c& column);
     const double& at(const size_r& row,const size_c& column) const;

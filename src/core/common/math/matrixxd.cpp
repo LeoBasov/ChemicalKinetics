@@ -89,6 +89,10 @@ MatrixXd::Proxy MatrixXd::operator[](const size_r& row){
     return Proxy(this->values.at(row));
 }
 
+MatrixXd::ConstProxy MatrixXd::operator[](const size_r& row) const{
+    return ConstProxy(this->values.at(row));
+}
+
 double& MatrixXd::at(const size_r& row,const size_c& column){
     try{
         return this->values.at(row).at(column);
