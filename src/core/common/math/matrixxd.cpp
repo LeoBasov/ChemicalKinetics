@@ -4,7 +4,7 @@ MatrixXd::MatrixXd(){
 
 }
 
-MatrixXd::MatrixXd(std::vector<std::vector<double>>::size_type& rowSize,std::vector<double>::size_type& columnSize,const double& initVal)
+MatrixXd::MatrixXd(const size_r& rowSize,const size_r& columnSize,const double& initVal)
                   :values(rowSize,std::vector<double>(columnSize,initVal)){
 
 }

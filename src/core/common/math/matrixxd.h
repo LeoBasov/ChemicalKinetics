@@ -5,8 +5,12 @@
 class MatrixXd
 {
 public:
+    using size_r = std::vector<std::vector<double>>::size_type;
+    using size_c = std::vector<double>::size_type;
+
+public:
     MatrixXd();
-    MatrixXd(std::vector<std::vector<double>>::size_type& rowSize,std::vector<double>::size_type& columnSize,const double& initVal = 0.0);
+    MatrixXd(const size_r& rowSize,const size_c& columnSize,const double& initVal = 0.0);
     MatrixXd(const std::vector<std::vector<double>>& values);
     MatrixXd(const MatrixXd& other);
     ~MatrixXd();
