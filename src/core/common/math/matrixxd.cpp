@@ -34,7 +34,7 @@ MatrixXd& MatrixXd::operator=(const MatrixXd& other){
 MatrixXd MatrixXd::operator+(const MatrixXd& other) const{
     MatrixXd returnVals(this->values);
 
-    validate(other);
+    validateMat(other);
 
     for(size_r i(0);i<this->values.size();++i){
         for(size_c j(0);j<this->values.front().size();++j){
@@ -48,7 +48,7 @@ MatrixXd MatrixXd::operator+(const MatrixXd& other) const{
 MatrixXd MatrixXd::operator-(const MatrixXd& other) const{
     MatrixXd returnVals(this->values);
 
-    validate(other);
+    validateMat(other);
 
     for(size_r i(0);i<this->values.size();++i){
         for(size_c j(0);j<this->values.front().size();++j){
@@ -69,6 +69,20 @@ MatrixXd MatrixXd::operator*(const double& value) const{
     }
 
     return returnVals;
+}
+
+VectorXd MatrixXd::operator*(const VectorXd& vec) const{
+    VectorXd returnValues(vec.size());
+
+    validateVec(vec);
+
+    for(size_r i(0);i<sizeRow();++i){
+        for(size_c j(0);j<sizeColumn();++j){
+            returnValues.at(i) += at(i,j)*vec.at(j);
+        }
+    }
+
+    return returnValues;
 }
 
 MatrixXd::Proxy MatrixXd::operator[](const size_r& row){
@@ -111,12 +125,20 @@ const std::vector<std::vector<double>>& MatrixXd::getValues() const{
     return this->values;
 }
 
-void MatrixXd::validate(const MatrixXd& other) const{
+void MatrixXd::validateMat(const MatrixXd& other) const{
     if((sizeRow()!=other.sizeRow()) || (sizeColumn()!=other.sizeColumn())){
         throw OutOfRange( "Matrizes are not of compatible size. This row size<"
                         + std::to_string(sizeRow()) + "> other <"
                         + std::to_string(other.sizeRow()) + ">. This column size<"
                         + std::to_string(sizeColumn()) + "> other <"
                         + std::to_string(other.sizeColumn()) + ">.",std::string(__FUNCTION__));
+    }
+}
+
+void MatrixXd::validateVec(const VectorXd& vec) const{
+    if(sizeColumn()!=vec.size()){
+        throw OutOfRange( "Matrix and vector are not of compatible size. Matrix <"
+                        + std::to_string(sizeColumn()) + "> vector <"
+                        + std::to_string(vec.size()) + ">.",std::string(__FUNCTION__));
     }
 }

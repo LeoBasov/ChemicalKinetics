@@ -2,6 +2,7 @@
 
 #include "../../exceptions/exception.h"
 #include "../../exceptions/logic_errors/outofrange.h"
+#include "vectorxd.h"
 
 #include <vector>
 
@@ -43,6 +44,7 @@ public:
     MatrixXd operator+(const MatrixXd& other) const;
     MatrixXd operator-(const MatrixXd& other) const;
     MatrixXd operator*(const double& value) const;
+    VectorXd operator*(const VectorXd& vec) const;
 
     Proxy operator[](const size_r& row);
 
@@ -57,5 +59,6 @@ public:
 private:
     std::vector<std::vector<double>> values;
 
-    void validate(const MatrixXd& other) const;
+    void validateMat(const MatrixXd& other) const;
+    void validateVec(const VectorXd& vec) const;
 };
