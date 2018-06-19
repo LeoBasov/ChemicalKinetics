@@ -49,3 +49,21 @@ void MatrixXdTest::constructorTest() const{
     QCOMPARE(mat4.at(0,1),3.0);
     QCOMPARE(mat4.at(1,1),11.0);
 }
+
+void MatrixXdTest::assignOperatorTest() const{
+    const std::vector<std::vector<double>> rows({{1.0,3.0},{7.0,11.0}});
+    const MatrixXd mat1(rows);
+    MatrixXd mat2(2,2);
+
+    QVERIFY(mat1.at(0,0)!=mat2.at(0,0));
+    QVERIFY(mat1.at(1,0)!=mat2.at(1,0));
+    QVERIFY(mat1.at(0,1)!=mat2.at(0,1));
+    QVERIFY(mat1.at(1,1)!=mat2.at(1,1));
+
+    mat2 = mat1;
+
+    QVERIFY(mat1.at(0,0)==mat2.at(0,0));
+    QVERIFY(mat1.at(1,0)==mat2.at(1,0));
+    QVERIFY(mat1.at(0,1)==mat2.at(0,1));
+    QVERIFY(mat1.at(1,1)==mat2.at(1,1));
+}

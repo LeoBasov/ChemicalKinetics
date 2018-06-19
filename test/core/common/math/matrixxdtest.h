@@ -11,4 +11,5 @@ public:
 
 private slots:
     void constructorTest() const;
+    void assignOperatorTest() const;
 };
