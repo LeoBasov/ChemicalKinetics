@@ -27,6 +27,16 @@ public:
     void setTemperature(const double& temperature);
     void setCv(const double& cv);
 
+    const VectorXd& getConcentrations() const;
+    const VectorXd& getReactionRates() const;
+    const VectorXd& getRateConstants() const;
+    const MatrixXd& getStoichiometricCoeffEducts() const;
+    const MatrixXd& getStoichiometricCoeffProducts() const;
+    const MatrixXd& getReactionPowers() const;
+    double getTime() const;
+    double getTemperature() const;
+    double getCv() const;
+
 private:
     std::map<std::string,std::size_t> speciesMap;
     std::map<std::string,std::size_t> reactionMap;

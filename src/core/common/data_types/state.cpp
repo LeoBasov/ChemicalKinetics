@@ -82,6 +82,42 @@ void State::setCv(const double& cv){
     this->cv = cv;
 }
 
+const VectorXd& State::getConcentrations() const{
+    return this->concentrations;
+}
+
+const VectorXd& State::getReactionRates() const{
+    return this->reactionRates;
+}
+
+const VectorXd& State::getRateConstants() const{
+    return this->rateConstants;
+}
+
+const MatrixXd& State::getStoichiometricCoeffEducts() const{
+    return this->stoichiometricCoeffEducts;
+}
+
+const MatrixXd& State::getStoichiometricCoeffProducts() const{
+    return this->stoichiometricCoeffProducts;
+}
+
+const MatrixXd& State::getReactionPowers() const{
+    return this->reactionPowers;
+}
+
+double State::getTime() const{
+    return this->time;
+}
+
+double State::getTemperature() const{
+    return this->temperature;
+}
+
+double State::getCv() const{
+    return this->cv;
+}
+
 void State::resize(const size_t& row,const size_t& column){
     this->concentrations = VectorXd(column);
     this->reactionRates = VectorXd(row);
