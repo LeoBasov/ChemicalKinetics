@@ -102,6 +102,10 @@ const MatrixXd& State::getStoichiometricCoeffProducts() const{
     return this->stoichiometricCoeffProducts;
 }
 
+MatrixXd State::getStoichiometricMatrix() const{
+    return this->stoichiometricCoeffProducts - this->stoichiometricCoeffEducts;
+}
+
 const MatrixXd& State::getReactionPowers() const{
     return this->reactionPowers;
 }

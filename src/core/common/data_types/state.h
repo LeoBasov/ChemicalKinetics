@@ -32,6 +32,7 @@ public:
     const VectorXd& getRateConstants() const;
     const MatrixXd& getStoichiometricCoeffEducts() const;
     const MatrixXd& getStoichiometricCoeffProducts() const;
+    MatrixXd getStoichiometricMatrix() const;
     const MatrixXd& getReactionPowers() const;
     double getTime() const;
     double getTemperature() const;
