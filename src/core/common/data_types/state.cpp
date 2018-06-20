@@ -13,6 +13,7 @@ void State::clear(){
     this->reactionMap.clear();
     this->concentrations.clear();
     this->reactionRates.clear();
+    this->rateConstants.clear();
     this->stoichiometricCoeffEducts.clear();
     this->stoichiometricCoeffProducts.clear();
     this->reactionPowers.clear();
@@ -49,6 +50,14 @@ void State::setReactionRates(const VectorXd& reactionRates){
     this->reactionRates = reactionRates;
 }
 
+void State::setRateConstant(const std::string& reaction,const double& rateConstant){
+    this->rateConstants.at(this->reactionMap.at(reaction)) = rateConstant;
+}
+
+void State::setRateConstants(const VectorXd& rateConstants){
+    this->rateConstants = rateConstants;
+}
+
 void State::setStoichiometricCoeffEduct(const std::string& species,const std::string& reaction,const double& coeff){
     this->stoichiometricCoeffEducts.at(this->reactionMap.at(reaction),this->speciesMap.at(species)) = coeff;
 }
@@ -75,7 +84,8 @@ void State::setCv(const double& cv){
 
 void State::resize(const size_t& row,const size_t& column){
     this->concentrations = VectorXd(column);
-    this->reactionRates = VectorXd(column);
+    this->reactionRates = VectorXd(row);
+    this->rateConstants = VectorXd(row);
     this->stoichiometricCoeffEducts = MatrixXd(row,column);
     this->stoichiometricCoeffProducts = MatrixXd(row,column);
     this->reactionPowers = MatrixXd(row,column);

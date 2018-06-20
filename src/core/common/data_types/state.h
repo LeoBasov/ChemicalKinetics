@@ -18,6 +18,8 @@ public:
     void setConcentrations(const VectorXd& concentrations);
     void setReactionRate(const std::string& reaction,const double& reactionRate);
     void setReactionRates(const VectorXd& reactionRates);
+    void setRateConstant(const std::string& reaction,const double& rateConstant);
+    void setRateConstants(const VectorXd& rateConstants);
     void setStoichiometricCoeffEduct(const std::string& species,const std::string& reaction,const double& coeff);
     void setStoichiometricCoeffProduct(const std::string& species,const std::string& reaction,const double& coeff);
     void setReactionPower(const std::string& species,const std::string& reaction,const double& pow);
@@ -30,6 +32,7 @@ private:
     std::map<std::string,std::size_t> reactionMap;
     VectorXd concentrations;
     VectorXd reactionRates;
+    VectorXd rateConstants;
     MatrixXd stoichiometricCoeffEducts;
     MatrixXd stoichiometricCoeffProducts;
     MatrixXd reactionPowers;
