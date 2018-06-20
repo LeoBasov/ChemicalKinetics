@@ -20,6 +20,8 @@ void UseCaseInteractor::stop(){
 
 void UseCaseInteractor::initialize(const InputData& data){
     initializeState(data);
+    initializeIntergrator(data.integratorData);
+    initializeChemistry(data.chemistryData);
 }
 
 void UseCaseInteractor::initializeState(const InputData& data){
@@ -62,6 +64,24 @@ void UseCaseInteractor::initializeIntergrator(const InputData::IntegratorData& d
 
     this->integrator.setTimeStep(data.timeStep);
     this->integrator.setTimeStepParamter(data.parameter);
+}
+
+void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data){
+    if(data.mode=="const_k"){
+        this->chemistry.setMode(Chemistry::const_k);
+    }else if(data.mode=="interpol_k"){
+        this->chemistry.setMode(Chemistry::interpol_k);
+    }else if(data.mode=="arrhenius_k"){
+        this->chemistry.setMode(Chemistry::arrhenius_k);
+    }else{
+        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
+    }
+
+    this->chemistry.setReactionPowers(this->state.getReactionPowers());
+    this->chemistry.setStoichiometricMatrix(this->state.getStoichiometricMatrix());
+    this->chemistry.setRateConstants(this->state.getRateConstants());
+    this->chemistry.setRateConstants(data.rateConstantsTables);
+    this->chemistry.setArrheniusCoefficients(data.arrheniusCoefficients);
 }
 
 void UseCaseInteractor::execute(){

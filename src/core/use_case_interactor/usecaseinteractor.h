@@ -23,6 +23,7 @@ private:
     void initialize(const InputData& data);
     void initializeState(const InputData& data);
     void initializeIntergrator(const InputData::IntegratorData& data);
+    void initializeChemistry(const InputData::ChemistryData& data);
 
     void execute();
     void report();
