@@ -15,6 +15,7 @@ public:
     void setReactionPowers(const MatrixXd& reactionPowers);
     void setReactionStoichiometricMatrix(const MatrixXd& stoichiometricMatrix);
     void setRateConstants(const VectorXd& rateConstants);
+    void setRateConstants(const std::vector<InterpolationTable>& rateConstantsInterpolTables);
     void setArrheniusCoefficients(const double& preFact,const double& activationEnergy);
 
     VectorXd calculateConcentrationDiff(const VectorXd& concentrations) const;
@@ -25,6 +26,7 @@ private:
     VectorXd rateConstants;
     MatrixXd stoichiometricMatrix;
     MatrixXd reactionPowers;
+    std::vector<InterpolationTable> rateConstantsInterpolTables;
     double arrheniusPreFact = 0.0;
     double arrheniusActivationEnergy = 0.0;
 };

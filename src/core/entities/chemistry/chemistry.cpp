@@ -20,6 +20,10 @@ void Chemistry::setRateConstants(const VectorXd& rateConstants){
     this->rateConstants = rateConstants;
 }
 
+void Chemistry::setRateConstants(const std::vector<InterpolationTable>& rateConstantsInterpolTables){
+    this->rateConstantsInterpolTables = rateConstantsInterpolTables;
+}
+
 void Chemistry::setArrheniusCoefficients(const double& preFact,const double& activationEnergy){
     this->arrheniusPreFact = preFact;
     this->arrheniusActivationEnergy = activationEnergy;
