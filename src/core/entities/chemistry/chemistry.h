@@ -18,8 +18,7 @@ public:
     void setRateConstants(const std::vector<InterpolationTable>& rateConstantsInterpolTables);
     void setArrheniusCoefficients(std::vector<std::pair<double,double>> arrheniusCoefficients);
 
-    VectorXd calculateConcentrationDiff(const VectorXd& concentrations) const;
-    VectorXd calculateConcentrationDiff(const VectorXd& concentrations,const VectorXd& rateConstants);
+    VectorXd calculateConcentrationDiff(const VectorXd& concentrations,const double& temperature) const;
 
     VectorXd getRateConstants(const double& temperature) const;
 
