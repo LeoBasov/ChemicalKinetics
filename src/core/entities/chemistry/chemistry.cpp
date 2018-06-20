@@ -4,6 +4,10 @@ Chemistry::Chemistry(){
 
 }
 
+void Chemistry::setMode(const Mode& mode){
+    this->mode = mode;
+}
+
 void Chemistry::setReactionPowers(const MatrixXd& reactionPowers){
     this->reactionPowers = reactionPowers;
 }
@@ -14,6 +18,11 @@ void Chemistry::setReactionStoichiometricMatrix(const MatrixXd& stoichiometricMa
 
 void Chemistry::setRateConstants(const VectorXd& rateConstants){
     this->rateConstants = rateConstants;
+}
+
+void Chemistry::setArrheniusCoefficients(const double& preFact,const double& activationEnergy){
+    this->arrheniusPreFact = preFact;
+    this->arrheniusActivationEnergy = activationEnergy;
 }
 
 VectorXd Chemistry::calculateConcentrationDiff(const VectorXd& concentrations) const{
