@@ -21,10 +21,13 @@ struct InputData{
         std::vector<std::pair<std::string,double>> concentrations;
         std::vector<std::pair<std::string,double>> reactionRates;
         std::vector<std::pair<std::string,double>> rateConstants;
+        std::vector<std::vector<std::pair<double,double>>> rateConstantsTables;
 
         std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> stoichiometricCoeffEducts;
         std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> stoichiometricCoeffProducts;
         std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> reactionPowers;
+
+        std::vector<std::pair<double,double>> arrheniusCoefficients;
 
         double temperature = 0.0;
     };
