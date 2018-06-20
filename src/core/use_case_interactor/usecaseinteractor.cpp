@@ -51,6 +51,19 @@ void UseCaseInteractor::initializeState(const InputData& data){
     }
 }
 
+void UseCaseInteractor::initializeIntergrator(const InputData::IntegratorData& data){
+    if(data.mode=="const_dt"){
+        this->integrator.setMode(Integrator::const_dt);
+    }else if(data.mode=="var_dt"){
+        this->integrator.setMode(Integrator::var_dt);
+    }else if(data.mode=="none"){
+        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
+    }
+
+    this->integrator.setTimeStep(data.timeStep);
+    this->integrator.setTimeStepParamter(data.parameter);
+}
+
 void UseCaseInteractor::execute(){
     VectorXd concentrationDiffs;
 
