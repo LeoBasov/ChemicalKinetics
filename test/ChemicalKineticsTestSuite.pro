@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     ../src/core/common/math/matrixxd.cpp \
     core/common/math/matrixxdtest.cpp \
     ../src/core/common/data_types/state.cpp \
-    ../src/core/entities/chemistry/chemistryalgorithms.cpp
+    ../src/core/entities/chemistry/chemistryalgorithms.cpp \
+    core/entities/chemistry/chemistryalgorithmstest.cpp
 
 HEADERS += \
     unittest.h \
@@ -26,4 +27,5 @@ HEADERS += \
     core/common/math/matrixxdtest.h \
     ../src/core/common/data_types/state.h \
     ../src/core/entities/chemistry/chemistryalgorithms.h \
-    ../src/core/common/constants.h
+    ../src/core/common/constants.h \
+    core/entities/chemistry/chemistryalgorithmstest.h

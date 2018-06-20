@@ -2,6 +2,7 @@
 
 #include "core/common/math/vectorxdtest.h"
 #include "core/common/math/matrixxdtest.h"
+#include "core/entities/chemistry/chemistryalgorithmstest.h"
 
 int main(int argc, char **argv){
     std::vector<std::shared_ptr<UnitTest>> tests;
@@ -9,6 +10,8 @@ int main(int argc, char **argv){
 
     tests.push_back(std::make_shared<VectorXdTest>("VectorXdTest"));
     tests.push_back(std::make_shared<MatrixXdTest>("MatrixXdTest"));
+
+    tests.push_back(std::make_shared<ChemistryAlgorithmsTest>("ChemistryAlgorithmsTest"));
 
     for(std::shared_ptr<UnitTest> test : tests){
         int errors = QTest::qExec(test.get(),argc,argv);
