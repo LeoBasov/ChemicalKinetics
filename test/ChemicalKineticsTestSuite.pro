@@ -21,7 +21,8 @@ SOURCES += main.cpp \
     ../src/core/entities/integrator/integratoralgorithms.cpp \
     core/entities/integrator/integratoralgorithmstest.cpp \
     ../src/core/entities/integrator/integrator.cpp \
-    ../src/core/common/data_types/interpolationtable.cpp
+    ../src/core/common/data_types/interpolationtable.cpp \
+    core/common/data_types/interpolationtabletest.cpp
 
 HEADERS += \
     unittest.h \
@@ -40,4 +41,5 @@ HEADERS += \
     ../src/core/entities/integrator/integratoralgorithms.h \
     core/entities/integrator/integratoralgorithmstest.h \
     ../src/core/entities/integrator/integrator.h \
-    ../src/core/common/data_types/interpolationtable.h
+    ../src/core/common/data_types/interpolationtable.h \
+    core/common/data_types/interpolationtabletest.h
