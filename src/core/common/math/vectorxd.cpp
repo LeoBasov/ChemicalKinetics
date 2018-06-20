@@ -113,9 +113,9 @@ double& VectorXd::at(size_v idx){
     try{
         return this->values.at(idx);
     }catch(std::out_of_range& e){
-        throw OutOfRange(e.what(),std::string(__FUNCTION__));
+        throw OutOfRange(e.what(),"VectorXd::" + std::string(__FUNCTION__));
     }catch(std::exception& e){
-        throw Exception(e.what(),std::string(__FUNCTION__));
+        throw Exception(e.what(),"VectorXd::" + std::string(__FUNCTION__));
     }
 }
 
@@ -123,9 +123,9 @@ const double& VectorXd::at(size_v idx) const{
     try{
         return this->values.at(idx);
     }catch(std::out_of_range& e){
-        throw OutOfRange(e.what(),std::string(__FUNCTION__));
+        throw OutOfRange(e.what(),"VectorXd::" + std::string(__FUNCTION__));
     }catch(std::exception& e){
-        throw Exception(e.what(),std::string(__FUNCTION__));
+        throw Exception(e.what(),"VectorXd::" + std::string(__FUNCTION__));
     }
 }
 
@@ -163,7 +163,8 @@ void VectorXd::validateSize(const VectorXd& lhs,const VectorXd& rhs){
     if(lhs.size()!=rhs.size()){
         throw OutOfRange( "Vectors are not of compatible size. Lhs <"
                         + std::to_string(lhs.size()) + "> rhs <"
-                        + std::to_string(rhs.size()) + ">.",std::string(__FUNCTION__));
+                        + std::to_string(rhs.size()) + ">."
+                        ,"VectorXd::" + std::string(__FUNCTION__));
     }
 }
 

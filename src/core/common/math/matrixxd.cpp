@@ -97,9 +97,9 @@ double& MatrixXd::at(const size_r& row,const size_c& column){
     try{
         return this->values.at(row).at(column);
     }catch(std::out_of_range& e){
-        throw OutOfRange(e.what(),std::string(__FUNCTION__));
+        throw OutOfRange(e.what(),"MatrixXd::" + std::string(__FUNCTION__));
     }catch(std::exception& e){
-        throw Exception(e.what(),std::string(__FUNCTION__));
+        throw Exception(e.what(),"MatrixXd::" + std::string(__FUNCTION__));
     }
 }
 
@@ -107,9 +107,9 @@ const double& MatrixXd::at(const size_r& row,const size_c& column) const{
     try{
         return this->values.at(row).at(column);
     }catch(std::out_of_range& e){
-        throw OutOfRange(e.what(),std::string(__FUNCTION__));
+        throw OutOfRange(e.what(),"MatrixXd::" + std::string(__FUNCTION__));
     }catch(std::exception& e){
-        throw Exception(e.what(),std::string(__FUNCTION__));
+        throw Exception(e.what(),"MatrixXd::" + std::string(__FUNCTION__));
     }
 }
 
@@ -139,7 +139,8 @@ void MatrixXd::validateMat(const MatrixXd& other) const{
                         + std::to_string(sizeRow()) + "> other <"
                         + std::to_string(other.sizeRow()) + ">. This column size<"
                         + std::to_string(sizeColumn()) + "> other <"
-                        + std::to_string(other.sizeColumn()) + ">.",std::string(__FUNCTION__));
+                        + std::to_string(other.sizeColumn()) + ">."
+                        , "MatrixXd::" + std::string(__FUNCTION__));
     }
 }
 
@@ -147,6 +148,7 @@ void MatrixXd::validateVec(const VectorXd& vec) const{
     if(sizeColumn()!=vec.size()){
         throw OutOfRange( "Matrix and vector are not of compatible size. Matrix <"
                         + std::to_string(sizeColumn()) + "> vector <"
-                        + std::to_string(vec.size()) + ">.",std::string(__FUNCTION__));
+                        + std::to_string(vec.size()) + ">."
+                        , "MatrixXd::" + std::string(__FUNCTION__));
     }
 }

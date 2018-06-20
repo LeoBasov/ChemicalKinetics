@@ -27,7 +27,7 @@ VectorXd Integrator::integrate(const VectorXd& values,const VectorXd& diff){
         return IntegratorAlgorithms::firstOrder(values,diff,this->timeStep);
         break;
     default:
-        throw Exception("Undefined mode<" + std::to_string(mode) + ">",std::string(__FUNCTION__));
+        throw Exception("Undefined mode<" + std::to_string(mode) + ">","Integrator::" + std::string(__FUNCTION__));
         break;
     }
 }
