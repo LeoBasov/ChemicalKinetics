@@ -16,6 +16,6 @@ VectorXd ChemistryAlgorithms::reactionRatePowLaw(const VectorXd& rateConstants,c
     return reactionRates;
 }
 
-VectorXd ChemistryAlgorithms::concentrationDifferential(const MatrixXd& stochiometricMatrix,const VectorXd& concentrations){
-    return stochiometricMatrix*concentrations;
+VectorXd ChemistryAlgorithms::concentrationDifferential(const MatrixXd& stochiometricMatrix,const VectorXd& reactionRates){
+    return stochiometricMatrix*reactionRates;
 }
