@@ -10,5 +10,6 @@ public:
     ChemistryAlgorithmsTest(const std::string& name);
 
 private slots:
-    void arrheniusEquationTest();
+    void arrheniusEquationTest() const;
+    void reactionRatePowLawTest() const;
 };
