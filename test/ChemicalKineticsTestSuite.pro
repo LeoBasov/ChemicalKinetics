@@ -25,4 +25,5 @@ HEADERS += \
     ../src/core/common/math/matrixxd.h \
     core/common/math/matrixxdtest.h \
     ../src/core/common/data_types/state.h \
-    ../src/core/entities/chemistry/chemistryalgorithms.h
+    ../src/core/entities/chemistry/chemistryalgorithms.h \
+    ../src/core/common/constants.h
