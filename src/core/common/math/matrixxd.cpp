@@ -125,6 +125,10 @@ MatrixXd::size_c MatrixXd::sizeColumn() const{
     }
 }
 
+void MatrixXd::clear(){
+    this->values.clear();
+}
+
 const std::vector<std::vector<double>>& MatrixXd::getValues() const{
     return this->values;
 }

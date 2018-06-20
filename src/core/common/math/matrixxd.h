@@ -67,6 +67,7 @@ public:
 
     size_r sizeRow() const;
     size_c sizeColumn() const;
+    void clear();
 
     const std::vector<std::vector<double>>& getValues() const;
 
