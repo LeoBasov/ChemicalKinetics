@@ -44,4 +44,5 @@ HEADERS += \
     ../src/core/entities/integrator/integrator.h \
     ../src/core/common/data_types/interpolationtable.h \
     core/common/data_types/interpolationtabletest.h \
-    ../src/core/use_case_interactor/abortcriterium.h
+    ../src/core/use_case_interactor/abortcriterium.h \
+    ../src/core/common/data_types/inputdata.h
