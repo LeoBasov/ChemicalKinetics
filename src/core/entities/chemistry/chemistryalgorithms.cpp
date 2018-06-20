@@ -1,5 +1,9 @@
 #include "chemistryalgorithms.h"
 
+double ChemistryAlgorithms::arrheniusEquation(const double& preFact,const double& activationEnergy,const double& temperature){
+    return preFact*std::exp((-1.0)*activationEnergy/(Constants::universalGasConst*temperature));
+}
+
 VectorXd ChemistryAlgorithms::reactionRatePowLaw(const VectorXd& rateConstants,const VectorXd& concentrations,const MatrixXd& reactionPows){
     VectorXd reactionRates(rateConstants);
 
