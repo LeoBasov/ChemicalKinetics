@@ -9,6 +9,7 @@ class InterpolationTable
 {
 public:
     InterpolationTable();
+    InterpolationTable(const std::vector<std::pair<double,double>>& valueTable);
 
     void clear();
     double getValue(const double &valueFirst) const;

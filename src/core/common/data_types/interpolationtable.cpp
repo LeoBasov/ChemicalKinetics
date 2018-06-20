@@ -1,8 +1,12 @@
 #include "interpolationtable.h"
 
-InterpolationTable::InterpolationTable()
-{
+InterpolationTable::InterpolationTable(){
 
+}
+
+InterpolationTable::InterpolationTable(const std::vector<std::pair<double,double>>& valueTable)
+                                      :valueTable(valueTable){
+    std::sort(this->valueTable.begin(),this->valueTable.end());
 }
 
 void InterpolationTable::clear(){
