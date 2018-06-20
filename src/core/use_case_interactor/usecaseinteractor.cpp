@@ -14,6 +14,10 @@ void UseCaseInteractor::start(){
     }
 }
 
+void UseCaseInteractor::stop(){
+    this->abortCriterium.abort();
+}
+
 void UseCaseInteractor::initialize(){
     //DUMMY
 }

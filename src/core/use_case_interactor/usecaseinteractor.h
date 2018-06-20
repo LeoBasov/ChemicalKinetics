@@ -11,6 +11,7 @@ public:
     UseCaseInteractor();
 
     void start();
+    void stop();
 
 private:
     State state;
