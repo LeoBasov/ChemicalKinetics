@@ -45,10 +45,11 @@ public:
     void resize(const size_v& size);
     void clear();
 
+    void validateSize(const VectorXd& other) const;
+    static void validateSize(const VectorXd& lhs,const VectorXd& rhs);
+
     const std::vector<double>& getValues() const;
 
 private:
     std::vector<double> values;
-
-    void validate(const VectorXd& other) const;
 };

@@ -58,7 +58,7 @@ bool VectorXd::operator>=(const VectorXd& other) const{
 VectorXd VectorXd::operator+(const VectorXd& other) const{
     VectorXd returnVals(this->values);
 
-    validate(other);
+    validateSize(other);
 
     for(size_v i(0);i<this->values.size();++i){
         returnVals.at(i) += other.at(i);
@@ -70,7 +70,7 @@ VectorXd VectorXd::operator+(const VectorXd& other) const{
 VectorXd VectorXd::operator-(const VectorXd& other) const{
     VectorXd returnVals(this->values);
 
-    validate(other);
+    validateSize(other);
 
     for(size_v i(0);i<this->values.size();++i){
         returnVals.at(i) -= other.at(i);
@@ -92,7 +92,7 @@ VectorXd VectorXd::operator*(const double& value) const{
 double VectorXd::operator*(const VectorXd& other) const{
     double returnVal(0.0);
 
-    validate(other);
+    validateSize(other);
 
     for(size_v i(0);i<this->values.size();++i){
         returnVal += at(i)*other.at(i);
@@ -155,14 +155,18 @@ void VectorXd::clear(){
     this->values.clear();
 }
 
-const std::vector<double>& VectorXd::getValues() const{
-    return this->values;
+void VectorXd::validateSize(const VectorXd& other) const{
+    validateSize(*this,other);
 }
 
-void VectorXd::validate(const VectorXd& other) const{
-    if(size()!=other.size()){
-        throw OutOfRange( "Vectors are not of compatible size. This <"
-                        + std::to_string(size()) + "> other <"
-                        + std::to_string(other.size()) + ">.",std::string(__FUNCTION__));
+void VectorXd::validateSize(const VectorXd& lhs,const VectorXd& rhs){
+    if(lhs.size()!=rhs.size()){
+        throw OutOfRange( "Vectors are not of compatible size. Lhs <"
+                        + std::to_string(lhs.size()) + "> rhs <"
+                        + std::to_string(rhs.size()) + ">.",std::string(__FUNCTION__));
     }
+}
+
+const std::vector<double>& VectorXd::getValues() const{
+    return this->values;
 }
