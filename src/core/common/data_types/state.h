@@ -10,6 +10,7 @@ public:
     State();
     ~State();
 
+    void setUp(const std::vector<std::string>& species,const std::vector<std::string>& reactions);
     void clear();
 
 private:
@@ -23,4 +24,6 @@ private:
     double time = 0.0;
     double temperature = 0.0;
     double cv = 0.0;
+
+    void resize(const size_t& row,const size_t& column);
 };
