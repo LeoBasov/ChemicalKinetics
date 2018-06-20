@@ -21,6 +21,7 @@ public:
     VectorXd calculateConcentrationDiff(const VectorXd& concentrations,const double& temperature) const;
 
     VectorXd getRateConstants(const double& temperature) const;
+    VectorXd getReactionRates(const VectorXd& concentrations,const double& temperature) const;
 
 private:
     Mode mode = none;

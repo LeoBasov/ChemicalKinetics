@@ -29,9 +29,7 @@ void Chemistry::setArrheniusCoefficients(std::vector<std::pair<double,double>> a
 }
 
 VectorXd Chemistry::calculateConcentrationDiff(const VectorXd& concentrations,const double& temperature) const{
-    const VectorXd reactionrates(ChemistryAlgorithms::reactionRatePowLaw(getRateConstants(temperature),concentrations,this->reactionPowers));
-
-    return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,reactionrates);
+    return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,getReactionRates(concentrations,temperature));
 }
 
 VectorXd Chemistry::getRateConstants(const double& temperature) const{
@@ -49,6 +47,10 @@ VectorXd Chemistry::getRateConstants(const double& temperature) const{
         throw Exception("Undefined mode<" + std::to_string(mode) + ">","Chemistry::" + std::string(__FUNCTION__));
         break;
     }
+}
+
+VectorXd Chemistry::getReactionRates(const VectorXd& concentrations,const double& temperature) const{
+    return ChemistryAlgorithms::reactionRatePowLaw(getRateConstants(temperature),concentrations,this->reactionPowers);
 }
 
 VectorXd Chemistry::interpolateRateConstants(const double& temperature) const{
