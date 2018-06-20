@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     ../src/core/use_case_interactor/usecaseinteractor.cpp \
     ../src/core/entities/chemistry/chemistry.cpp \
     ../src/core/entities/integrator/integratoralgorithms.cpp \
-    core/entities/integrator/integratoralgorithmstest.cpp
+    core/entities/integrator/integratoralgorithmstest.cpp \
+    ../src/core/entities/integrator/integrator.cpp
 
 HEADERS += \
     unittest.h \
@@ -36,4 +37,5 @@ HEADERS += \
     ../src/core/use_case_interactor/usecaseinteractor.h \
     ../src/core/entities/chemistry/chemistry.h \
     ../src/core/entities/integrator/integratoralgorithms.h \
-    core/entities/integrator/integratoralgorithmstest.h
+    core/entities/integrator/integratoralgorithmstest.h \
+    ../src/core/entities/integrator/integrator.h
