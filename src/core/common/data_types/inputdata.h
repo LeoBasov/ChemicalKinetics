@@ -15,6 +15,9 @@ struct InputData{
     struct ChemistryData{
         std::string mode = "none";
 
+        std::vector<std::string> speciesNames;
+        std::vector<std::string> reactionNames;
+
         std::vector<std::pair<std::string,double>> concentrations;
         std::vector<std::pair<std::string,double>> reactionRates;
         std::vector<std::pair<std::string,double>> rateConstants;
@@ -25,4 +28,7 @@ struct InputData{
 
         double temperature = 0.0;
     };
+
+    IntegratorData integratorData;
+    ChemistryData chemistryData;
 };

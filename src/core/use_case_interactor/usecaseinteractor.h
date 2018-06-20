@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../common/data_types/state.h"
+#include "../common/data_types/inputdata.h"
 #include "abortcriterium.h"
 #include "../entities/chemistry/chemistry.h"
 #include "../entities/integrator/integrator.h"
@@ -10,7 +11,7 @@ class UseCaseInteractor
 public:
     UseCaseInteractor();
 
-    void start();
+    void start(const InputData& data);
     void stop();
 
 private:
@@ -19,7 +20,9 @@ private:
     Chemistry chemistry;
     Integrator integrator;
 
-    void initialize();
+    void initialize(const InputData& data);
+    void initializeState(const InputData& data);
+
     void execute();
     void report();
 };
