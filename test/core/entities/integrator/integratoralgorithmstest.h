@@ -11,4 +11,5 @@ public:
 
 private slots:
     void timeStepTest() const;
+    void firstOrderTest() const;
 };
