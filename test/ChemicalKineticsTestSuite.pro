@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     ../src/core/common/data_types/state.cpp \
     ../src/core/entities/chemistry/chemistryalgorithms.cpp \
     core/entities/chemistry/chemistryalgorithmstest.cpp \
-    ../src/core/use_case_interactor/usecaseinteractor.cpp
+    ../src/core/use_case_interactor/usecaseinteractor.cpp \
+    ../src/core/entities/chemistry/chemistry.cpp
 
 HEADERS += \
     unittest.h \
@@ -30,4 +31,5 @@ HEADERS += \
     ../src/core/entities/chemistry/chemistryalgorithms.h \
     ../src/core/common/constants.h \
     core/entities/chemistry/chemistryalgorithmstest.h \
-    ../src/core/use_case_interactor/usecaseinteractor.h
+    ../src/core/use_case_interactor/usecaseinteractor.h \
+    ../src/core/entities/chemistry/chemistry.h
