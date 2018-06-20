@@ -12,7 +12,7 @@ void Chemistry::setReactionPowers(const MatrixXd& reactionPowers){
     this->reactionPowers = reactionPowers;
 }
 
-void Chemistry::setReactionStoichiometricMatrix(const MatrixXd& stoichiometricMatrix){
+void Chemistry::setStoichiometricMatrix(const MatrixXd& stoichiometricMatrix){
     this->stoichiometricMatrix = stoichiometricMatrix;
 }
 
@@ -24,7 +24,15 @@ void Chemistry::setRateConstants(const std::vector<InterpolationTable>& rateCons
     this->rateConstantsInterpolTables = rateConstantsInterpolTables;
 }
 
-void Chemistry::setArrheniusCoefficients(std::vector<std::pair<double,double>> arrheniusCoefficients){
+void Chemistry::setRateConstants(const std::vector<std::vector<std::pair<double,double>>>& rateConstantsInterpolTables){
+    this->rateConstantsInterpolTables.clear();
+
+    for(auto table : rateConstantsInterpolTables){
+        this->rateConstantsInterpolTables.push_back(InterpolationTable(table));
+    }
+}
+
+void Chemistry::setArrheniusCoefficients(const std::vector<std::pair<double,double>> &arrheniusCoefficients){
     this->arrheniusCoefficients = arrheniusCoefficients;
 }
 

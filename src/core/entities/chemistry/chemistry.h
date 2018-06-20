@@ -13,10 +13,11 @@ public:
 
     void setMode(const Mode& mode);
     void setReactionPowers(const MatrixXd& reactionPowers);
-    void setReactionStoichiometricMatrix(const MatrixXd& stoichiometricMatrix);
+    void setStoichiometricMatrix(const MatrixXd& stoichiometricMatrix);
     void setRateConstants(const VectorXd& rateConstants);
     void setRateConstants(const std::vector<InterpolationTable>& rateConstantsInterpolTables);
-    void setArrheniusCoefficients(std::vector<std::pair<double,double>> arrheniusCoefficients);
+    void setRateConstants(const std::vector<std::vector<std::pair<double,double>>>& rateConstantsInterpolTables);
+    void setArrheniusCoefficients(const std::vector<std::pair<double,double>>& arrheniusCoefficients);
 
     VectorXd getRateConstants(const double& temperature) const;
     VectorXd getReactionRates(const VectorXd& concentrations,const VectorXd& rateConstants) const;
