@@ -28,10 +28,6 @@ void Chemistry::setArrheniusCoefficients(std::vector<std::pair<double,double>> a
     this->arrheniusCoefficients = arrheniusCoefficients;
 }
 
-VectorXd Chemistry::calculateConcentrationDiff(const VectorXd& concentrations,const double& temperature) const{
-    return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,getReactionRates(concentrations,temperature));
-}
-
 VectorXd Chemistry::getRateConstants(const double& temperature) const{
     switch(this->mode){
     case const_k:
@@ -49,8 +45,12 @@ VectorXd Chemistry::getRateConstants(const double& temperature) const{
     }
 }
 
-VectorXd Chemistry::getReactionRates(const VectorXd& concentrations,const double& temperature) const{
-    return ChemistryAlgorithms::reactionRatePowLaw(getRateConstants(temperature),concentrations,this->reactionPowers);
+VectorXd Chemistry::getReactionRates(const VectorXd& concentrations,const VectorXd& rateConstants) const{
+    return ChemistryAlgorithms::reactionRatePowLaw(rateConstants,concentrations,this->reactionPowers);
+}
+
+VectorXd Chemistry::getConcentrationDiff(const VectorXd& reactionRates) const{
+    return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,reactionRates);
 }
 
 VectorXd Chemistry::interpolateRateConstants(const double& temperature) const{
