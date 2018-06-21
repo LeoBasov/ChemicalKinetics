@@ -29,4 +29,7 @@ private:
 
     void execute();
     void report();
+
+    Chemistry::Mode chemistryMode(const std::string& str) const;
+    Integrator::Mode integratorMode(const std::string& str) const;
 };
