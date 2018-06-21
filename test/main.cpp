@@ -2,6 +2,7 @@
 
 #include "core/common/math/vectorxdtest.h"
 #include "core/common/math/matrixxdtest.h"
+#include "core/common/data_types/statetest.h"
 #include "core/common/data_types/interpolationtabletest.h"
 #include "core/entities/chemistry/chemistryalgorithmstest.h"
 #include "core/entities/integrator/integratoralgorithmstest.h"
@@ -14,6 +15,7 @@ int main(int argc, char **argv){
     tests.push_back(std::make_shared<VectorXdTest>("VectorXdTest"));
     tests.push_back(std::make_shared<MatrixXdTest>("MatrixXdTest"));
 
+    tests.push_back(std::make_shared<StateTest>("StateTest"));
     tests.push_back(std::make_shared<InterpolationTableTest>("InterpolationTableTest"));
 
     tests.push_back(std::make_shared<ChemistryAlgorithmsTest>("ChemistryAlgorithmsTest"));

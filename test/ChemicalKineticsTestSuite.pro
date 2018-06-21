@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     ../src/core/common/data_types/interpolationtable.cpp \
     core/common/data_types/interpolationtabletest.cpp \
     ../src/core/use_case_interactor/abortcriterium.cpp \
-    core/entities/integrator/integratortest.cpp
+    core/entities/integrator/integratortest.cpp \
+    core/common/data_types/statetest.cpp
 
 HEADERS += \
     unittest.h \
@@ -47,4 +48,5 @@ HEADERS += \
     core/common/data_types/interpolationtabletest.h \
     ../src/core/use_case_interactor/abortcriterium.h \
     ../src/core/common/data_types/inputdata.h \
-    core/entities/integrator/integratortest.h
+    core/entities/integrator/integratortest.h \
+    core/common/data_types/statetest.h
