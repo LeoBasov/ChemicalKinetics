@@ -20,6 +20,14 @@ void Converter::setUp(const std::vector<std::string>& species,const std::vector<
     }
 }
 
+const std::map<std::size_t,std::string>& Converter::getSpeciesMap() const{
+    return this->speciesMapOut;
+}
+
+const std::map<std::size_t,std::string>& Converter::getReactionMap() const{
+    return this->reactionMapOut;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec;
 

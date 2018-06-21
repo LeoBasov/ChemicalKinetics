@@ -5,6 +5,7 @@
 #include "abortcriterium.h"
 #include "../entities/chemistry/chemistry.h"
 #include "../entities/integrator/integrator.h"
+#include "converter.h"
 
 class UseCaseInteractor
 {
@@ -15,6 +16,7 @@ public:
     void stop();
 
 private:
+    Converter converter;
     State state;
     AbortCriterium abortCriterium;
     Chemistry chemistry;

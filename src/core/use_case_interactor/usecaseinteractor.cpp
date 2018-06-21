@@ -25,32 +25,16 @@ void UseCaseInteractor::initialize(const InputData& data){
 }
 
 void UseCaseInteractor::initializeState(const InputData& data){
-    this->state.setUp(data.chemistryData.speciesNames,data.chemistryData.reactionNames);
-    this->state.setTemperature(data.chemistryData.temperature);
+    this->converter.setUp(data.chemistryData.speciesNames,data.chemistryData.reactionNames);
 
-    for(auto pair : data.chemistryData.concentrations){
-        this->state.setConcentration(pair.first,pair.second);
-    }
+    this->state.reactionMap = this->converter.getReactionMap();
+    this->state.speciesMap = this->converter.getSpeciesMap();
 
-    for(size_t i(0);i<data.chemistryData.reactionRates.size();++i){
-        this->state.setReactionRate(data.chemistryData.reactionRates.at(i).first,data.chemistryData.reactionRates.at(i).second);
-        this->state.setRateConstant(data.chemistryData.rateConstants.at(i).first,data.chemistryData.rateConstants.at(i).second);
-    }
+    this->state.temperature = data.chemistryData.temperature;
+    this->state.concentrations = converter.vector(data.chemistryData.concentrations,Converter::species);
+    this->state.reactionRates = converter.vector(data.chemistryData.reactionRates,Converter::reaction);
 
-    for(size_t i(0);i<data.chemistryData.stoichiometricCoeffEducts.size();++i){
-        const std::string reaction(data.chemistryData.stoichiometricCoeffEducts.at(i).first);
-
-        for(size_t j(0);j<data.chemistryData.stoichiometricCoeffEducts.at(i).second.size();++j){
-            const std::string species(data.chemistryData.stoichiometricCoeffEducts.at(i).second.at(j).first);
-            const double stoichiometricCoeffEduct((data.chemistryData.stoichiometricCoeffEducts.at(i).second.at(j).second));
-            const double stoichiometricCoeffProduct((data.chemistryData.stoichiometricCoeffProducts.at(i).second.at(j).second));
-            const double reactionPower((data.chemistryData.reactionPowers.at(i).second.at(j).second));
-
-            this->state.setStoichiometricCoeffEduct(species,reaction,stoichiometricCoeffEduct);
-            this->state.setStoichiometricCoeffProduct(species,reaction,stoichiometricCoeffProduct);
-            this->state.setReactionPower(species,reaction,reactionPower);
-        }
-    }
+    this->state.time = 0.0;
 }
 
 void UseCaseInteractor::initializeIntergrator(const InputData::IntegratorData& data){
@@ -77,9 +61,9 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
         throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
     }
 
-    this->chemistry.setReactionPowers(this->state.getReactionPowers());
-    this->chemistry.setStoichiometricMatrix(this->state.getStoichiometricMatrix());
-    this->chemistry.setRateConstants(this->state.getRateConstants());
+    this->chemistry.setReactionPowers(this->converter.matrix(data.reactionPowers));
+    this->chemistry.setStoichiometricMatrix(this->converter.matrix(data.stoichiometricCoeffProducts) - this->converter.matrix(data.stoichiometricCoeffEducts));
+    this->chemistry.setRateConstants(this->state.rateConstants);
     this->chemistry.setRateConstants(data.rateConstantsTables);
     this->chemistry.setArrheniusCoefficients(data.arrheniusCoefficients);
 }
@@ -87,12 +71,12 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
 void UseCaseInteractor::execute(){
     VectorXd concentrationDiffs;
 
-    this->state.setRateConstants(this->chemistry.getRateConstants(this->state.getTemperature()));
-    this->state.setReactionRates(this->chemistry.getReactionRates(this->state.getConcentrations(),this->state.getRateConstants()));
+    this->state.rateConstants =  this->chemistry.getRateConstants(this->state.temperature);
+    this->state.reactionRates =  this->chemistry.getReactionRates(this->state.concentrations,this->state.rateConstants);
 
-    concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.getReactionRates());
+    concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.reactionRates);
 
-    this->state.setConcentrations(this->integrator.integrate(this->state.getConcentrations(),concentrationDiffs));
+    this->state.concentrations =  this->integrator.integrate(this->state.concentrations,concentrationDiffs);
 }
 
 void UseCaseInteractor::report(){

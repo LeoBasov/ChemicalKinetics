@@ -21,6 +21,9 @@ public:
     VectorXd vector(const Vector& vec,const Type& type) const;
     MatrixXd matrix(const Matrix& mat) const;
 
+    const std::map<std::size_t,std::string>& getSpeciesMap() const;
+    const std::map<std::size_t,std::string>& getReactionMap() const;
+
 private:
     std::map<std::string,std::size_t> speciesMapIn;
     std::map<std::size_t,std::string> speciesMapOut;
