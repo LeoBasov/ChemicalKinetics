@@ -27,6 +27,9 @@ public:
     void setTemperature(const double& temperature);
     void setCv(const double& cv);
 
+    const std::map<std::string,std::size_t>& getSpeciesMap() const;
+    const std::map<std::string,std::size_t>& getReactionMap() const;
+
     const VectorXd& getConcentrations() const;
     const VectorXd& getReactionRates() const;
     const VectorXd& getRateConstants() const;

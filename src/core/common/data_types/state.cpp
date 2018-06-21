@@ -82,6 +82,14 @@ void State::setCv(const double& cv){
     this->cv = cv;
 }
 
+const std::map<std::string,std::size_t>& State::getSpeciesMap() const{
+    return this->speciesMap;
+}
+
+const std::map<std::string,std::size_t>& State::getReactionMap() const{
+    return this->speciesMap;
+}
+
 const VectorXd& State::getConcentrations() const{
     return this->concentrations;
 }
