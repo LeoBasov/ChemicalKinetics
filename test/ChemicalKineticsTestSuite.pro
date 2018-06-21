@@ -13,7 +13,6 @@ SOURCES += main.cpp \
     core/common/math/vectorxdtest.cpp \
     ../src/core/common/math/matrixxd.cpp \
     core/common/math/matrixxdtest.cpp \
-    ../src/core/common/data_types/state.cpp \
     ../src/core/entities/chemistry/chemistryalgorithms.cpp \
     core/entities/chemistry/chemistryalgorithmstest.cpp \
     ../src/core/use_case_interactor/usecaseinteractor.cpp \
