@@ -57,6 +57,26 @@ void ConverterTest::convertVectorPair() const{
     QCOMPARE(vecRes.at(1),reactVecRef.at(1));
 }
 
+void ConverterTest::convertVectorTable() const{
+    const std::vector<std::string> species{"Spec1","Spec2","Spec3"};
+    const std::vector<std::string> reactions{"React1","React2"};
+
+    const std::vector<std::pair<double,double>> react1{{0.1,0.2},{0.3,0.4}};
+    const std::vector<std::pair<double,double>> react2{{0.5,0.6},{0.7,0.8}};
+    const std::vector<std::pair<std::string,std::vector<std::pair<double,double>>>> reactRates{{"React2",react2},{"React1",react1}};
+    const std::vector<InterpolationTable> ref{InterpolationTable(react1),InterpolationTable(react2)};
+    std::vector<InterpolationTable> result;
+
+    Converter converter;
+
+    converter.setUp(species,reactions);
+
+    result = converter.vectorTable(reactRates,Converter::reaction);
+
+    QCOMPARE(result.at(0),ref.at(0));
+    QCOMPARE(result.at(1),ref.at(1));
+}
+
 void ConverterTest::convertMatrix() const{
     const std::vector<std::string> species{"Spec1","Spec2","Spec3"};
     const std::vector<std::string> reactions{"React1","React2"};
