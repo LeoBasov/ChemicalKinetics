@@ -17,6 +17,8 @@ public:
 
     const std::vector<std::pair<double,double>> &getValueTable() const;
 
+    InterpolationTable& operator=(const InterpolationTable& other);
+
     bool operator==(const InterpolationTable& other) const;
     bool operator!=(const InterpolationTable& other) const;
 

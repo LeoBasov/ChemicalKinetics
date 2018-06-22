@@ -52,6 +52,14 @@ const std::vector<std::pair<double,double>> &InterpolationTable::getValueTable()
     return this->valueTable;
 }
 
+InterpolationTable& InterpolationTable::operator=(const InterpolationTable& other){
+    if(this!=&other){
+        this->valueTable = other.getValueTable();
+    }
+
+    return *this;
+}
+
 bool InterpolationTable::operator==(const InterpolationTable& other) const{
     std::vector<std::pair<double,double>> valueTable(other.getValueTable());
     bool equal(true);
