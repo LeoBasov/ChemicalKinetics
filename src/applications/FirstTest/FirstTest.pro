@@ -20,7 +20,8 @@ SOURCES += \
     ../../core/use_case_interactor/abortcriterium.cpp \
     ../../core/use_case_interactor/converter.cpp \
     ../../core/use_case_interactor/usecaseinteractor.cpp \
-    testpresenter.cpp
+    testpresenter.cpp \
+    view.cpp
 
 HEADERS += \
     ../../core/common/data_types/inputdata.h \
@@ -41,4 +42,5 @@ HEADERS += \
     ../../core/use_case_interactor/abortcriterium.h \
     ../../core/use_case_interactor/converter.h \
     ../../core/use_case_interactor/usecaseinteractor.h \
-    testpresenter.h
+    testpresenter.h \
+    view.h
