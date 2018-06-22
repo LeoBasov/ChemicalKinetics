@@ -93,6 +93,22 @@ MatrixXd::ConstProxy MatrixXd::operator[](const size_r& row) const{
     return ConstProxy(this->values.at(row));
 }
 
+MatrixXd MatrixXd::transpose(const MatrixXd& mat){
+    MatrixXd retMat(mat.sizeColumn(),mat.sizeRow());
+
+    for(size_t i(0);i<mat.sizeRow();++i){
+        for(size_t j(0);j<mat.sizeColumn();++j){
+            retMat.at(j,i) = mat.at(i,j);
+        }
+    }
+
+    return retMat;
+}
+
+MatrixXd MatrixXd::transpose() const{
+    return transpose(*this);
+}
+
 double& MatrixXd::at(const size_r& row,const size_c& column){
     try{
         return this->values.at(row).at(column);

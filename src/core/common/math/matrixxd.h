@@ -62,6 +62,9 @@ public:
     Proxy operator[](const size_r& row);
     ConstProxy operator[](const size_r& row) const;
 
+    static MatrixXd transpose(const MatrixXd& mat);
+    MatrixXd transpose() const;
+
     double& at(const size_r& row,const size_c& column);
     const double& at(const size_r& row,const size_c& column) const;
 
