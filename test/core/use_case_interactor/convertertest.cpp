@@ -24,4 +24,9 @@ void ConverterTest::convertTest() const{
     QCOMPARE(vecRes.at(0),concetrationsVec.at(0));
     QCOMPARE(vecRes.at(1),concetrationsVec.at(1));
     QCOMPARE(vecRes.at(2),concetrationsVec.at(2));
+
+    vecRes = converter.vector(rateConstants,Converter::reaction);
+
+    QCOMPARE(vecRes.at(0),rateConstantsVec.at(0));
+    QCOMPARE(vecRes.at(1),rateConstantsVec.at(1));
 }
