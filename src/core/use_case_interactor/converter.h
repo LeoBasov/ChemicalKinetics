@@ -11,6 +11,7 @@ public:
     enum Type{species=1,reaction=2};
 
     using Vector = std::vector<std::pair<std::string,double>>;
+    using VectorPair = std::vector<std::pair<std::string,std::pair<double,double>>>;
     using Matrix = std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>>;
 
 public:
@@ -19,6 +20,7 @@ public:
     void setUp(const std::vector<std::string>& species,const std::vector<std::string>& reactions);
 
     VectorXd vector(const Vector& vec,const Type& type) const;
+    std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
     MatrixXd matrix(const Matrix& mat) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;

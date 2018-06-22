@@ -38,6 +38,16 @@ VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     return retVec;
 }
 
+std::vector<std::pair<double,double>> Converter::vectorPair(const VectorPair vec,const Type& type) const{
+    std::vector<std::pair<double,double>> retVec(vec.size());
+
+    for(auto elem : vec){
+        retVec.at(index(type,elem.first)) = elem.second;
+    }
+
+    return retVec;
+}
+
 MatrixXd Converter::matrix(const Matrix& mat) const{
     MatrixXd retMat(mat.size(),mat.front().second.size());
 
