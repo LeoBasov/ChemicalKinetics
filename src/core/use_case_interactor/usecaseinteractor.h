@@ -6,11 +6,12 @@
 #include "../entities/chemistry/chemistry.h"
 #include "../entities/integrator/integrator.h"
 #include "converter.h"
+#include "../output_boundary/simulationstate.h"
 
 class UseCaseInteractor
 {
 public:
-    UseCaseInteractor();
+    explicit UseCaseInteractor(const std::shared_ptr<SimulationState>& simState);
 
     void start(const InputData& data);
     void stop();
@@ -21,6 +22,7 @@ private:
     AbortCriterium abortCriterium;
     Chemistry chemistry;
     Integrator integrator;
+    std::shared_ptr<SimulationState> simulationState;
 
     void initialize(const InputData& data);
     void initializeState(const InputData& data);

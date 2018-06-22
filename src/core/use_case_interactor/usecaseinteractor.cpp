@@ -1,7 +1,7 @@
 #include "usecaseinteractor.h"
 
-UseCaseInteractor::UseCaseInteractor()
-{
+UseCaseInteractor::UseCaseInteractor(const std::shared_ptr<SimulationState> &simState)
+                                    :simulationState(simState){
 
 }
 
@@ -62,7 +62,8 @@ void UseCaseInteractor::execute(){
 }
 
 void UseCaseInteractor::report(){
-    //DUMMY
+    this->simulationState->setState(this->state);
+    this->simulationState->notify();
 }
 
 Chemistry::Mode UseCaseInteractor::chemistryMode(const std::string& str) const{
