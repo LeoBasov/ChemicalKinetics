@@ -5,8 +5,13 @@ AbortCriterium::AbortCriterium()
 
 }
 
-bool AbortCriterium::valid() const{
-    return this->validVal;
+bool AbortCriterium::valid(){
+    if(this->validVal){
+        this->validVal = false;
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void AbortCriterium::abort(){

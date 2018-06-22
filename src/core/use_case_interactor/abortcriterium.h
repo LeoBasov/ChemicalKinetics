@@ -7,8 +7,8 @@ public:
 
     void abort();
 
-    bool valid() const;
+    bool valid();
 
 private:
-    bool validVal = false;
+    bool validVal = true;
 };
