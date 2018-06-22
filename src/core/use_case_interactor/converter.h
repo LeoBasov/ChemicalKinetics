@@ -23,7 +23,7 @@ public:
 
     VectorXd vector(const Vector& vec,const Type& type) const;
     std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
-    std::vector<InterpolationTable> vetorTable(const VectorTable vec,const Type& type) const;
+    std::vector<InterpolationTable> vectorTable(const VectorTable vec,const Type& type) const;
     MatrixXd matrix(const Matrix& mat) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;

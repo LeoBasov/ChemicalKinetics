@@ -48,7 +48,7 @@ std::vector<std::pair<double,double>> Converter::vectorPair(const VectorPair vec
     return retVec;
 }
 
-std::vector<InterpolationTable> Converter::vetorTable(const VectorTable vec,const Type& type) const{
+std::vector<InterpolationTable> Converter::vectorTable(const VectorTable vec,const Type& type) const{
     std::vector<InterpolationTable> retVec(vec.size());
 
     for(auto elem : vec){
