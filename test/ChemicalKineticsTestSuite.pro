@@ -25,7 +25,8 @@ SOURCES += main.cpp \
     ../src/core/use_case_interactor/abortcriterium.cpp \
     core/entities/integrator/integratortest.cpp \
     ../src/core/use_case_interactor/converter.cpp \
-    core/use_case_interactor/convertertest.cpp
+    core/use_case_interactor/convertertest.cpp \
+    ../src/core/output_boundary/observer.cpp
 
 HEADERS += \
     unittest.h \
@@ -50,4 +51,5 @@ HEADERS += \
     ../src/core/common/data_types/inputdata.h \
     core/entities/integrator/integratortest.h \
     ../src/core/use_case_interactor/converter.h \
-    core/use_case_interactor/convertertest.h
+    core/use_case_interactor/convertertest.h \
+    ../src/core/output_boundary/observer.h
