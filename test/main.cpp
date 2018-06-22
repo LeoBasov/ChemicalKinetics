@@ -2,11 +2,11 @@
 
 #include "core/common/math/vectorxdtest.h"
 #include "core/common/math/matrixxdtest.h"
-#include "core/common/data_types/statetest.h"
 #include "core/common/data_types/interpolationtabletest.h"
 #include "core/entities/chemistry/chemistryalgorithmstest.h"
 #include "core/entities/integrator/integratoralgorithmstest.h"
 #include "core/entities/integrator/integratortest.h"
+#include "core/use_case_interactor/convertertest.h"
 
 int main(int argc, char **argv){
     std::vector<std::shared_ptr<UnitTest>> tests;
@@ -15,12 +15,13 @@ int main(int argc, char **argv){
     tests.push_back(std::make_shared<VectorXdTest>("VectorXdTest"));
     tests.push_back(std::make_shared<MatrixXdTest>("MatrixXdTest"));
 
-    tests.push_back(std::make_shared<StateTest>("StateTest"));
     tests.push_back(std::make_shared<InterpolationTableTest>("InterpolationTableTest"));
 
     tests.push_back(std::make_shared<ChemistryAlgorithmsTest>("ChemistryAlgorithmsTest"));
     tests.push_back(std::make_shared<IntegratorAlgorithmsTest>("IntegratorAlgorithmsTest"));
     tests.push_back(std::make_shared<IntegratorTest>("IntegratorTest"));
+
+    tests.push_back(std::make_shared<ConverterTest>("ConverterTest"));
 
     for(std::shared_ptr<UnitTest> test : tests){
         int errors = QTest::qExec(test.get(),argc,argv);
