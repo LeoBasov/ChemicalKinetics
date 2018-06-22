@@ -17,17 +17,22 @@ int main()
     data.integratorData.timeStep = 0.1;
 
     data.chemistryData.mode = "const_k";
-    data.chemistryData.temperature = 10000.0;
-    data.chemistryData.speciesNames = {"spec1","spec2"};
-    data.chemistryData.reactionNames = {"reac1","reac2"};
-    data.chemistryData.concentrations = {{"spec1",0.1},{"spec2",0.2}};
-    data.chemistryData.reactionRates = {{"reac1",0.1},{"reac2",0.2}};
-    data.chemistryData.rateConstants = {{"reac1",0.1},{"reac2",0.2}};
-    data.chemistryData.rateConstantsTables = {{"reac1",{{0.1,0.2},{0.3,0.4}}},{"reac2",{{0.1,0.2},{0.3,0.4}}}};
-    data.chemistryData.arrheniusCoefficients = {{"reac1",{0.1,0.2}},{"reac2",{0.1,0.2}}};
-    data.chemistryData.stoichiometricCoeffEducts = {{"reac1",{{"spec1",0.1},{"spec2",0.1}}},{"reac2",{{"spec1",0.1},{"spec2",0.1}}}};
-    data.chemistryData.stoichiometricCoeffProducts = {{"reac1",{{"spec1",0.1},{"spec2",0.1}}},{"reac2",{{"spec1",0.1},{"spec2",0.1}}}};
-    data.chemistryData.reactionPowers = {{"reac1",{{"spec1",0.1},{"spec2",0.1}}},{"reac2",{{"spec1",0.1},{"spec2",0.1}}}};
+    data.chemistryData.temperature = 2000.0;
+    data.chemistryData.speciesNames = {"C8H18","O2","C02","H2O"};
+    data.chemistryData.reactionNames = {"combustion"};
+    data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"C02",4.0},{"H2O",4.0}};
+    data.chemistryData.reactionRates = {{"combustion",0.0}};
+    data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};
+    data.chemistryData.rateConstantsTables = {{"combustion",{{0.1,0.2},{0.3,0.4}}}};
+    data.chemistryData.arrheniusCoefficients = {{"combustion",{0.1,0.2}}};
+    data.chemistryData.stoichiometricCoeffEducts = {{"combustion",{{"C8H18",1.0},{"O2",(7/2.0)},{"C02",0.0},{"H2O",0.0}}}};
+    data.chemistryData.stoichiometricCoeffProducts = {{"combustion",{{"C8H18",0.0},{"O2",(0.0)},{"C02",2.0},{"H2O",3.0}}}};
+    data.chemistryData.reactionPowers = {{"combustion",{{"C8H18",0.1},{"O2",(1.65)},{"C02",0.0},{"H2O",0.0}}}};
+
+
+    std::cout << "=================================CHEMICAL KINETICS==============================" << std::endl;
+    std::cout << "Combustion of octan at 2000 K." << std::endl;
+    std::cout << "================================================================================" << std::endl;
 
     try{
         interactor.start(data);
@@ -38,6 +43,10 @@ int main()
     }catch(Exception& e){
         std::cout << "==================================EXCEPTION=====================================" << std::endl;
         std::cout << "WAHT: " << e.what() << std::endl << "WHERE: " << e.where() << std::endl;
+        std::cout << "================================================================================" << std::endl;
+    }catch(std::exception e){
+        std::cout << "==================================STD::EXCEPTION=====================================" << std::endl;
+        std::cout << "WAHT: " << e.what() << std::endl;
         std::cout << "================================================================================" << std::endl;
     }
 
