@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../common/math/matrixxd.h"
+#include "../common/data_types/interpolationtable.h"
 
 class Converter
 {
@@ -12,6 +13,7 @@ public:
 
     using Vector = std::vector<std::pair<std::string,double>>;
     using VectorPair = std::vector<std::pair<std::string,std::pair<double,double>>>;
+    using VectorTable = std::vector<std::pair<std::string,std::vector<std::pair<double,double>>>>;
     using Matrix = std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>>;
 
 public:
@@ -21,6 +23,7 @@ public:
 
     VectorXd vector(const Vector& vec,const Type& type) const;
     std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
+    std::vector<InterpolationTable> vetorTable(const VectorTable vec,const Type& type) const;
     MatrixXd matrix(const Matrix& mat) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;

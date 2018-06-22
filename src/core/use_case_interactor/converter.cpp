@@ -48,6 +48,16 @@ std::vector<std::pair<double,double>> Converter::vectorPair(const VectorPair vec
     return retVec;
 }
 
+std::vector<InterpolationTable> Converter::vetorTable(const VectorTable vec,const Type& type) const{
+    std::vector<InterpolationTable> retVec(vec.size());
+
+    for(auto elem : vec){
+        retVec.at(index(type,elem.first)) = InterpolationTable(elem.second);
+    }
+
+    return retVec;
+}
+
 MatrixXd Converter::matrix(const Matrix& mat) const{
     MatrixXd retMat(mat.size(),mat.front().second.size());
 
