@@ -16,7 +16,6 @@ public:
     void setStoichiometricMatrix(const MatrixXd& stoichiometricMatrix);
     void setRateConstants(const VectorXd& rateConstants);
     void setRateConstants(const std::vector<InterpolationTable>& rateConstantsInterpolTables);
-    void setRateConstants(const std::vector<std::vector<std::pair<double,double>>>& rateConstantsInterpolTables);
     void setArrheniusCoefficients(const std::vector<std::pair<double,double>>& arrheniusCoefficients);
 
     VectorXd getRateConstants(const double& temperature) const;
