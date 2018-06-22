@@ -27,7 +27,8 @@ SOURCES += main.cpp \
     ../src/core/use_case_interactor/converter.cpp \
     core/use_case_interactor/convertertest.cpp \
     ../src/core/output_boundary/observer.cpp \
-    ../src/core/output_boundary/subject.cpp
+    ../src/core/output_boundary/subject.cpp \
+    ../src/core/output_boundary/simulationstate.cpp
 
 HEADERS += \
     unittest.h \
@@ -54,4 +55,5 @@ HEADERS += \
     ../src/core/use_case_interactor/converter.h \
     core/use_case_interactor/convertertest.h \
     ../src/core/output_boundary/observer.h \
-    ../src/core/output_boundary/subject.h
+    ../src/core/output_boundary/subject.h \
+    ../src/core/output_boundary/simulationstate.h
