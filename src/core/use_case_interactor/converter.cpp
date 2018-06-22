@@ -29,7 +29,7 @@ const std::map<std::size_t,std::string>& Converter::getReactionMap() const{
 }
 
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
-    VectorXd retVec;
+    VectorXd retVec(vec.size());
 
     for(auto elem : vec){
         retVec.at(index(type,elem.first)) = elem.second;
