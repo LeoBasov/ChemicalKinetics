@@ -12,15 +12,15 @@ int main()
 
     presenter.subscribe(state);
 
-    data.integratorData.mode = "const_dt";
+    data.integratorData.mode = "var_dt";
     data.integratorData.parameter = 0.1;
-    data.integratorData.timeStep = 0.1;
+    data.integratorData.timeStep = 1.0e+10;
 
     data.chemistryData.mode = "const_k";
     data.chemistryData.temperature = 2000.0;
     data.chemistryData.speciesNames = {"C8H18","O2","C02","H2O"};
     data.chemistryData.reactionNames = {"combustion"};
-    data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"C02",4.0},{"H2O",4.0}};
+    data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"C02",0.0},{"H2O",0.0}};
     data.chemistryData.reactionRates = {{"combustion",0.0}};
     data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};
     data.chemistryData.rateConstantsTables = {{"combustion",{{0.1,0.2},{0.3,0.4}}}};
@@ -49,6 +49,8 @@ int main()
         std::cout << "WAHT: " << e.what() << std::endl;
         std::cout << "================================================================================" << std::endl;
     }
+
+    std::cout << "==================================DONE==========================================" << std::endl;
 
     return 0;
 }
