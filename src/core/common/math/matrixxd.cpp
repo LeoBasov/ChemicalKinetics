@@ -72,7 +72,7 @@ MatrixXd MatrixXd::operator*(const double& value) const{
 }
 
 VectorXd MatrixXd::operator*(const VectorXd& vec) const{
-    VectorXd returnValues(vec.size());
+    VectorXd returnValues(sizeRow());
 
     validateVec(vec);
 
