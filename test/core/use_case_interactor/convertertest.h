@@ -11,5 +11,6 @@ public:
 
 private slots:
     void convertVector() const;
+    void convertVectorPair() const;
     void convertMatrix() const;
 };

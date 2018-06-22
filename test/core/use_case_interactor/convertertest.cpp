@@ -31,6 +31,32 @@ void ConverterTest::convertVector() const{
     QCOMPARE(vecRes.at(1),rateConstantsVec.at(1));
 }
 
+void ConverterTest::convertVectorPair() const{
+    const std::vector<std::string> species{"Spec1","Spec2","Spec3"};
+    const std::vector<std::string> reactions{"React1","React2"};
+
+    const std::vector<std::pair<std::string,std::pair<double,double>>> specVec{{"Spec3",{0.1,0.2}},{"Spec2",{0.3,0.4}},{"Spec1",{0.5,0.6}}};
+    const std::vector<std::pair<std::string,std::pair<double,double>>> reactVec{{"React2",{0.7,0.8}},{"React1",{0.9,1.0}}};
+    const std::vector<std::pair<double,double>> specVecRef{{0.5,0.6},{0.3,0.4},{0.1,0.2}};
+    const std::vector<std::pair<double,double>> reactVecRef{{0.9,1.0},{0.7,0.8}};
+    std::vector<std::pair<double,double>> vecRes;
+
+    Converter converter;
+
+    converter.setUp(species,reactions);
+
+    vecRes = converter.vectorPair(specVec,Converter::species);
+
+    QCOMPARE(vecRes.at(0),specVecRef.at(0));
+    QCOMPARE(vecRes.at(1),specVecRef.at(1));
+    QCOMPARE(vecRes.at(2),specVecRef.at(2));
+
+    vecRes = converter.vectorPair(reactVec,Converter::reaction);
+
+    QCOMPARE(vecRes.at(0),reactVecRef.at(0));
+    QCOMPARE(vecRes.at(1),reactVecRef.at(1));
+}
+
 void ConverterTest::convertMatrix() const{
     const std::vector<std::string> species{"Spec1","Spec2","Spec3"};
     const std::vector<std::string> reactions{"React1","React2"};
