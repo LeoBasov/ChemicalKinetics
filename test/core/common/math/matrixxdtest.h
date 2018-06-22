@@ -13,5 +13,6 @@ private slots:
     void constructorTest() const;
     void assignOperatorTest() const;
     void arithmeticOperatorsTest() const;
+    void vectorMatrixMultTest() const;
     void transposeTest() const;
 };

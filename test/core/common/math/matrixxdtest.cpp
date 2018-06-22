@@ -115,6 +115,19 @@ void MatrixXdTest::arithmeticOperatorsTest() const{
     QCOMPARE(resultVec[1],98.0);
 }
 
+void MatrixXdTest::vectorMatrixMultTest() const{
+    const std::vector<std::vector<double>> rows({{1.0},{7.0}});
+    const MatrixXd mat2(rows);
+    const VectorXd vec(1,3.0);
+    const VectorXd ref(std::vector<double>{3.0,21.0});
+    VectorXd result;
+
+    result = mat2*vec;
+
+    QCOMPARE(result.at(0),ref.at(0));
+    QCOMPARE(result.at(1),ref.at(1));
+}
+
 void MatrixXdTest::transposeTest() const{
     const std::vector<std::vector<double>> matRaw({{1.0,3.0,7.0},{11.0,13.0,17.0},{23.0,29.0,31.0}});
     const std::vector<std::vector<double>> matRawRef({{1.0,11.0,23.0},{3.0,13.0,29.0},{7.0,17.0,31.0}});
