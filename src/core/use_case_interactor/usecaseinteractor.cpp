@@ -47,7 +47,7 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
     this->chemistry.setStoichiometricMatrix(this->converter.matrix(data.stoichiometricCoeffProducts) - this->converter.matrix(data.stoichiometricCoeffEducts));
     this->chemistry.setRateConstants(this->state.rateConstants);
     this->chemistry.setRateConstants(data.rateConstantsTables);
-    this->chemistry.setArrheniusCoefficients(data.arrheniusCoefficients);
+    this->chemistry.setArrheniusCoefficients(this->converter.vectorPair(data.arrheniusCoefficients,Converter::reaction));
 }
 
 void UseCaseInteractor::execute(){

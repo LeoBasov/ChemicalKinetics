@@ -27,7 +27,7 @@ struct InputData{
         std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> stoichiometricCoeffProducts;
         std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> reactionPowers;
 
-        std::vector<std::pair<double,double>> arrheniusCoefficients;
+        std::vector<std::pair<std::string,std::pair<double,double>>> arrheniusCoefficients;
 
         double temperature = 0.0;
     };
