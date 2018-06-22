@@ -17,5 +17,5 @@ VectorXd ChemistryAlgorithms::reactionRatePowLaw(const VectorXd& rateConstants,c
 }
 
 VectorXd ChemistryAlgorithms::concentrationDifferential(const MatrixXd& stochiometricMatrix,const VectorXd& reactionRates){
-    return stochiometricMatrix*reactionRates;
+    return stochiometricMatrix.transpose()*reactionRates;
 }
