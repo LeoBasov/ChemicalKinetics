@@ -14,6 +14,8 @@ public:
     void setTimeStep(const double& timeStep);
     void setTimeStepParamter(const double& parameter);
 
+    double getTimeStep() const;
+
     VectorXd integrate(const VectorXd& values,const VectorXd& diff);
 
 private:

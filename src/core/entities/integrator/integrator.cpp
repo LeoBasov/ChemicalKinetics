@@ -17,6 +17,10 @@ void Integrator::setTimeStepParamter(const double& parameter){
     this->parameter = parameter;
 }
 
+double Integrator::getTimeStep() const{
+    return this->timeStep;
+}
+
 VectorXd Integrator::integrate(const VectorXd& values,const VectorXd& diff){
     switch(this->mode){
     case const_dt:
