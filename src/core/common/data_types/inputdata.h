@@ -19,6 +19,7 @@ struct InputData{
         std::vector<std::string> reactionNames;
 
         std::vector<std::pair<std::string,double>> concentrations;
+        std::vector<std::pair<std::string,double>> concentrationDiffs;
         std::vector<std::pair<std::string,double>> reactionRates;
         std::vector<std::pair<std::string,double>> rateConstants;
         std::vector<std::pair<std::string,std::vector<std::pair<double,double>>>> rateConstantsTables;
