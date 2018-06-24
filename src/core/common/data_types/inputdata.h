@@ -5,6 +5,9 @@
 
 struct InputData{
     struct RateConstPair{
+        RateConstPair(const double& temperature,const double& rateConstant)
+                     :temperature(temperature),rateConstant(rateConstant){}
+
         double temperature = 0.0;
         double rateConstant = 0.0;
     };
@@ -15,6 +18,9 @@ struct InputData{
     };
 
     struct SpeciesValuePair{
+        SpeciesValuePair(const std::string& species,const double& value)
+                        :species(species),value(value){}
+
         std::string species;
         double value = 0.0;
     };
@@ -43,6 +49,9 @@ struct InputData{
 
     struct ChemistryData{
         std::string mode = "none";
+
+        std::vector<Species> species;
+        std::vector<Reaction> reactions;
 
         std::vector<std::string> speciesNames;
         std::vector<std::string> reactionNames;
