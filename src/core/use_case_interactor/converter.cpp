@@ -116,6 +116,22 @@ MatrixXd Converter::stoichiometricCoeffProducts(const std::vector<InputData::Rea
     return mat;
 }
 
+MatrixXd Converter::reactionPowers(const std::vector<InputData::Reaction>& reactions) const{
+    MatrixXd mat(reactions.size(),reactions.front().stoichiometricCoeffEducts.size());
+
+    for(auto reaction : reactions){
+        for(auto elem : reaction.reactionPowers){
+            const size_t idxRow(this->reactionMapIn.at(reaction.name));
+            const size_t idxColumn(this->speciesMapIn.at(elem.species));
+
+            mat.at(idxRow,idxColumn) = elem.value;
+        }
+    }
+
+
+    return mat;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec(vec.size());
 

@@ -71,10 +71,10 @@ InputData setUpInputData(){
                                        ,InputData::SpeciesValuePair(spec2.name,0.0)
                                        ,InputData::SpeciesValuePair(spec3.name,2.0)
                                        ,InputData::SpeciesValuePair(spec4.name,3.0)};
-    reac.reactionPowers = {InputData::SpeciesValuePair(spec1.name,1.0)
-                          ,InputData::SpeciesValuePair(spec2.name,1.0)
-                          ,InputData::SpeciesValuePair(spec3.name,1.0)
-                          ,InputData::SpeciesValuePair(spec4.name,1.0)};
+    reac.reactionPowers = {InputData::SpeciesValuePair(spec1.name,0.1)
+                          ,InputData::SpeciesValuePair(spec2.name,1.65)
+                          ,InputData::SpeciesValuePair(spec3.name,0.0)
+                          ,InputData::SpeciesValuePair(spec4.name,0.0)};
 
     state.integratorData.mode = "var_dt";
     state.integratorData.parameter = 0.1;
@@ -110,5 +110,5 @@ void setUpOld(InputData& data){
     data.chemistryData.arrheniusCoefficients = {{"combustion",{0.1,0.2}}};
     //data.chemistryData.stoichiometricCoeffEducts = {{"combustion",{{"C8H18",1.0},{"O2",(7/2.0)},{"CO2",0.0},{"H2O",0.0}}}};
     //data.chemistryData.stoichiometricCoeffProducts = {{"combustion",{{"C8H18",0.0},{"O2",(0.0)},{"CO2",2.0},{"H2O",3.0}}}};
-    data.chemistryData.reactionPowers = {{"combustion",{{"C8H18",0.1},{"O2",(1.65)},{"CO2",0.0},{"H2O",0.0}}}};
+    //data.chemistryData.reactionPowers = {{"combustion",{{"C8H18",0.1},{"O2",(1.65)},{"CO2",0.0},{"H2O",0.0}}}};
 }

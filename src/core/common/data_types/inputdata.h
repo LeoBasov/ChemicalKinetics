@@ -53,8 +53,6 @@ struct InputData{
         std::vector<Species> species;
         std::vector<Reaction> reactions;
 
-        std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> reactionPowers;
-
         std::vector<std::pair<std::string,std::pair<double,double>>> arrheniusCoefficients;
 
         double temperature = 0.0;
