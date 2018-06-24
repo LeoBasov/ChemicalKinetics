@@ -84,7 +84,6 @@ InputData setUpInputData(){
 
     state.chemistryData.reactions.push_back(reac);
 
-    state.chemistryData.mode = "const_k";
     state.chemistryData.temperature = 2000.0;
 
     return state;

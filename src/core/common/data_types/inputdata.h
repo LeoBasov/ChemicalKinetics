@@ -48,7 +48,6 @@ struct InputData{
     };
 
     struct ChemistryData{
-        std::string mode = "none";
         double temperature = 0.0;
 
         std::vector<Species> species;
