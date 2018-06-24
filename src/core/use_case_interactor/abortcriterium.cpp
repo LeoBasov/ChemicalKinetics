@@ -32,7 +32,7 @@ bool AbortCriterium::checkCriterium(const State &state) const{
 
     const double timeStep(state.time - this->lastState.time);
 
-    if(timeStep>10.e+12){
+    if(timeStep>50.0e+12){
         return false;
     }else{
         return true;
