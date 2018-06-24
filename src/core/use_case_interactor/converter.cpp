@@ -132,6 +132,16 @@ MatrixXd Converter::reactionPowers(const std::vector<InputData::Reaction>& react
     return mat;
 }
 
+std::vector<std::pair<double,double>> Converter::arrheniusCoefficients(const std::vector<InputData::Reaction>& reactions) const{
+    std::vector<std::pair<double,double>> coeffs(reactions.size());
+
+    for(auto reaction : reactions){
+        coeffs.at(this->reactionMapIn.at(reaction.name)) = {reaction.arrheniusCoefficients.preFactor,reaction.arrheniusCoefficients.activationEnergy};
+    }
+
+    return coeffs;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec(vec.size());
 

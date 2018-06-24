@@ -49,13 +49,10 @@ struct InputData{
 
     struct ChemistryData{
         std::string mode = "none";
+        double temperature = 0.0;
 
         std::vector<Species> species;
         std::vector<Reaction> reactions;
-
-        std::vector<std::pair<std::string,std::pair<double,double>>> arrheniusCoefficients;
-
-        double temperature = 0.0;
     };
 
     struct IntegratorData{

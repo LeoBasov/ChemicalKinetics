@@ -30,6 +30,7 @@ public:
     MatrixXd stoichiometricCoeffEducts(const std::vector<InputData::Reaction>& reactions) const;
     MatrixXd stoichiometricCoeffProducts(const std::vector<InputData::Reaction>& reactions) const;
     MatrixXd reactionPowers(const std::vector<InputData::Reaction>& reactions) const;
+    std::vector<std::pair<double,double>> arrheniusCoefficients(const std::vector<InputData::Reaction>& reactions) const;
 
     VectorXd vector(const Vector& vec,const Type& type) const;
     std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;

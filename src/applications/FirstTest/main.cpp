@@ -4,7 +4,6 @@
 #include "../../core/use_case_interactor/usecaseinteractor.h"
 
 InputData setUpInputData();
-void setUpOld(InputData& data);
 
 int main()
 {
@@ -12,8 +11,6 @@ int main()
     std::shared_ptr<SimulationState> state(std::make_shared<SimulationState>());
     UseCaseInteractor interactor(state);
     InputData data(setUpInputData());
-
-    setUpOld(data);
 
     presenter->subscribe(state);
 
@@ -91,24 +88,4 @@ InputData setUpInputData(){
     state.chemistryData.temperature = 2000.0;
 
     return state;
-}
-
-void setUpOld(InputData& data){
-    //data.integratorData.mode = "var_dt";
-    //data.integratorData.parameter = 0.1;
-    //data.integratorData.timeStep = 1.0e+10;
-
-    //data.chemistryData.mode = "const_k";
-    //data.chemistryData.temperature = 2000.0;
-    //data.chemistryData.speciesNames = {"C8H18","O2","CO2","H2O"};
-    //data.chemistryData.reactionNames = {"combustion"};
-    //data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"CO2",0.0},{"H2O",0.0}};
-    //data.chemistryData.concentrationDiffs = {{"C8H18",.0},{"O2",0.0},{"CO2",0.0},{"H2O",0.0}};
-    //data.chemistryData.reactionRates = {{"combustion",0.0}};
-    //data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};
-    //data.chemistryData.rateConstantsTables = {{"combustion",{{0.1,0.2},{0.3,0.4}}}};
-    data.chemistryData.arrheniusCoefficients = {{"combustion",{0.1,0.2}}};
-    //data.chemistryData.stoichiometricCoeffEducts = {{"combustion",{{"C8H18",1.0},{"O2",(7/2.0)},{"CO2",0.0},{"H2O",0.0}}}};
-    //data.chemistryData.stoichiometricCoeffProducts = {{"combustion",{{"C8H18",0.0},{"O2",(0.0)},{"CO2",2.0},{"H2O",3.0}}}};
-    //data.chemistryData.reactionPowers = {{"combustion",{{"C8H18",0.1},{"O2",(1.65)},{"CO2",0.0},{"H2O",0.0}}}};
 }
