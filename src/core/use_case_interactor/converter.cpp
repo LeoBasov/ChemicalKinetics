@@ -38,6 +38,16 @@ VectorXd Converter::concentrations(const std::vector<InputData::Species>& specie
     return retVec;
 }
 
+VectorXd Converter::concentrationsDiffs(const std::vector<InputData::Species>& species) const{
+    VectorXd retVec(species.size());
+
+    for(auto elem : species){
+        retVec.at(this->speciesMapIn.at(elem.name)) = elem.concentrationDiff;
+    }
+
+    return retVec;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec(vec.size());
 

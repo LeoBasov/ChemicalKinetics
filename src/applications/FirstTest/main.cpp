@@ -103,7 +103,7 @@ void setUpOld(InputData& data){
     //data.chemistryData.speciesNames = {"C8H18","O2","CO2","H2O"};
     //data.chemistryData.reactionNames = {"combustion"};
     //data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"CO2",0.0},{"H2O",0.0}};
-    data.chemistryData.concentrationDiffs = {{"C8H18",.0},{"O2",0.0},{"CO2",0.0},{"H2O",0.0}};
+    //data.chemistryData.concentrationDiffs = {{"C8H18",.0},{"O2",0.0},{"CO2",0.0},{"H2O",0.0}};
     data.chemistryData.reactionRates = {{"combustion",0.0}};
     data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};
     data.chemistryData.rateConstantsTables = {{"combustion",{{0.1,0.2},{0.3,0.4}}}};
