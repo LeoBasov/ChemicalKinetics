@@ -16,13 +16,16 @@ void TestPresenter::update(){
 
     for(size_t i(0);i<locSt.concentrations.size();i++){
         std::cout << locSt.speciesMap.at(i) << " = " << locSt.concentrations.at(i) << ", ";
+        this->stream << locSt.concentrations.at(i) << ",";
     }
 
+    this->stream << std::endl;
     std::cout << std::endl;
     std::cout << "--------------------------------------------------------------------------------" << std::endl;
 }
 
 void TestPresenter::subscribe(const std::shared_ptr<SimulationState>& state){
     this->state = state;
-    this->state->attach(std::make_shared<TestPresenter>(*this));
+    this->state->attach(shared_from_this());
+    this->stream.open("concentrations.csv");
 }

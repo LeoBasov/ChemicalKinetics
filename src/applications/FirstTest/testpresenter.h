@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include  <fstream>
 
 #include "../../core/output_boundary/observer.h"
 #include "../../core/output_boundary/simulationstate.h"
@@ -17,4 +18,5 @@ public:
 
 private:
     std::shared_ptr<SimulationState> state;
+    std::ofstream stream;
 };
