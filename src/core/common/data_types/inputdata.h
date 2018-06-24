@@ -62,8 +62,7 @@ struct InputData{
         double temperature = 0.0;
     };
 
-    struct IntegratorData
-    {
+    struct IntegratorData{
         std::string mode = "none";
 
         double timeStep = 0.0;
