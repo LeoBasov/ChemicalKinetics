@@ -7,6 +7,7 @@ UseCaseInteractor::UseCaseInteractor(const std::shared_ptr<SimulationState> &sim
 
 void UseCaseInteractor::start(const InputData& data){
     initialize(data);
+    report();
 
     while(this->abortCriterium.valid()){
         execute();
@@ -57,6 +58,7 @@ void UseCaseInteractor::execute(){
     this->state.reactionRates =  this->chemistry.getReactionRates(this->state.concentrations,this->state.rateConstants);
     this->state.concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.reactionRates);
     this->state.concentrations =  this->integrator.integrate(this->state.concentrations,this->state.concentrationDiffs);
+    this->state.time = this->state.time + this->integrator.getTimeStep();
 }
 
 void UseCaseInteractor::report(){
