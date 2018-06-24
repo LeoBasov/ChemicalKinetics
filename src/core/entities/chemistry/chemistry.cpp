@@ -4,8 +4,8 @@ Chemistry::Chemistry(){
 
 }
 
-void Chemistry::setMode(const Mode& mode){
-    this->mode = mode;
+void Chemistry::setModes(const std::vector<Mode> &modes){
+    this->modes = modes;
 }
 
 void Chemistry::setReactionPowers(const MatrixXd& reactionPowers){
@@ -29,20 +29,13 @@ void Chemistry::setArrheniusCoefficients(const std::vector<std::pair<double,doub
 }
 
 VectorXd Chemistry::getRateConstants(const double& temperature) const{
-    switch(this->mode){
-    case const_k:
-        return this->rateConstants;
-        break;
-    case interpol_k:
-        return interpolateRateConstants(temperature);
-        break;
-    case arrhenius_k:
-        return calculateRateConstants(temperature);
-        break;
-    default:
-        throw Exception("Undefined mode<" + std::to_string(mode) + ">","Chemistry::" + std::string(__FUNCTION__));
-        break;
+    VectorXd rateConstants(this->rateConstants.size());
+
+    for(size_t i(0);i<rateConstants.size();++i){
+        rateConstants.at(i) = getRateConstant(this->modes.at(i),temperature,i);
     }
+
+    return rateConstants;
 }
 
 VectorXd Chemistry::getReactionRates(const VectorXd& concentrations,const VectorXd& rateConstants) const{
@@ -53,25 +46,30 @@ VectorXd Chemistry::getConcentrationDiff(const VectorXd& reactionRates) const{
     return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,reactionRates);
 }
 
-VectorXd Chemistry::interpolateRateConstants(const double& temperature) const{
-    VectorXd rateConstants(this->rateConstantsInterpolTables.size());
-
-    for(size_t i(0);i<this->rateConstantsInterpolTables.size();++i){
-        rateConstants.at(i) = this->rateConstantsInterpolTables.at(i).getValue(temperature);
+double Chemistry::getRateConstant(const Mode& mode, const double& temperature, const size_t &pos) const{
+    switch(mode){
+    case const_k:
+        return this->rateConstants.at(pos);
+        break;
+    case interpol_k:
+        return interpolateRateConstant(temperature,pos);
+        break;
+    case arrhenius_k:
+        return calculateRateConstant(temperature,pos);
+        break;
+    default:
+        throw Exception("Undefined mode<" + std::to_string(mode) + ">","Chemistry::" + std::string(__FUNCTION__));
+        break;
     }
-
-    return rateConstants;
 }
 
-VectorXd Chemistry::calculateRateConstants(const double& temperature) const{
-    VectorXd rateConstants(this->arrheniusCoefficients.size());
+double Chemistry::interpolateRateConstant(const double& temperature,const size_t& pos) const{
+    return this->rateConstantsInterpolTables.at(pos).getValue(temperature);
+}
 
-    for(size_t i(0);i<this->arrheniusCoefficients.size();++i){
-        const double preFactor(this->arrheniusCoefficients.at(i).first);
-        const double activationEnergy(this->arrheniusCoefficients.at(i).second);
+double Chemistry::calculateRateConstant(const double& temperature,const size_t& pos) const{
+    const double preFactor(this->arrheniusCoefficients.at(pos).first);
+    const double activationEnergy(this->arrheniusCoefficients.at(pos).second);
 
-        rateConstants.at(i) = ChemistryAlgorithms::arrheniusEquation(preFactor,activationEnergy,temperature);
-    }
-
-    return rateConstants;
+    return ChemistryAlgorithms::arrheniusEquation(preFactor,activationEnergy,temperature);
 }

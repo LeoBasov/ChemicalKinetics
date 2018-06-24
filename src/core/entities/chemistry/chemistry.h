@@ -11,7 +11,7 @@ public:
 public:
     Chemistry();
 
-    void setMode(const Mode& mode);
+    void setModes(const std::vector<Mode>& modes);
     void setReactionPowers(const MatrixXd& reactionPowers);
     void setStoichiometricMatrix(const MatrixXd& stoichiometricMatrix);
     void setRateConstants(const VectorXd& rateConstants);
@@ -23,13 +23,14 @@ public:
     VectorXd getConcentrationDiff(const VectorXd& reactionRates) const;
 
 private:
-    Mode mode = none;
+    std::vector<Mode> modes;
     VectorXd rateConstants;
     MatrixXd stoichiometricMatrix;
     MatrixXd reactionPowers;
     std::vector<InterpolationTable> rateConstantsInterpolTables;
     std::vector<std::pair<double,double>> arrheniusCoefficients; //first = pre factor, second = activation energy
 
-    VectorXd interpolateRateConstants(const double& temperature) const;
-    VectorXd calculateRateConstants(const double& temperature) const;
+    double getRateConstant(const Mode& mode,const double& temperature,const size_t& pos) const;
+    double interpolateRateConstant(const double& temperature,const size_t& pos) const;
+    double calculateRateConstant(const double& temperature,const size_t& pos) const;
 };

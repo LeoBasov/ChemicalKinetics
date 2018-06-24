@@ -46,7 +46,7 @@ void UseCaseInteractor::initializeIntergrator(const InputData::IntegratorData& d
 }
 
 void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data){
-    this->chemistry.setMode(chemistryMode(data.mode));
+    this->chemistry.setModes(this->converter.chemModes(data.reactions));
     this->chemistry.setReactionPowers(this->converter.reactionPowers(data.reactions));
     this->chemistry.setStoichiometricMatrix(  this->converter.stoichiometricCoeffProducts(data.reactions)
                                             - this->converter.stoichiometricCoeffEducts(data.reactions));

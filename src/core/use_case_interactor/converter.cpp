@@ -28,6 +28,16 @@ const std::map<std::size_t,std::string>& Converter::getReactionMap() const{
     return this->reactionMapOut;
 }
 
+std::vector<Chemistry::Mode> Converter::chemModes(const std::vector<InputData::Reaction>& reactions) const{
+    std::vector<Chemistry::Mode> modesRet(reactions.size());
+
+    for(auto reaction : reactions){
+        modesRet.at(this->reactionMapIn.at(reaction.name)) = chemMode(reaction.mode);
+    }
+
+    return modesRet;
+}
+
 VectorXd Converter::concentrations(const std::vector<InputData::Species>& species) const{
     VectorXd retVec(species.size());
 
@@ -142,54 +152,6 @@ std::vector<std::pair<double,double>> Converter::arrheniusCoefficients(const std
     return coeffs;
 }
 
-VectorXd Converter::vector(const Vector& vec,const Type& type) const{
-    VectorXd retVec(vec.size());
-
-    for(auto elem : vec){
-        retVec.at(index(type,elem.first)) = elem.second;
-    }
-
-    return retVec;
-}
-
-std::vector<std::pair<double,double>> Converter::vectorPair(const VectorPair vec,const Type& type) const{
-    std::vector<std::pair<double,double>> retVec(vec.size());
-
-    for(auto elem : vec){
-        retVec.at(index(type,elem.first)) = elem.second;
-    }
-
-    return retVec;
-}
-
-std::vector<InterpolationTable> Converter::vectorTable(const VectorTable vec,const Type& type) const{
-    std::vector<InterpolationTable> retVec(vec.size());
-
-    for(auto elem : vec){
-        retVec.at(index(type,elem.first)) = InterpolationTable(elem.second);
-    }
-
-    return retVec;
-}
-
-MatrixXd Converter::matrix(const Matrix& mat) const{
-    MatrixXd retMat(mat.size(),mat.front().second.size());
-
-    for(auto row : mat){
-        const std::string reaction(row.first);
-
-        for(auto column : row.second){
-            const std::string species(column.first);
-            const size_t idxRow(this->reactionMapIn.at(reaction));
-            const size_t idxColumn(this->speciesMapIn.at(species));
-
-            retMat.at(idxRow,idxColumn) = column.second;
-        }
-    }
-
-    return retMat;
-}
-
 size_t Converter::index(const Type& type,const std::string& name) const{
     switch(type){
     case species:
@@ -201,5 +163,17 @@ size_t Converter::index(const Type& type,const std::string& name) const{
     default:
         throw Exception("Undefined type <" + std::to_string(type) + ">","Converter::" + std::string(__FUNCTION__));
         break;
+    }
+}
+
+Chemistry::Mode Converter::chemMode(const::std::string& str) const{
+    if(str=="const_k"){
+        return Chemistry::const_k;
+    }else if(str=="interpol_k"){
+        return Chemistry::interpol_k;
+    }else if(str=="arrhenius_k"){
+        return Chemistry::arrhenius_k;
+    }else{
+        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
     }
 }

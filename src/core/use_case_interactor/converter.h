@@ -6,6 +6,7 @@
 #include "../common/math/matrixxd.h"
 #include "../common/data_types/interpolationtable.h"
 #include "../common/data_types/inputdata.h"
+#include "../entities/chemistry/chemistry.h"
 
 class Converter
 {
@@ -22,6 +23,7 @@ public:
 
     void setUp(const std::vector<InputData::Species>& species,const std::vector<InputData::Reaction>& reactions);
 
+    std::vector<Chemistry::Mode> chemModes(const std::vector<InputData::Reaction>& reactions) const;
     VectorXd concentrations(const std::vector<InputData::Species>& species) const;
     VectorXd concentrationsDiffs(const std::vector<InputData::Species>& species) const;
     VectorXd reactionRates(const std::vector<InputData::Reaction>& reactions) const;
@@ -31,11 +33,6 @@ public:
     MatrixXd stoichiometricCoeffProducts(const std::vector<InputData::Reaction>& reactions) const;
     MatrixXd reactionPowers(const std::vector<InputData::Reaction>& reactions) const;
     std::vector<std::pair<double,double>> arrheniusCoefficients(const std::vector<InputData::Reaction>& reactions) const;
-
-    VectorXd vector(const Vector& vec,const Type& type) const;
-    std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
-    std::vector<InterpolationTable> vectorTable(const VectorTable vec,const Type& type) const;
-    MatrixXd matrix(const Matrix& mat) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;
     const std::map<std::size_t,std::string>& getReactionMap() const;
@@ -47,4 +44,5 @@ private:
     std::map<std::size_t,std::string> reactionMapOut;
 
     size_t index(const Type& type,const std::string& name) const;
+    Chemistry::Mode chemMode(const::std::string& str) const;
 };
