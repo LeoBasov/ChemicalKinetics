@@ -53,7 +53,6 @@ struct InputData{
         std::vector<Species> species;
         std::vector<Reaction> reactions;
 
-        std::vector<std::pair<std::string,double>> concentrations;
         std::vector<std::pair<std::string,double>> concentrationDiffs;
         std::vector<std::pair<std::string,double>> reactionRates;
         std::vector<std::pair<std::string,double>> rateConstants;

@@ -28,6 +28,16 @@ const std::map<std::size_t,std::string>& Converter::getReactionMap() const{
     return this->reactionMapOut;
 }
 
+VectorXd Converter::concentrations(const std::vector<InputData::Species>& species) const{
+    VectorXd retVec(species.size());
+
+    for(auto elem : species){
+        retVec.at(this->speciesMapIn.at(elem.name)) = elem.concentration;
+    }
+
+    return retVec;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec(vec.size());
 

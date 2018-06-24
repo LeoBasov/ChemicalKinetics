@@ -88,6 +88,7 @@ InputData setUpInputData(){
     state.chemistryData.reactions.push_back(reac);
 
     state.chemistryData.mode = "const_k";
+    state.chemistryData.temperature = 2000.0;
 
     return state;
 }
@@ -97,11 +98,11 @@ void setUpOld(InputData& data){
     //data.integratorData.parameter = 0.1;
     //data.integratorData.timeStep = 1.0e+10;
 
-    data.chemistryData.mode = "const_k";
-    data.chemistryData.temperature = 2000.0;
+    //data.chemistryData.mode = "const_k";
+    //data.chemistryData.temperature = 2000.0;
     //data.chemistryData.speciesNames = {"C8H18","O2","CO2","H2O"};
     //data.chemistryData.reactionNames = {"combustion"};
-    data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"CO2",0.0},{"H2O",0.0}};
+    //data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"CO2",0.0},{"H2O",0.0}};
     data.chemistryData.concentrationDiffs = {{"C8H18",.0},{"O2",0.0},{"CO2",0.0},{"H2O",0.0}};
     data.chemistryData.reactionRates = {{"combustion",0.0}};
     data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};

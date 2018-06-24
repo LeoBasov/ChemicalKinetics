@@ -22,6 +22,8 @@ public:
 
     void setUp(const std::vector<InputData::Species>& species,const std::vector<InputData::Reaction>& reactions);
 
+    VectorXd concentrations(const std::vector<InputData::Species>& species) const;
+
     VectorXd vector(const Vector& vec,const Type& type) const;
     std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
     std::vector<InterpolationTable> vectorTable(const VectorTable vec,const Type& type) const;
