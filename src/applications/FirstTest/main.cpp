@@ -105,7 +105,7 @@ void setUpOld(InputData& data){
     //data.chemistryData.concentrations = {{"C8H18",4.0},{"O2",4.0},{"CO2",0.0},{"H2O",0.0}};
     //data.chemistryData.concentrationDiffs = {{"C8H18",.0},{"O2",0.0},{"CO2",0.0},{"H2O",0.0}};
     //data.chemistryData.reactionRates = {{"combustion",0.0}};
-    data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};
+    //data.chemistryData.rateConstants = {{"combustion",2.83583586672916e-15}};
     data.chemistryData.rateConstantsTables = {{"combustion",{{0.1,0.2},{0.3,0.4}}}};
     data.chemistryData.arrheniusCoefficients = {{"combustion",{0.1,0.2}}};
     data.chemistryData.stoichiometricCoeffEducts = {{"combustion",{{"C8H18",1.0},{"O2",(7/2.0)},{"CO2",0.0},{"H2O",0.0}}}};
