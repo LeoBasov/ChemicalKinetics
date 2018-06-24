@@ -4,19 +4,19 @@ Converter::Converter(){
 
 }
 
-void Converter::setUp(const std::vector<std::string>& species,const std::vector<std::string>& reactions){
+void Converter::setUp(const std::vector<InputData::Species>& species,const std::vector<InputData::Reaction>& reactions){
     this->speciesMapIn.clear();
     this->speciesMapOut.clear();
     this->reactionMapIn.clear();
     this->reactionMapOut.clear();
 
     for(size_t i(0);i<species.size();++i){
-        this->speciesMapIn[species.at(i)] = i;
-        this->speciesMapOut[i] = species.at(i);
+        this->speciesMapIn[species.at(i).name] = i;
+        this->speciesMapOut[i] = species.at(i).name;
     }
     for(size_t i(0);i<reactions.size();++i){
-        this->reactionMapIn[reactions.at(i)] = i;
-        this->reactionMapOut[i] = reactions.at(i);
+        this->reactionMapIn[reactions.at(i).name] = i;
+        this->reactionMapOut[i] = reactions.at(i).name;
     }
 }
 

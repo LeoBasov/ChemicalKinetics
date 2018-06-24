@@ -27,7 +27,7 @@ void UseCaseInteractor::initialize(const InputData& data){
 }
 
 void UseCaseInteractor::initializeState(const InputData& data){
-    this->converter.setUp(data.chemistryData.speciesNames,data.chemistryData.reactionNames);
+    this->converter.setUp(data.chemistryData.species,data.chemistryData.reactions);
 
     this->state.reactionMap = this->converter.getReactionMap();
     this->state.speciesMap = this->converter.getSpeciesMap();

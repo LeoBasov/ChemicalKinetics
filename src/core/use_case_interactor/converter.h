@@ -5,6 +5,7 @@
 
 #include "../common/math/matrixxd.h"
 #include "../common/data_types/interpolationtable.h"
+#include "../common/data_types/inputdata.h"
 
 class Converter
 {
@@ -19,7 +20,7 @@ public:
 public:
     Converter();
 
-    void setUp(const std::vector<std::string>& species,const std::vector<std::string>& reactions);
+    void setUp(const std::vector<InputData::Species>& species,const std::vector<InputData::Reaction>& reactions);
 
     VectorXd vector(const Vector& vec,const Type& type) const;
     std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
