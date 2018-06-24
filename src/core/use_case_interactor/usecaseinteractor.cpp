@@ -9,7 +9,7 @@ void UseCaseInteractor::start(const InputData& data){
     initialize(data);
     report();
 
-    while(this->abortCriterium.valid()){
+    while(this->abortCriterium.valid(this->state)){
         execute();
         report();
     }
@@ -23,6 +23,7 @@ void UseCaseInteractor::initialize(const InputData& data){
     initializeState(data);
     initializeIntergrator(data.integratorData);
     initializeChemistry(data.chemistryData);
+    initializeAbortCriterium();
 }
 
 void UseCaseInteractor::initializeState(const InputData& data){
@@ -51,6 +52,10 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
     this->chemistry.setRateConstants(converter.vector(data.rateConstants,Converter::reaction));
     this->chemistry.setRateConstants(this->converter.vectorTable(data.rateConstantsTables,Converter::reaction));
     this->chemistry.setArrheniusCoefficients(this->converter.vectorPair(data.arrheniusCoefficients,Converter::reaction));
+}
+
+void UseCaseInteractor::initializeAbortCriterium(){
+    this->abortCriterium.reset();
 }
 
 void UseCaseInteractor::execute(){

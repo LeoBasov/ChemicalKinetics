@@ -5,15 +5,36 @@ AbortCriterium::AbortCriterium()
 
 }
 
-bool AbortCriterium::valid(){
-    if(this->validVal){
-        this->validVal = false;
-        return true;
+bool AbortCriterium::valid(const State& state){
+    if(this->firstRun){
+        this->firstRun = false;
+        this->lastState = state;
     }else{
-        return false;
+        this->validVal = checkCriterium(state);
+        this->lastState = state;
     }
+
+    return this->validVal;
 }
 
 void AbortCriterium::abort(){
     this->validVal = false;
+}
+
+void AbortCriterium::reset(){
+    this->validVal = true;
+    this->firstRun = true;
+    this->lastState = State();
+}
+
+bool AbortCriterium::checkCriterium(const State &state) const{
+    //DUMMY
+
+    const double timeStep(state.time - this->lastState.time);
+
+    if(timeStep>10.e+12){
+        return false;
+    }else{
+        return true;
+    }
 }
