@@ -10,8 +10,5 @@ public:
     ConverterTest(const std::string& name);
 
 private slots:
-    void convertVector() const;
-    void convertVectorPair() const;
-    void convertVectorTable() const;
-    void convertMatrix() const;
+
 };
