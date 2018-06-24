@@ -31,7 +31,7 @@ struct InputData{
 
         double reactionRate = 0.0;
         double rateConstant = 0.0;
-        std::vector<RateConstPair> rateConstantTables;
+        std::vector<RateConstPair> rateConstantTable;
         ArrheniusCoeffPair arrheniusCoefficients;
 
         std::vector<SpeciesValuePair> stoichiometricCoeffEducts;
@@ -53,10 +53,6 @@ struct InputData{
         std::vector<Species> species;
         std::vector<Reaction> reactions;
 
-        std::vector<std::pair<std::string,std::vector<std::pair<double,double>>>> rateConstantsTables;
-
-        std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> stoichiometricCoeffEducts;
-        std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> stoichiometricCoeffProducts;
         std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>> reactionPowers;
 
         std::vector<std::pair<std::string,std::pair<double,double>>> arrheniusCoefficients;

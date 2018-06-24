@@ -68,6 +68,54 @@ VectorXd Converter::rateConstatns(const std::vector<InputData::Reaction>& reacti
     return retVec;
 }
 
+std::vector<InterpolationTable> Converter::rateConstantsTables(const std::vector<InputData::Reaction>& reactions) const{
+    std::vector<InterpolationTable> tables(reactions.size());
+
+    for(auto reaction : reactions){
+        InterpolationTable table;
+
+        for(auto tab : reaction.rateConstantTable){
+            table.addValuePair(tab.temperature,tab.rateConstant);
+        }
+
+        tables.push_back(table);
+    }
+
+    return tables;
+}
+
+MatrixXd Converter::stoichiometricCoeffEducts(const std::vector<InputData::Reaction>& reactions) const{
+    MatrixXd mat(reactions.size(),reactions.front().stoichiometricCoeffEducts.size());
+
+    for(auto reaction : reactions){
+        for(auto elem : reaction.stoichiometricCoeffEducts){
+            const size_t idxRow(this->reactionMapIn.at(reaction.name));
+            const size_t idxColumn(this->speciesMapIn.at(elem.species));
+
+            mat.at(idxRow,idxColumn) = elem.value;
+        }
+    }
+
+
+    return mat;
+}
+
+MatrixXd Converter::stoichiometricCoeffProducts(const std::vector<InputData::Reaction>& reactions) const{
+    MatrixXd mat(reactions.size(),reactions.front().stoichiometricCoeffEducts.size());
+
+    for(auto reaction : reactions){
+        for(auto elem : reaction.stoichiometricCoeffProducts){
+            const size_t idxRow(this->reactionMapIn.at(reaction.name));
+            const size_t idxColumn(this->speciesMapIn.at(elem.species));
+
+            mat.at(idxRow,idxColumn) = elem.value;
+        }
+    }
+
+
+    return mat;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec(vec.size());
 
