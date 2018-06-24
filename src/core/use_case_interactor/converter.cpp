@@ -48,6 +48,16 @@ VectorXd Converter::concentrationsDiffs(const std::vector<InputData::Species>& s
     return retVec;
 }
 
+VectorXd Converter::reactionRates(const std::vector<InputData::Reaction>& reactions) const{
+    VectorXd retVec(reactions.size());
+
+    for(auto reaction : reactions){
+        retVec.at(this->reactionMapIn.at(reaction.name)) = reaction.reactionRate;
+    }
+
+    return retVec;
+}
+
 VectorXd Converter::vector(const Vector& vec,const Type& type) const{
     VectorXd retVec(vec.size());
 

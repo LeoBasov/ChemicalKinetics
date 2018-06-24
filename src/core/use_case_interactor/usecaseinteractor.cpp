@@ -34,7 +34,7 @@ void UseCaseInteractor::initializeState(const InputData& data){
     this->state.temperature = data.chemistryData.temperature;
     this->state.concentrations = this->converter.concentrations(data.chemistryData.species);
     this->state.concentrationDiffs = this->converter.concentrationsDiffs(data.chemistryData.species);
-    this->state.reactionRates = this->converter.vector(data.chemistryData.reactionRates,Converter::reaction);
+    this->state.reactionRates = this->converter.reactionRates(data.chemistryData.reactions);
     this->state.rateConstants = this->converter.vector(data.chemistryData.rateConstants,Converter::reaction);
     this->state.time = 0.0;
 }

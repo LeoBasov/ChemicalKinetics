@@ -24,6 +24,7 @@ public:
 
     VectorXd concentrations(const std::vector<InputData::Species>& species) const;
     VectorXd concentrationsDiffs(const std::vector<InputData::Species>& species) const;
+    VectorXd reactionRates(const std::vector<InputData::Reaction>& reactions) const;
 
     VectorXd vector(const Vector& vec,const Type& type) const;
     std::vector<std::pair<double,double>> vectorPair(const VectorPair vec,const Type& type) const;
