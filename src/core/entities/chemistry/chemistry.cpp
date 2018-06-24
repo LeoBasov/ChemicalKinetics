@@ -32,7 +32,7 @@ VectorXd Chemistry::getRateConstants(const double& temperature) const{
     VectorXd rateConstants(this->rateConstants.size());
 
     for(size_t i(0);i<rateConstants.size();++i){
-        rateConstants.at(i) = getRateConstant(this->modes.at(i),temperature,i);
+        rateConstants.at(i) = getRateConstant(temperature,i);
     }
 
     return rateConstants;
@@ -46,8 +46,8 @@ VectorXd Chemistry::getConcentrationDiff(const VectorXd& reactionRates) const{
     return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,reactionRates);
 }
 
-double Chemistry::getRateConstant(const Mode& mode, const double& temperature, const size_t &pos) const{
-    switch(mode){
+double Chemistry::getRateConstant(const double& temperature, const size_t &pos) const{
+    switch(this->modes.at(pos)){
     case const_k:
         return this->rateConstants.at(pos);
         break;
@@ -58,7 +58,7 @@ double Chemistry::getRateConstant(const Mode& mode, const double& temperature, c
         return calculateRateConstant(temperature,pos);
         break;
     default:
-        throw Exception("Undefined mode<" + std::to_string(mode) + ">","Chemistry::" + std::string(__FUNCTION__));
+        throw Exception("Undefined mode<" + std::to_string(this->modes.at(pos)) + ">","Chemistry::" + std::string(__FUNCTION__));
         break;
     }
 }

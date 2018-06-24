@@ -30,7 +30,7 @@ private:
     std::vector<InterpolationTable> rateConstantsInterpolTables;
     std::vector<std::pair<double,double>> arrheniusCoefficients; //first = pre factor, second = activation energy
 
-    double getRateConstant(const Mode& mode,const double& temperature,const size_t& pos) const;
+    double getRateConstant(const double& temperature,const size_t& pos) const;
     double interpolateRateConstant(const double& temperature,const size_t& pos) const;
     double calculateRateConstant(const double& temperature,const size_t& pos) const;
 };
