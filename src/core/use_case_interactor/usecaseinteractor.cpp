@@ -52,14 +52,10 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
 }
 
 void UseCaseInteractor::execute(){
-    VectorXd concentrationDiffs;
-
     this->state.rateConstants =  this->chemistry.getRateConstants(this->state.temperature);
     this->state.reactionRates =  this->chemistry.getReactionRates(this->state.concentrations,this->state.rateConstants);
-
-    concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.reactionRates);
-
-    this->state.concentrations =  this->integrator.integrate(this->state.concentrations,concentrationDiffs);
+    this->state.concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.reactionRates);
+    this->state.concentrations =  this->integrator.integrate(this->state.concentrations,this->state.concentrationDiffs);
 }
 
 void UseCaseInteractor::report(){

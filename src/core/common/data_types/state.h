@@ -8,6 +8,7 @@ struct State{
     std::map<std::size_t,std::string> speciesMap;
     std::map<std::size_t,std::string> reactionMap;
     VectorXd concentrations;
+    VectorXd concentrationDiffs;
     VectorXd reactionRates;
     VectorXd rateConstants;
     double time = 0.0;
