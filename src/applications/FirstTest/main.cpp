@@ -5,12 +5,12 @@
 
 int main()
 {
-    TestPresenter presenter;
+    std::shared_ptr<TestPresenter> presenter(std::make_shared<TestPresenter>());
     std::shared_ptr<SimulationState> state(std::make_shared<SimulationState>());
     UseCaseInteractor interactor(state);
     InputData data;
 
-    presenter.subscribe(state);
+    presenter->subscribe(state);
 
     data.integratorData.mode = "var_dt";
     data.integratorData.parameter = 0.1;
