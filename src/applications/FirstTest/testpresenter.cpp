@@ -14,6 +14,8 @@ void TestPresenter::update(){
 
     std::cout << "Temperature = " << locSt.temperature <<  std::endl;
 
+    this->stream << locSt.time << ",";
+
     for(size_t i(0);i<locSt.concentrations.size();i++){
         std::cout << locSt.speciesMap.at(i) << " = " << locSt.concentrations.at(i) << ", ";
         this->stream << locSt.concentrations.at(i) << ",";
