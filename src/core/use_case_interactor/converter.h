@@ -35,5 +35,7 @@ private:
     std::map<std::string,std::size_t> reactionMapIn;
     std::map<std::size_t,std::string> reactionMapOut;
 
+    void registerSpecies(const std::vector<InputData::Species>& species);
+    void registerReactions(const std::vector<InputData::Reaction>& reactions);
     Chemistry::Mode chemMode(const::std::string& str) const;
 };

@@ -5,18 +5,43 @@ Converter::Converter(){
 }
 
 void Converter::setUp(const std::vector<InputData::Species>& species,const std::vector<InputData::Reaction>& reactions){
+    registerSpecies(species);
+    registerReactions(reactions);
+}
+
+void Converter::registerSpecies(const std::vector<InputData::Species>& species){
     this->speciesMapIn.clear();
     this->speciesMapOut.clear();
+
+    for(size_t i(0);i<species.size();++i){
+        auto returnVal1 = this->speciesMapIn.insert({species.at(i).name,i});
+        auto returnVal2 = this->speciesMapOut.insert({i,species.at(i).name});
+
+        if(!returnVal1.second){
+            throw Exception("Value pair <" + species.at(i).name + "," + std::to_string(i) + "> could not be registered in speciesMap."
+                           ,"Converter::" + std::string(__FUNCTION__));
+        }else if(!returnVal2.second){
+            throw Exception("Value pair <" + std::to_string(i) + "," + species.at(i).name + "> could not be registered in speciesMap."
+                           ,"Converter::" + std::string(__FUNCTION__));
+        }
+    }
+}
+
+void Converter::registerReactions(const std::vector<InputData::Reaction>& reactions){
     this->reactionMapIn.clear();
     this->reactionMapOut.clear();
 
-    for(size_t i(0);i<species.size();++i){
-        this->speciesMapIn[species.at(i).name] = i;
-        this->speciesMapOut[i] = species.at(i).name;
-    }
     for(size_t i(0);i<reactions.size();++i){
-        this->reactionMapIn[reactions.at(i).name] = i;
-        this->reactionMapOut[i] = reactions.at(i).name;
+        auto returnVal1 = this->reactionMapIn.insert({reactions.at(i).name,i});
+        auto returnVal2 = this->reactionMapOut.insert({i,reactions.at(i).name});
+
+        if(!returnVal1.second){
+            throw Exception("Value pair <" + reactions.at(i).name + "," + std::to_string(i) + "> could not be registered in reactionMap."
+                           ,"Converter::" + std::string(__FUNCTION__));
+        }else if(!returnVal2.second){
+            throw Exception("Value pair <" + std::to_string(i) + "," + reactions.at(i).name + "> could not be registered in reactionMap."
+                           ,"Converter::" + std::string(__FUNCTION__));
+        }
     }
 }
 
