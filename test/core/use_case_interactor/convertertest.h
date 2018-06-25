@@ -9,6 +9,9 @@ class ConverterTest : public UnitTest
 public:
     ConverterTest(const std::string& name);
 
-private slots:
+private:
+    InputData getState() const;
 
+private slots:
+    void setUpTest() const;
 };
