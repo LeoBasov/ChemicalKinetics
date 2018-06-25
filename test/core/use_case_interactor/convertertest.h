@@ -22,4 +22,5 @@ private slots:
     void rateConstantsTest() const;
     void rateConstantsTablesTest() const;
     void stoichiometricCoeffEductsTest() const;
+    void stoichiometricCoeffProductsTest() const;
 };

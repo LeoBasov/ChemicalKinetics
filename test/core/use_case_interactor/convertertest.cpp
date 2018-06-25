@@ -209,3 +209,19 @@ void ConverterTest::stoichiometricCoeffEductsTest() const{
         }
     }
 }
+
+void ConverterTest::stoichiometricCoeffProductsTest() const{
+    InputData state(getState());
+    Converter converter;
+    MatrixXd stoichiometricCoeffProducts;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    stoichiometricCoeffProducts = converter.stoichiometricCoeffProducts(state.chemistryData.reactions);
+
+    for(size_t i(0);i<state.chemistryData.reactions.size();++i){
+        for(size_t j(0);j<state.chemistryData.species.size();++j){
+            QCOMPARE(stoichiometricCoeffProducts.at(i,j),state.chemistryData.reactions.at(i).stoichiometricCoeffProducts.at(j).value);
+        }
+    }
+}
