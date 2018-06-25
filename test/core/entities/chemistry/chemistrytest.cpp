@@ -36,8 +36,8 @@ InputData ChemistryTest::getState() const{
                                        ,InputData::SpeciesValuePair(spec2.name,0.0)
                                        ,InputData::SpeciesValuePair(spec3.name,2.0)
                                        ,InputData::SpeciesValuePair(spec4.name,3.0)};
-    reac1.reactionPowers = {InputData::SpeciesValuePair(spec1.name,0.1)
-                          ,InputData::SpeciesValuePair(spec2.name,1.65)
+    reac1.reactionPowers = {InputData::SpeciesValuePair(spec1.name,1.0)
+                          ,InputData::SpeciesValuePair(spec2.name,0.0)
                           ,InputData::SpeciesValuePair(spec3.name,0.0)
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
 
@@ -54,8 +54,8 @@ InputData ChemistryTest::getState() const{
                                        ,InputData::SpeciesValuePair(spec2.name,0.0)
                                        ,InputData::SpeciesValuePair(spec3.name,2.0)
                                        ,InputData::SpeciesValuePair(spec4.name,3.0)};
-    reac2.reactionPowers = {InputData::SpeciesValuePair(spec1.name,0.1)
-                          ,InputData::SpeciesValuePair(spec2.name,1.65)
+    reac2.reactionPowers = {InputData::SpeciesValuePair(spec1.name,0.0)
+                          ,InputData::SpeciesValuePair(spec2.name,2.0)
                           ,InputData::SpeciesValuePair(spec3.name,0.0)
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
 
@@ -70,9 +70,9 @@ InputData ChemistryTest::getState() const{
                                        ,InputData::SpeciesValuePair(spec2.name,0.0)
                                        ,InputData::SpeciesValuePair(spec3.name,2.0)
                                        ,InputData::SpeciesValuePair(spec4.name,3.0)};
-    reac3.reactionPowers = {InputData::SpeciesValuePair(spec1.name,0.1)
-                          ,InputData::SpeciesValuePair(spec2.name,1.65)
-                          ,InputData::SpeciesValuePair(spec3.name,0.0)
+    reac3.reactionPowers = {InputData::SpeciesValuePair(spec1.name,0.0)
+                          ,InputData::SpeciesValuePair(spec2.name,0.0)
+                          ,InputData::SpeciesValuePair(spec3.name,3.0)
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
     reac3.arrheniusCoefficients = InputData::ArrheniusCoeffPair(0.2,0.7);
 
@@ -123,4 +123,20 @@ void ChemistryTest::getRateConstantsTest() const{
     QCOMPARE(rateConstants.at(2)
             , data.reactions.at(2).arrheniusCoefficients.preFactor
              *std::exp(-data.reactions.at(2).arrheniusCoefficients.activationEnergy/(Constants::universalGasConst*temperature)));
+}
+
+void ChemistryTest::getReactionRates() const{
+    const double temperature(1500.0);
+    InputData::ChemistryData data(getState().chemistryData);
+    Chemistry chemistry(setUpChemisty());
+    Converter converter;
+
+    converter.setUp(data.species,data.reactions);
+
+    const VectorXd rateConstants(chemistry.getRateConstants(temperature));
+    const VectorXd reactionRates(chemistry.getReactionRates(converter.concentrations(data.species),rateConstants));
+
+    QCOMPARE(reactionRates.at(0),rateConstants.at(0)*std::pow(data.species.at(0).concentration,1.0));
+    QCOMPARE(reactionRates.at(1),rateConstants.at(1)*std::pow(data.species.at(1).concentration,2.0));
+    QCOMPARE(reactionRates.at(2),rateConstants.at(2)*std::pow(data.species.at(2).concentration,3.0));
 }
