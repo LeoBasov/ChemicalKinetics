@@ -18,4 +18,5 @@ private slots:
     void chemModesTest() const;
     void concentrationsTest() const;
     void concentrationsDiffsTest() const;
+    void reactionRatesTest() const;
 };

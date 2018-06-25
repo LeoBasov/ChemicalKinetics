@@ -23,9 +23,15 @@ InputData ConverterTest::getState() const{
     spec3.concentration = 0.0;
     spec4.concentration = 0.0;
 
+    spec1.concentrationDiff = 4.0;
+    spec2.concentrationDiff = 4.0;
+    spec3.concentrationDiff = 0.0;
+    spec4.concentrationDiff = 0.0;
+
     reac.name = "combustion";
     reac.mode = "const_k";
     reac.rateConstant = 2.83583586672916e-15;
+    reac.reactionRate = 7.2;
     reac.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,1.0)
                                      ,InputData::SpeciesValuePair(spec2.name,7/2.0)
                                      ,InputData::SpeciesValuePair(spec3.name,0.0)
@@ -132,5 +138,19 @@ void ConverterTest::concentrationsDiffsTest() const{
 
     for(size_t i(0);i<concentrationDiffs.size();++i){
         QCOMPARE(concentrationDiffs.at(i),state.chemistryData.species.at(i).concentrationDiff);
+    }
+}
+
+void ConverterTest::reactionRatesTest() const{
+    InputData state(getState());
+    Converter converter;
+    VectorXd reactionRates;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    reactionRates = converter.reactionRates(state.chemistryData.reactions);
+
+    for(size_t i(0);i<reactionRates.size();++i){
+        QCOMPARE(reactionRates.at(i),state.chemistryData.reactions.at(i).reactionRate);
     }
 }
