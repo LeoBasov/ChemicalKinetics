@@ -19,14 +19,14 @@ InputData ConverterTest::getState() const{
     spec4.name = "H2O";
 
     spec1.concentration = 4.0;
-    spec2.concentration = 4.0;
-    spec3.concentration = 0.0;
-    spec4.concentration = 0.0;
+    spec2.concentration = 5.0;
+    spec3.concentration = 8.0;
+    spec4.concentration = 9.0;
 
-    spec1.concentrationDiff = 4.0;
-    spec2.concentrationDiff = 4.0;
-    spec3.concentrationDiff = 0.0;
-    spec4.concentrationDiff = 0.0;
+    spec1.concentrationDiff = 3.0;
+    spec2.concentrationDiff = 7.0;
+    spec3.concentrationDiff = 13.0;
+    spec4.concentrationDiff = 13.0;
 
     reac.name = "combustion";
     reac.mode = "const_k";
@@ -152,5 +152,19 @@ void ConverterTest::reactionRatesTest() const{
 
     for(size_t i(0);i<reactionRates.size();++i){
         QCOMPARE(reactionRates.at(i),state.chemistryData.reactions.at(i).reactionRate);
+    }
+}
+
+void ConverterTest::rateConstantsTest() const{
+    InputData state(getState());
+    Converter converter;
+    VectorXd rateConstants;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    rateConstants = converter.rateConstatns(state.chemistryData.reactions);
+
+    for(size_t i(0);i<rateConstants.size();++i){
+        QCOMPARE(rateConstants.at(i),state.chemistryData.reactions.at(i).rateConstant);
     }
 }
