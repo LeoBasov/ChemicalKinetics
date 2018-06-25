@@ -44,6 +44,9 @@ InputData ConverterTest::getState() const{
                           ,InputData::SpeciesValuePair(spec2.name,1.65)
                           ,InputData::SpeciesValuePair(spec3.name,0.0)
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
+    reac.rateConstantTable = {InputData::RateConstPair(1000.0,0.2)
+                             ,InputData::RateConstPair(2000.0,0.3)
+                             ,InputData::RateConstPair(3000.0,0.4)};
 
     state.integratorData.mode = "var_dt";
     state.integratorData.parameter = 0.1;
@@ -166,5 +169,27 @@ void ConverterTest::rateConstantsTest() const{
 
     for(size_t i(0);i<rateConstants.size();++i){
         QCOMPARE(rateConstants.at(i),state.chemistryData.reactions.at(i).rateConstant);
+    }
+}
+
+void ConverterTest::rateConstantsTablesTest() const{
+    InputData state(getState());
+    Converter converter;
+    std::vector<InterpolationTable> rateConstantsTables;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    rateConstantsTables = converter.rateConstantsTables(state.chemistryData.reactions);
+
+    for(size_t i(0);i<rateConstantsTables.size();++i){
+        for(size_t j(0);j<rateConstantsTables.at(i).getValueTable().size();++j){
+            const double temperature = rateConstantsTables.at(i).getValueTable().at(j).first;
+            const double temperatureRef = state.chemistryData.reactions.at(i).rateConstantTable.at(j).temperature;
+            const double rateConst = rateConstantsTables.at(i).getValueTable().at(j).second;
+            const double rateConstRef = state.chemistryData.reactions.at(i).rateConstantTable.at(j).rateConstant;
+
+            QCOMPARE(temperature,temperatureRef);
+            QCOMPARE(rateConst,rateConstRef);
+        }
     }
 }
