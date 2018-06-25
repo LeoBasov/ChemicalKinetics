@@ -120,3 +120,17 @@ void ConverterTest::concentrationsTest() const{
         QCOMPARE(concentrations.at(i),state.chemistryData.species.at(i).concentration);
     }
 }
+
+void ConverterTest::concentrationsDiffsTest() const{
+    InputData state(getState());
+    Converter converter;
+    VectorXd concentrationDiffs;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    concentrationDiffs = converter.concentrationsDiffs(state.chemistryData.species);
+
+    for(size_t i(0);i<concentrationDiffs.size();++i){
+        QCOMPARE(concentrationDiffs.at(i),state.chemistryData.species.at(i).concentrationDiff);
+    }
+}
