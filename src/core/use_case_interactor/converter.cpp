@@ -81,14 +81,14 @@ VectorXd Converter::rateConstatns(const std::vector<InputData::Reaction>& reacti
 std::vector<InterpolationTable> Converter::rateConstantsTables(const std::vector<InputData::Reaction>& reactions) const{
     std::vector<InterpolationTable> tables(reactions.size());
 
-    for(auto reaction : reactions){
+    for(size_t i(0);i<reactions.size();++i){
         InterpolationTable table;
 
-        for(auto tab : reaction.rateConstantTable){
+        for(auto tab : reactions.at(i).rateConstantTable){
             table.addValuePair(tab.temperature,tab.rateConstant);
         }
 
-        tables.push_back(table);
+        tables.at(i) = table;
     }
 
     return tables;
