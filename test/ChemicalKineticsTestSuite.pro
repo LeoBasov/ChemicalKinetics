@@ -28,7 +28,8 @@ SOURCES += main.cpp \
     core/use_case_interactor/convertertest.cpp \
     ../src/core/output_boundary/observer.cpp \
     ../src/core/output_boundary/subject.cpp \
-    ../src/core/output_boundary/simulationstate.cpp
+    ../src/core/output_boundary/simulationstate.cpp \
+    core/entities/chemistry/chemistrytest.cpp
 
 HEADERS += \
     unittest.h \
@@ -56,4 +57,5 @@ HEADERS += \
     core/use_case_interactor/convertertest.h \
     ../src/core/output_boundary/observer.h \
     ../src/core/output_boundary/subject.h \
-    ../src/core/output_boundary/simulationstate.h
+    ../src/core/output_boundary/simulationstate.h \
+    core/entities/chemistry/chemistrytest.h
