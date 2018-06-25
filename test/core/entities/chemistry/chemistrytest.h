@@ -13,4 +13,7 @@ public:
 private:
     InputData getState() const;
     Chemistry setUpChemisty() const;
+
+private slots:
+    void getRateConstantsTest() const;
 };

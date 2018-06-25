@@ -111,3 +111,16 @@ Chemistry ChemistryTest::setUpChemisty() const{
 
     return chemistry;
 }
+
+void ChemistryTest::getRateConstantsTest() const{
+    const double temperature(1500.0);
+    InputData::ChemistryData data(getState().chemistryData);
+    Chemistry chemistry(setUpChemisty());
+    VectorXd rateConstants(chemistry.getRateConstants(temperature));
+
+    QCOMPARE(rateConstants.at(0),data.reactions.at(0).rateConstant);
+    QCOMPARE(rateConstants.at(1),150.0);
+    QCOMPARE(rateConstants.at(2)
+            , data.reactions.at(2).arrheniusCoefficients.preFactor
+             *std::exp(-data.reactions.at(2).arrheniusCoefficients.activationEnergy/(Constants::universalGasConst*temperature)));
+}
