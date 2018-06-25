@@ -241,3 +241,23 @@ void ConverterTest::reactionPowersTest() const{
         }
     }
 }
+
+void ConverterTest::arrheniusCoefficientsTest() const{
+    InputData state(getState());
+    Converter converter;
+    std::vector<std::pair<double,double>> coeffs;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    coeffs = converter.arrheniusCoefficients(state.chemistryData.reactions);
+
+    for(size_t i(0);i<state.chemistryData.reactions.size();++i){
+        const double prefactor(coeffs.at(i).first);
+        const double prefactorRef(state.chemistryData.reactions.at(i).arrheniusCoefficients.preFactor);
+        const double actEnerg(coeffs.at(i).second);
+        const double actEnergRef(state.chemistryData.reactions.at(i).arrheniusCoefficients.activationEnergy);
+
+        QCOMPARE(prefactor,prefactorRef);
+        QCOMPARE(actEnerg,actEnergRef);
+    }
+}

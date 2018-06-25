@@ -24,4 +24,5 @@ private slots:
     void stoichiometricCoeffEductsTest() const;
     void stoichiometricCoeffProductsTest() const;
     void reactionPowersTest() const;
+    void arrheniusCoefficientsTest() const;
 };
