@@ -12,4 +12,5 @@ public:
 
 private:
     InputData getState() const;
+    Chemistry setUpChemisty() const;
 };

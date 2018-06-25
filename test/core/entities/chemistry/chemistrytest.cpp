@@ -93,3 +93,21 @@ InputData ChemistryTest::getState() const{
 
     return state;
 }
+
+Chemistry ChemistryTest::setUpChemisty() const{
+    InputData::ChemistryData data(getState().chemistryData);
+    Converter converter;
+    Chemistry chemistry;
+
+    converter.setUp(data.species,data.reactions);
+
+    chemistry.setModes(converter.chemModes(data.reactions));
+    chemistry.setReactionPowers(converter.reactionPowers(data.reactions));
+    chemistry.setStoichiometricMatrix(  converter.stoichiometricCoeffProducts(data.reactions)
+                                      - converter.stoichiometricCoeffEducts(data.reactions));
+    chemistry.setRateConstants(converter.rateConstatns(data.reactions));
+    chemistry.setRateConstants(converter.rateConstantsTables(data.reactions));
+    chemistry.setArrheniusCoefficients(converter.arrheniusCoefficients(data.reactions));
+
+    return chemistry;
+}
