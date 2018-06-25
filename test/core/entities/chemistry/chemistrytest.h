@@ -16,5 +16,6 @@ private:
 
 private slots:
     void getRateConstantsTest() const;
-    void getReactionRates() const;
+    void getReactionRatesTest() const;
+    void getConcentrationDiffTest() const;
 };
