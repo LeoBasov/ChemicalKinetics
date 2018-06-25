@@ -193,3 +193,19 @@ void ConverterTest::rateConstantsTablesTest() const{
         }
     }
 }
+
+void ConverterTest::stoichiometricCoeffEductsTest() const{
+    InputData state(getState());
+    Converter converter;
+    MatrixXd stoichiometricCoeffEducts;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    stoichiometricCoeffEducts = converter.stoichiometricCoeffEducts(state.chemistryData.reactions);
+
+    for(size_t i(0);i<state.chemistryData.reactions.size();++i){
+        for(size_t j(0);j<state.chemistryData.species.size();++j){
+            QCOMPARE(stoichiometricCoeffEducts.at(i,j),state.chemistryData.reactions.at(i).stoichiometricCoeffEducts.at(j).value);
+        }
+    }
+}
