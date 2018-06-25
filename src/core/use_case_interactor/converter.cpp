@@ -152,20 +152,6 @@ std::vector<std::pair<double,double>> Converter::arrheniusCoefficients(const std
     return coeffs;
 }
 
-size_t Converter::index(const Type& type,const std::string& name) const{
-    switch(type){
-    case species:
-        return this->speciesMapIn.at(name);
-        break;
-    case reaction:
-        return this->reactionMapIn.at(name);
-        break;
-    default:
-        throw Exception("Undefined type <" + std::to_string(type) + ">","Converter::" + std::string(__FUNCTION__));
-        break;
-    }
-}
-
 Chemistry::Mode Converter::chemMode(const::std::string& str) const{
     if(str=="const_k"){
         return Chemistry::const_k;

@@ -11,14 +11,6 @@
 class Converter
 {
 public:
-    enum Type{species=1,reaction=2};
-
-    using Vector = std::vector<std::pair<std::string,double>>;
-    using VectorPair = std::vector<std::pair<std::string,std::pair<double,double>>>;
-    using VectorTable = std::vector<std::pair<std::string,std::vector<std::pair<double,double>>>>;
-    using Matrix = std::vector<std::pair<std::string,std::vector<std::pair<std::string,double>>>>;
-
-public:
     Converter();
 
     void setUp(const std::vector<InputData::Species>& species,const std::vector<InputData::Reaction>& reactions);
@@ -43,6 +35,5 @@ private:
     std::map<std::string,std::size_t> reactionMapIn;
     std::map<std::size_t,std::string> reactionMapOut;
 
-    size_t index(const Type& type,const std::string& name) const;
     Chemistry::Mode chemMode(const::std::string& str) const;
 };
