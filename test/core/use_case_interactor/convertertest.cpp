@@ -225,3 +225,19 @@ void ConverterTest::stoichiometricCoeffProductsTest() const{
         }
     }
 }
+
+void ConverterTest::reactionPowersTest() const{
+    InputData state(getState());
+    Converter converter;
+    MatrixXd reactPows;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    reactPows = converter.reactionPowers(state.chemistryData.reactions);
+
+    for(size_t i(0);i<state.chemistryData.reactions.size();++i){
+        for(size_t j(0);j<state.chemistryData.species.size();++j){
+            QCOMPARE(reactPows.at(i,j),state.chemistryData.reactions.at(i).reactionPowers.at(j).value);
+        }
+    }
+}

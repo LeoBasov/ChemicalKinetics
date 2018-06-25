@@ -23,4 +23,5 @@ private slots:
     void rateConstantsTablesTest() const;
     void stoichiometricCoeffEductsTest() const;
     void stoichiometricCoeffProductsTest() const;
+    void reactionPowersTest() const;
 };
