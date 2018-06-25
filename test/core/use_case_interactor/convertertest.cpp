@@ -55,6 +55,26 @@ InputData ConverterTest::getState() const{
     return state;
 }
 
+std::string ConverterTest::modeToStr(const Chemistry::Mode& mode) const{
+    switch(mode){
+    case Chemistry::const_k:
+        return "const_k";
+        break;
+    case Chemistry::interpol_k:
+        return "interpol_k";
+        break;
+    case Chemistry::arrhenius_k:
+        return "arrhenius_k";
+        break;
+    case Chemistry::none:
+        return "none";
+        break;
+    default:
+        throw Exception("Mode<" + std::to_string(mode) + "> not found","ConverterTest::" + std::string(__FUNCTION__));
+        break;
+    }
+}
+
 void ConverterTest::setUpTest() const{
     InputData state(getState());
     Converter converter;
@@ -71,4 +91,18 @@ void ConverterTest::setUpTest() const{
     QCOMPARE(speciesMap.at(0),state.chemistryData.species.at(0).name);
 
     QCOMPARE(reactionMap.at(0),state.chemistryData.reactions.at(0).name);
+}
+
+void ConverterTest::chemModesTest() const{
+    InputData state(getState());
+    Converter converter;
+    std::vector<Chemistry::Mode> chemModes;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    chemModes = converter.chemModes(state.chemistryData.reactions);
+
+    for(size_t i(0);i<chemModes.size();++i){
+        QCOMPARE(modeToStr(chemModes.at(i)),state.chemistryData.reactions.at(i).mode);
+    }
 }
