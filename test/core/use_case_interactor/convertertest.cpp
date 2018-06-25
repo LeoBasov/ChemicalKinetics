@@ -106,3 +106,17 @@ void ConverterTest::chemModesTest() const{
         QCOMPARE(modeToStr(chemModes.at(i)),state.chemistryData.reactions.at(i).mode);
     }
 }
+
+void ConverterTest::concentrationsTest() const{
+    InputData state(getState());
+    Converter converter;
+    VectorXd concentrations;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    concentrations = converter.concentrations(state.chemistryData.species);
+
+    for(size_t i(0);i<concentrations.size();++i){
+        QCOMPARE(concentrations.at(i),state.chemistryData.species.at(i).concentration);
+    }
+}
