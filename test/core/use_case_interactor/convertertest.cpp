@@ -47,6 +47,7 @@ InputData ConverterTest::getState() const{
     reac.rateConstantTable = {InputData::RateConstPair(1000.0,0.2)
                              ,InputData::RateConstPair(2000.0,0.3)
                              ,InputData::RateConstPair(3000.0,0.4)};
+    reac.arrheniusCoefficients = InputData::ArrheniusCoeffPair(600.0,1235.05);
 
     state.integratorData.mode = "var_dt";
     state.integratorData.parameter = 0.1;
