@@ -5,6 +5,7 @@
 
 struct InputData{
     struct RateConstPair{
+        RateConstPair(){}
         RateConstPair(const double& temperature,const double& rateConstant)
                      :temperature(temperature),rateConstant(rateConstant){}
 
@@ -13,11 +14,16 @@ struct InputData{
     };
 
     struct ArrheniusCoeffPair{
+        ArrheniusCoeffPair(){}
+        ArrheniusCoeffPair(const double& preFactor,const double& activationEnergy)
+                          :preFactor(preFactor),activationEnergy(activationEnergy){}
+
         double preFactor = 0.0;
         double activationEnergy = 0.0;
     };
 
     struct SpeciesValuePair{
+        SpeciesValuePair(){}
         SpeciesValuePair(const std::string& species,const double& value)
                         :species(species),value(value){}
 
