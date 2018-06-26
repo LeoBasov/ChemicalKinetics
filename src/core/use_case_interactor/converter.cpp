@@ -103,6 +103,16 @@ VectorXd Converter::rateConstatns(const std::vector<InputData::Reaction>& reacti
     return retVec;
 }
 
+VectorXd Converter::excessEnergies(const std::vector<InputData::Reaction>& reactions) const{
+    VectorXd retVec(reactions.size());
+
+    for(auto reaction : reactions){
+        retVec.at(this->reactionMapIn.at(reaction.name)) = reaction.excessEnergy;
+    }
+
+    return retVec;
+}
+
 std::vector<InterpolationTable> Converter::rateConstantsTables(const std::vector<InputData::Reaction>& reactions) const{
     std::vector<InterpolationTable> tables(reactions.size());
 
