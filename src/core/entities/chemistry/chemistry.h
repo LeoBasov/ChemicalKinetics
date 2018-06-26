@@ -17,14 +17,17 @@ public:
     void setRateConstants(const VectorXd& rateConstants);
     void setRateConstants(const std::vector<InterpolationTable>& rateConstantsInterpolTables);
     void setArrheniusCoefficients(const std::vector<std::pair<double,double>>& arrheniusCoefficients);
+    void setExcessEnergies(const VectorXd& excessEnergies);
 
     VectorXd getRateConstants(const double& temperature) const;
     VectorXd getReactionRates(const VectorXd& concentrations,const VectorXd& rateConstants) const;
     VectorXd getConcentrationDiff(const VectorXd& reactionRates) const;
+    double getEnergyDiff(const VectorXd& concentrationDiff) const;
 
 private:
     std::vector<Mode> modes;
     VectorXd rateConstants;
+    VectorXd excessEnergies;
     MatrixXd stoichiometricMatrix;
     MatrixXd reactionPowers;
     std::vector<InterpolationTable> rateConstantsInterpolTables;

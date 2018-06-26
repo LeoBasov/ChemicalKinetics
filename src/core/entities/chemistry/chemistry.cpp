@@ -28,6 +28,10 @@ void Chemistry::setArrheniusCoefficients(const std::vector<std::pair<double,doub
     this->arrheniusCoefficients = arrheniusCoefficients;
 }
 
+void Chemistry::setExcessEnergies(const VectorXd& excessEnergies){
+    this->excessEnergies = excessEnergies;
+}
+
 VectorXd Chemistry::getRateConstants(const double& temperature) const{
     VectorXd rateConstants(this->rateConstants.size());
 
@@ -44,6 +48,10 @@ VectorXd Chemistry::getReactionRates(const VectorXd& concentrations,const Vector
 
 VectorXd Chemistry::getConcentrationDiff(const VectorXd& reactionRates) const{
     return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,reactionRates);
+}
+
+double Chemistry::getEnergyDiff(const VectorXd& concentrationDiff) const{
+    return concentrationDiff*this->excessEnergies;
 }
 
 double Chemistry::getRateConstant(const double& temperature, const size_t &pos) const{
