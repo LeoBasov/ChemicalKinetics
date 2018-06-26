@@ -19,7 +19,7 @@ public:
     VectorXd concentrations(const std::vector<InputData::Species>& species) const;
     VectorXd concentrationsDiffs(const std::vector<InputData::Species>& species) const;
     VectorXd reactionRates(const std::vector<InputData::Reaction>& reactions) const;
-    VectorXd rateConstatns(const std::vector<InputData::Reaction>& reactions) const;
+    VectorXd rateConstants(const std::vector<InputData::Reaction>& reactions) const;
     VectorXd excessEnergies(const std::vector<InputData::Reaction>& reactions) const;
     std::vector<InterpolationTable> rateConstantsTables(const std::vector<InputData::Reaction>& reactions) const;
     MatrixXd stoichiometricCoeffEducts(const std::vector<InputData::Reaction>& reactions) const;

@@ -105,7 +105,7 @@ Chemistry ChemistryTest::setUpChemisty() const{
     chemistry.setReactionPowers(converter.reactionPowers(data.reactions));
     chemistry.setStoichiometricMatrix(  converter.stoichiometricCoeffProducts(data.reactions)
                                       - converter.stoichiometricCoeffEducts(data.reactions));
-    chemistry.setRateConstants(converter.rateConstatns(data.reactions));
+    chemistry.setRateConstants(converter.rateConstants(data.reactions));
     chemistry.setRateConstants(converter.rateConstantsTables(data.reactions));
     chemistry.setArrheniusCoefficients(converter.arrheniusCoefficients(data.reactions));
 

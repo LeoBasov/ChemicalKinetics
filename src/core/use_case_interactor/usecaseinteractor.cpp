@@ -35,7 +35,7 @@ void UseCaseInteractor::initializeState(const InputData& data){
     this->state.concentrations = this->converter.concentrations(data.chemistryData.species);
     this->state.concentrationDiffs = this->converter.concentrationsDiffs(data.chemistryData.species);
     this->state.reactionRates = this->converter.reactionRates(data.chemistryData.reactions);
-    this->state.rateConstants = this->converter.rateConstatns(data.chemistryData.reactions);
+    this->state.rateConstants = this->converter.rateConstants(data.chemistryData.reactions);
     this->state.time = 0.0;
 }
 
@@ -50,7 +50,7 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
     this->chemistry.setReactionPowers(this->converter.reactionPowers(data.reactions));
     this->chemistry.setStoichiometricMatrix(  this->converter.stoichiometricCoeffProducts(data.reactions)
                                             - this->converter.stoichiometricCoeffEducts(data.reactions));
-    this->chemistry.setRateConstants(this->converter.rateConstatns(data.reactions));
+    this->chemistry.setRateConstants(this->converter.rateConstants(data.reactions));
     this->chemistry.setRateConstants(this->converter.rateConstantsTables(data.reactions));
     this->chemistry.setArrheniusCoefficients(this->converter.arrheniusCoefficients(data.reactions));
 }

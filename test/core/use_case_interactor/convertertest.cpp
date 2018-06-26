@@ -166,7 +166,7 @@ void ConverterTest::rateConstantsTest() const{
 
     converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
 
-    rateConstants = converter.rateConstatns(state.chemistryData.reactions);
+    rateConstants = converter.rateConstants(state.chemistryData.reactions);
 
     for(size_t i(0);i<rateConstants.size();++i){
         QCOMPARE(rateConstants.at(i),state.chemistryData.reactions.at(i).rateConstant);

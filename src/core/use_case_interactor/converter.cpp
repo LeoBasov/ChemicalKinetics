@@ -93,7 +93,7 @@ VectorXd Converter::reactionRates(const std::vector<InputData::Reaction>& reacti
     return retVec;
 }
 
-VectorXd Converter::rateConstatns(const std::vector<InputData::Reaction>& reactions) const{
+VectorXd Converter::rateConstants(const std::vector<InputData::Reaction>& reactions) const{
     VectorXd retVec(reactions.size());
 
     for(auto reaction : reactions){
