@@ -30,6 +30,7 @@ InputData ConverterTest::getState() const{
 
     reac.name = "combustion";
     reac.mode = "const_k";
+    reac.excessEnergy = 7.0;
     reac.rateConstant = 2.83583586672916e-15;
     reac.reactionRate = 7.2;
     reac.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,1.0)
@@ -170,6 +171,20 @@ void ConverterTest::rateConstantsTest() const{
 
     for(size_t i(0);i<rateConstants.size();++i){
         QCOMPARE(rateConstants.at(i),state.chemistryData.reactions.at(i).rateConstant);
+    }
+}
+
+void ConverterTest::excessEnergiesTest() const{
+    InputData state(getState());
+    Converter converter;
+    VectorXd excessEnergies;
+
+    converter.setUp(state.chemistryData.species,state.chemistryData.reactions);
+
+    excessEnergies = converter.excessEnergies(state.chemistryData.reactions);
+
+    for(size_t i(0);i<excessEnergies.size();++i){
+        QCOMPARE(excessEnergies.at(i),state.chemistryData.reactions.at(i).excessEnergy);
     }
 }
 

@@ -20,6 +20,7 @@ private slots:
     void concentrationsDiffsTest() const;
     void reactionRatesTest() const;
     void rateConstantsTest() const;
+    void excessEnergiesTest() const;
     void rateConstantsTablesTest() const;
     void stoichiometricCoeffEductsTest() const;
     void stoichiometricCoeffProductsTest() const;
