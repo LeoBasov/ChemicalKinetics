@@ -35,11 +35,11 @@ struct InputData{
         std::string name;
         std::string mode = "none";
 
+        double excessEnergy = 0.0;
         double reactionRate = 0.0;
         double rateConstant = 0.0;
         std::vector<RateConstPair> rateConstantTable;
         ArrheniusCoeffPair arrheniusCoefficients;
-
         std::vector<SpeciesValuePair> stoichiometricCoeffEducts;
         std::vector<SpeciesValuePair> stoichiometricCoeffProducts;
         std::vector<SpeciesValuePair> reactionPowers;
