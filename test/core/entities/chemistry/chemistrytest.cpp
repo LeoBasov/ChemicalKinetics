@@ -166,10 +166,10 @@ void ChemistryTest::getConcentrationDiffTest() const{
 void ChemistryTest::setExcessEnergiesTest() const{
     InputData::ChemistryData data(getState().chemistryData);
     Chemistry chemistry(setUpChemisty());
-    VectorXd concentrationDiffs({1.0,2.0,3.0});
+    VectorXd reactionRates({1.0,2.0,3.0});
     VectorXd ecxessEnergiesRef({data.reactions.at(0).excessEnergy
                                ,data.reactions.at(1).excessEnergy
                                ,data.reactions.at(2).excessEnergy});
 
-    QCOMPARE(chemistry.getEnergyDiff(concentrationDiffs),ecxessEnergiesRef*concentrationDiffs);
+    QCOMPARE(chemistry.getEnergyDiff(reactionRates),ecxessEnergiesRef*reactionRates);
 }
