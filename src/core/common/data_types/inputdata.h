@@ -46,7 +46,10 @@ struct InputData{
     };
 
     struct Species{
+        enum Type{monoatomic,diatomic,none};
+
         std::string name;
+        Type type = none;
 
         double concentration = 0.0;
         double concentrationDiff = 0.0;
