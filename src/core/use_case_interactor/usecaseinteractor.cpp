@@ -53,6 +53,7 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
     this->chemistry.setRateConstants(this->converter.rateConstants(data.reactions));
     this->chemistry.setRateConstants(this->converter.rateConstantsTables(data.reactions));
     this->chemistry.setArrheniusCoefficients(this->converter.arrheniusCoefficients(data.reactions));
+    this->chemistry.setExcessEnergies(this->converter.excessEnergies(data.reactions));
 }
 
 void UseCaseInteractor::initializeAbortCriterium(){
