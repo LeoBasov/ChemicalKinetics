@@ -22,7 +22,7 @@ public:
     VectorXd getRateConstants(const double& temperature) const;
     VectorXd getReactionRates(const VectorXd& concentrations,const VectorXd& rateConstants) const;
     VectorXd getConcentrationDiff(const VectorXd& reactionRates) const;
-    double getEnergyDiff(const VectorXd& concentrationDiff) const;
+    double getEnergyDiff(const VectorXd& reactionRates) const;
 
 private:
     std::vector<Mode> modes;
