@@ -18,4 +18,5 @@ private slots:
     void getRateConstantsTest() const;
     void getReactionRatesTest() const;
     void getConcentrationDiffTest() const;
+    void setExcessEnergiesTest() const;
 };

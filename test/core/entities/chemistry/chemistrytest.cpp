@@ -28,6 +28,7 @@ InputData ChemistryTest::getState() const{
     reac1.name = "combustion1";
     reac1.mode = "const_k";
     reac1.rateConstant = 2.83583586672916e-15;
+    reac1.excessEnergy = 1.0;
     reac1.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,1.0)
                                      ,InputData::SpeciesValuePair(spec2.name,0.0)
                                      ,InputData::SpeciesValuePair(spec3.name,0.0)
@@ -44,6 +45,7 @@ InputData ChemistryTest::getState() const{
     reac2.name = "combustion2";
     reac2.mode = "interpol_k";
     reac2.rateConstant = 2.83583586672916e-15;
+    reac2.excessEnergy = -3.0;
     reac2.rateConstantTable = {InputData::RateConstPair(1000.0,100.0)
                               ,InputData::RateConstPair(2000.0,200.0)};
     reac2.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,0.0)
@@ -62,6 +64,7 @@ InputData ChemistryTest::getState() const{
     reac3.name = "combustion3";
     reac3.mode = "arrhenius_k";
     reac3.rateConstant = 2.83583586672916e-15;
+    reac3.excessEnergy = 7.0;
     reac3.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,0.0)
                                      ,InputData::SpeciesValuePair(spec2.name,0.0)
                                      ,InputData::SpeciesValuePair(spec3.name,3.0)
@@ -108,6 +111,7 @@ Chemistry ChemistryTest::setUpChemisty() const{
     chemistry.setRateConstants(converter.rateConstants(data.reactions));
     chemistry.setRateConstants(converter.rateConstantsTables(data.reactions));
     chemistry.setArrheniusCoefficients(converter.arrheniusCoefficients(data.reactions));
+    chemistry.setExcessEnergies(converter.excessEnergies(data.reactions));
 
     return chemistry;
 }
@@ -157,4 +161,15 @@ void ChemistryTest::getConcentrationDiffTest() const{
     QCOMPARE(concentrationDiffs.at(1),reactionRates.at(1)*(-2.0));
     QCOMPARE(concentrationDiffs.at(2),reactionRates.at(2)*(3.0));
     QCOMPARE(concentrationDiffs.at(3),reactionRates.at(2)*(0.0));
+}
+
+void ChemistryTest::setExcessEnergiesTest() const{
+    InputData::ChemistryData data(getState().chemistryData);
+    Chemistry chemistry(setUpChemisty());
+    VectorXd concentrationDiffs({1.0,2.0,3.0});
+    VectorXd ecxessEnergiesRef({data.reactions.at(0).excessEnergy
+                               ,data.reactions.at(1).excessEnergy
+                               ,data.reactions.at(2).excessEnergy});
+
+    QCOMPARE(chemistry.getEnergyDiff(concentrationDiffs),ecxessEnergiesRef*concentrationDiffs);
 }
