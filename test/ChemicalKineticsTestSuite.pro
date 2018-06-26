@@ -30,7 +30,8 @@ SOURCES += main.cpp \
     ../src/core/output_boundary/subject.cpp \
     ../src/core/output_boundary/simulationstate.cpp \
     core/entities/chemistry/chemistrytest.cpp \
-    ../src/core/entities/thermodynamics/thermodynamics.cpp
+    ../src/core/entities/thermodynamics/thermodynamics.cpp \
+    ../src/core/entities/thermodynamics/thermodynamicsalgorithms.cpp
 
 HEADERS += \
     unittest.h \
@@ -60,4 +61,5 @@ HEADERS += \
     ../src/core/output_boundary/subject.h \
     ../src/core/output_boundary/simulationstate.h \
     core/entities/chemistry/chemistrytest.h \
-    ../src/core/entities/thermodynamics/thermodynamics.h
+    ../src/core/entities/thermodynamics/thermodynamics.h \
+    ../src/core/entities/thermodynamics/thermodynamicsalgorithms.h
