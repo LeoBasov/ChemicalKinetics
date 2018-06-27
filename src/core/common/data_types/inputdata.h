@@ -56,6 +56,7 @@ struct InputData{
         double concentration = 0.0;
         double concentrationDiff = 0.0;
         double temperature = 0.0;
+        double charVibrationTemp = 0.0;
     };
 
     struct ChemistryData{
