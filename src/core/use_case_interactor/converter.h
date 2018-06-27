@@ -41,5 +41,5 @@ private:
 
     void registerSpecies(const std::vector<InputData::Species>& species);
     void registerReactions(const std::vector<InputData::Reaction>& reactions);
-    Chemistry::Mode chemMode(const::std::string& str) const;
+    Chemistry::Mode chemMode(const InputData::Reaction::Mode &mode) const;
 };

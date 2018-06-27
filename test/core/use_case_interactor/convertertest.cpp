@@ -29,7 +29,7 @@ InputData ConverterTest::getState() const{
     spec4.concentrationDiff = 13.0;
 
     reac.name = "combustion";
-    reac.mode = "const_k";
+    reac.mode = InputData::Reaction::const_k;
     reac.excessEnergy = 7.0;
     reac.rateConstant = 2.83583586672916e-15;
     reac.reactionRate = 7.2;
@@ -66,19 +66,19 @@ InputData ConverterTest::getState() const{
     return state;
 }
 
-std::string ConverterTest::modeToStr(const Chemistry::Mode& mode) const{
+InputData::Reaction::Mode ConverterTest::modeToMode(const Chemistry::Mode& mode) const{
     switch(mode){
     case Chemistry::const_k:
-        return "const_k";
+        return InputData::Reaction::const_k;
         break;
     case Chemistry::interpol_k:
-        return "interpol_k";
+        return InputData::Reaction::interpol_k;
         break;
     case Chemistry::arrhenius_k:
-        return "arrhenius_k";
+        return InputData::Reaction::arrhenius_k;
         break;
     case Chemistry::none:
-        return "none";
+        return InputData::Reaction::none;
         break;
     default:
         throw Exception("Mode<" + std::to_string(mode) + "> not found","ConverterTest::" + std::string(__FUNCTION__));
@@ -114,7 +114,7 @@ void ConverterTest::chemModesTest() const{
     chemModes = converter.chemModes(state.chemistryData.reactions);
 
     for(size_t i(0);i<chemModes.size();++i){
-        QCOMPARE(modeToStr(chemModes.at(i)),state.chemistryData.reactions.at(i).mode);
+        QCOMPARE(modeToMode(chemModes.at(i)),state.chemistryData.reactions.at(i).mode);
     }
 }
 

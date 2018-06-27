@@ -26,7 +26,7 @@ InputData ChemistryTest::getState() const{
     spec4.concentration = 0.0;
 
     reac1.name = "combustion1";
-    reac1.mode = "const_k";
+    reac1.mode = InputData::Reaction::const_k;
     reac1.rateConstant = 2.83583586672916e-15;
     reac1.excessEnergy = 1.0;
     reac1.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,1.0)
@@ -43,7 +43,7 @@ InputData ChemistryTest::getState() const{
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
 
     reac2.name = "combustion2";
-    reac2.mode = "interpol_k";
+    reac2.mode = InputData::Reaction::interpol_k;
     reac2.rateConstant = 2.83583586672916e-15;
     reac2.excessEnergy = -3.0;
     reac2.rateConstantTable = {InputData::RateConstPair(1000.0,100.0)
@@ -62,7 +62,7 @@ InputData ChemistryTest::getState() const{
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
 
     reac3.name = "combustion3";
-    reac3.mode = "arrhenius_k";
+    reac3.mode = InputData::Reaction::arrhenius_k;
     reac3.rateConstant = 2.83583586672916e-15;
     reac3.excessEnergy = 7.0;
     reac3.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,0.0)

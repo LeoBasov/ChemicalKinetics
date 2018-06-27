@@ -201,14 +201,19 @@ Integrator::Mode Converter::integratorMode(const InputData::IntegratorData::Mode
     }
 }
 
-Chemistry::Mode Converter::chemMode(const::std::string& str) const{
-    if(str=="const_k"){
+Chemistry::Mode Converter::chemMode(const InputData::Reaction::Mode& mode) const{
+    switch(mode){
+    case InputData::Reaction::const_k:
         return Chemistry::const_k;
-    }else if(str=="interpol_k"){
+        break;
+    case InputData::Reaction::interpol_k:
         return Chemistry::interpol_k;
-    }else if(str=="arrhenius_k"){
+        break;
+    case InputData::Reaction::arrhenius_k:
         return Chemistry::arrhenius_k;
-    }else{
-        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
+        break;
+    default:
+        throw Exception("Unknown mode <" + std::to_string(mode) + ">.","UseCaseInteractor::" + std::string(__FUNCTION__));
+        break;
     }
 }

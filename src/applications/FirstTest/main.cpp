@@ -59,7 +59,7 @@ InputData setUpInputData(){
     spec4.concentration = 0.0;
 
     reac.name = "combustion";
-    reac.mode = "const_k";
+    reac.mode = InputData::Reaction::const_k;
     reac.rateConstant = 2.83583586672916e-15;
     reac.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,1.0)
                                      ,InputData::SpeciesValuePair(spec2.name,7/2.0)
@@ -227,7 +227,7 @@ InputData dsmcTest(){
 
 
     reac.name = "collision";
-    reac.mode = "interpol_k";
+    reac.mode = InputData::Reaction::interpol_k;
     reac.rateConstantTable = pairs;
     reac.stoichiometricCoeffEducts = {InputData::SpeciesValuePair(spec1.name,1.0)
                                      ,InputData::SpeciesValuePair(spec2.name,1.0)

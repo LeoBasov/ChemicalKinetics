@@ -11,7 +11,7 @@ public:
 
 private:
     InputData getState() const;
-    std::string modeToStr(const Chemistry::Mode& mode) const;
+    InputData::Reaction::Mode modeToMode(const Chemistry::Mode& mode) const;
 
 private slots:
     void setUpTest() const;

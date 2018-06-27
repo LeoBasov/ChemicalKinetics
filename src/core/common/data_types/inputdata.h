@@ -31,9 +31,11 @@ struct InputData{
         double value = 0.0;
     };
 
-    struct Reaction{
+    struct Reaction{        
+        enum Mode{const_k=1,interpol_k=2,arrhenius_k=3,none=0};
+
         std::string name;
-        std::string mode = "none";
+        Mode mode = none;
 
         double excessEnergy = 0.0;
         double reactionRate = 0.0;
