@@ -277,3 +277,14 @@ void ConverterTest::arrheniusCoefficientsTest() const{
         QCOMPARE(actEnerg,actEnergRef);
     }
 }
+
+void ConverterTest::integratorModeTest() const{
+    InputData::IntegratorData::Mode inpt1(InputData::IntegratorData::const_dt);
+    InputData::IntegratorData::Mode inpt2(InputData::IntegratorData::var_dt);
+    Integrator::Mode ref1(Integrator::const_dt);
+    Integrator::Mode ref2(Integrator::var_dt);
+    Converter converter;
+
+    QCOMPARE(converter.integratorMode(inpt1),ref1);
+    QCOMPARE(converter.integratorMode(inpt2),ref2);
+;}
