@@ -28,7 +28,7 @@ public:
     MatrixXd reactionPowers(const std::vector<InputData::Reaction>& reactions) const;
     std::vector<std::pair<double,double>> arrheniusCoefficients(const std::vector<InputData::Reaction>& reactions) const;
 
-    Integrator::Mode integratorMode(const std::string& str) const;
+    Integrator::Mode integratorMode(const InputData::IntegratorData::Mode &mode) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;
     const std::map<std::size_t,std::string>& getReactionMap() const;

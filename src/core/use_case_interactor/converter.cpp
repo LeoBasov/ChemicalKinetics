@@ -187,13 +187,17 @@ std::vector<std::pair<double,double>> Converter::arrheniusCoefficients(const std
     return coeffs;
 }
 
-Integrator::Mode Converter::integratorMode(const std::string& str) const{
-    if(str=="const_dt"){
+Integrator::Mode Converter::integratorMode(const InputData::IntegratorData::Mode& mode) const{
+    switch(mode){
+    case InputData::IntegratorData::const_dt:
         return Integrator::const_dt;
-    }else if(str=="var_dt"){
+        break;
+    case InputData::IntegratorData::var_dt:
         return Integrator::var_dt;
-    }else{
-        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
+        break;
+    default:
+        throw Exception("Unknown mode <" + std::to_string(mode) + ">.","UseCaseInteractor::" + std::string(__FUNCTION__));
+        break;
     }
 }
 

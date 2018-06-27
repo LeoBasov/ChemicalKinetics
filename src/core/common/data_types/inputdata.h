@@ -64,7 +64,9 @@ struct InputData{
     };
 
     struct IntegratorData{
-        std::string mode = "none";
+        enum Mode{const_dt=1,var_dt=2,none=0};
+
+        Mode mode = none;
 
         double timeStep = 0.0;
         double parameter = 0.0;

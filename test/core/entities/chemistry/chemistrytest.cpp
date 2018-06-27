@@ -79,7 +79,7 @@ InputData ChemistryTest::getState() const{
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
     reac3.arrheniusCoefficients = InputData::ArrheniusCoeffPair(0.2,0.7);
 
-    state.integratorData.mode = "var_dt";
+    state.integratorData.mode = InputData::IntegratorData::var_dt;
     state.integratorData.parameter = 0.1;
     state.integratorData.timeStep = 0.1;
 

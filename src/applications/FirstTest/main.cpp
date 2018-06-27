@@ -74,7 +74,7 @@ InputData setUpInputData(){
                           ,InputData::SpeciesValuePair(spec3.name,0.0)
                           ,InputData::SpeciesValuePair(spec4.name,0.0)};
 
-    state.integratorData.mode = "var_dt";
+    state.integratorData.mode = InputData::IntegratorData::var_dt;
     state.integratorData.parameter = 0.1;
     state.integratorData.timeStep = 0.1;
 
@@ -241,7 +241,7 @@ InputData dsmcTest(){
 
     //-------------------------------------------------------------------------------
 
-    state.integratorData.mode = "var_dt";
+    state.integratorData.mode = InputData::IntegratorData::var_dt;
     state.integratorData.parameter = 0.1;
     state.integratorData.timeStep = 0.1;
 

@@ -50,7 +50,7 @@ InputData ConverterTest::getState() const{
                              ,InputData::RateConstPair(3000.0,0.4)};
     reac.arrheniusCoefficients = InputData::ArrheniusCoeffPair(600.0,1235.05);
 
-    state.integratorData.mode = "var_dt";
+    state.integratorData.mode = InputData::IntegratorData::var_dt;
     state.integratorData.parameter = 0.1;
     state.integratorData.timeStep = 0.1;
 
