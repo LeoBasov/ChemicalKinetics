@@ -73,18 +73,6 @@ void UseCaseInteractor::report(){
     this->simulationState->notify();
 }
 
-Chemistry::Mode UseCaseInteractor::chemistryMode(const std::string& str) const{
-    if(str=="const_k"){
-        return Chemistry::const_k;
-    }else if(str=="interpol_k"){
-        return Chemistry::interpol_k;
-    }else if(str=="arrhenius_k"){
-        return Chemistry::arrhenius_k;
-    }else{
-        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
-    }
-}
-
 Integrator::Mode UseCaseInteractor::integratorMode(const std::string& str) const{
     if(str=="const_dt"){
         return Integrator::const_dt;
