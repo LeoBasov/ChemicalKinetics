@@ -40,7 +40,7 @@ void UseCaseInteractor::initializeState(const InputData& data){
 }
 
 void UseCaseInteractor::initializeIntergrator(const InputData::IntegratorData& data){
-    this->integrator.setMode(integratorMode(data.mode));
+    this->integrator.setMode(this->converter.integratorMode(data.mode));
     this->integrator.setTimeStep(data.timeStep);
     this->integrator.setTimeStepParamter(data.parameter);
 }
@@ -71,14 +71,4 @@ void UseCaseInteractor::execute(){
 void UseCaseInteractor::report(){
     this->simulationState->setState(this->state);
     this->simulationState->notify();
-}
-
-Integrator::Mode UseCaseInteractor::integratorMode(const std::string& str) const{
-    if(str=="const_dt"){
-        return Integrator::const_dt;
-    }else if(str=="var_dt"){
-        return Integrator::var_dt;
-    }else{
-        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
-    }
 }

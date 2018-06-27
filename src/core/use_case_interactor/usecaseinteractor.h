@@ -32,6 +32,4 @@ private:
 
     void execute();
     void report();
-
-    Integrator::Mode integratorMode(const std::string& str) const;
 };

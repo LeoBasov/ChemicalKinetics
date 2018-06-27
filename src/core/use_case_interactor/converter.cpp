@@ -187,6 +187,16 @@ std::vector<std::pair<double,double>> Converter::arrheniusCoefficients(const std
     return coeffs;
 }
 
+Integrator::Mode Converter::integratorMode(const std::string& str) const{
+    if(str=="const_dt"){
+        return Integrator::const_dt;
+    }else if(str=="var_dt"){
+        return Integrator::var_dt;
+    }else{
+        throw Exception("No mode set","UseCaseInteractor::" + std::string(__FUNCTION__));
+    }
+}
+
 Chemistry::Mode Converter::chemMode(const::std::string& str) const{
     if(str=="const_k"){
         return Chemistry::const_k;

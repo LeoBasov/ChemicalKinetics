@@ -7,6 +7,7 @@
 #include "../common/data_types/interpolationtable.h"
 #include "../common/data_types/inputdata.h"
 #include "../entities/chemistry/chemistry.h"
+#include "../entities/integrator/integrator.h"
 
 class Converter
 {
@@ -26,6 +27,8 @@ public:
     MatrixXd stoichiometricCoeffProducts(const std::vector<InputData::Reaction>& reactions) const;
     MatrixXd reactionPowers(const std::vector<InputData::Reaction>& reactions) const;
     std::vector<std::pair<double,double>> arrheniusCoefficients(const std::vector<InputData::Reaction>& reactions) const;
+
+    Integrator::Mode integratorMode(const std::string& str) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;
     const std::map<std::size_t,std::string>& getReactionMap() const;
