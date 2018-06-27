@@ -139,6 +139,16 @@ double VectorXd::module() const{
     return std::sqrt(module);
 }
 
+double VectorXd::sum() const{
+    double sum(0.0);
+
+    for(size_v i(0);i<this->values.size();++i){
+        sum += this->values.at(i);
+    }
+
+    return sum;
+}
+
 VectorXd::size_v VectorXd::size() const{
     return this->values.size();
 }

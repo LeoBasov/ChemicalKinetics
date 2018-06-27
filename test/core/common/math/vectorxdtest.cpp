@@ -121,3 +121,10 @@ void VectorXdTest::moduleTest() const{
 
     QCOMPARE(vec1.module(),std::sqrt(14.0));
 }
+
+void VectorXdTest::sumTest() const{
+    const std::vector<double> vals1{1.0,2.0,3.0};
+    const VectorXd vec1(vals1);
+
+    QCOMPARE(vec1.sum(),vals1.at(0) + vals1.at(1) + vals1.at(2));
+}

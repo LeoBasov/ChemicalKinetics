@@ -17,4 +17,5 @@ private slots:
     void arithmeticOperatorTest() const;
 
     void moduleTest() const;
+    void sumTest() const;
 };

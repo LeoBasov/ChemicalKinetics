@@ -39,6 +39,7 @@ public:
     const double& at(size_v idx) const;
 
     double module() const;
+    double sum() const;
 
     size_v size() const;
     void resize(const size_v& size,const double &values);
