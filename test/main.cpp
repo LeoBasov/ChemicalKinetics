@@ -7,6 +7,7 @@
 #include "core/entities/chemistry/chemistrytest.h"
 #include "core/entities/integrator/integratoralgorithmstest.h"
 #include "core/entities/integrator/integratortest.h"
+#include "core/entities/thermodynamics/thermodynamicsalgorithmstest.h"
 #include "core/use_case_interactor/convertertest.h"
 
 int main(int argc, char **argv){
@@ -22,6 +23,7 @@ int main(int argc, char **argv){
     tests.push_back(std::make_shared<ChemistryTest>("ChemistryTest"));
     tests.push_back(std::make_shared<IntegratorAlgorithmsTest>("IntegratorAlgorithmsTest"));
     tests.push_back(std::make_shared<IntegratorTest>("IntegratorTest"));
+    tests.push_back(std::make_shared<ThermodynamicsAlgorithmsTest>("ThermodynamicsAlgorithmsTest"));
 
     tests.push_back(std::make_shared<ConverterTest>("ConverterTest"));
 
