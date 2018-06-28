@@ -43,5 +43,6 @@ double internalDOF(const double& temperature,const Species& species);
 double diatomicInternalDOF(const double& temperature,const double& characteresticVibrationalsTemp);
 VectorXd internalDOF(const VectorXd& temperatures,const std::vector<Species>& species);
 double totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const VectorXd& internalDOF);
+double totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const std::vector<Species>& species);
 
 }

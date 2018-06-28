@@ -66,3 +66,9 @@ double ThermodynamicsAlgorithms::totalEnergy(const VectorXd& concentrations,cons
 
     return concentrSum>0.0 ? concentrations*(temperatures*3.0*factor + VectorXd::elemWiseMult(internalDOF,temperatures)*factor)*(1.0/concentrSum) : 0.0;
 }
+
+double ThermodynamicsAlgorithms::totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const std::vector<Species>& species){
+    VectorXd dof(ThermodynamicsAlgorithms::internalDOF(temperatures,species));
+
+    return ThermodynamicsAlgorithms::totalEnergy(concentrations,temperatures,dof);
+}

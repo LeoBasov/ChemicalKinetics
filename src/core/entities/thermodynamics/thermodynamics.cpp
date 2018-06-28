@@ -17,7 +17,5 @@ void Thermodynamics::addEnergy(const double& energyDelta){
 }
 
 double Thermodynamics::totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures) const{
-    VectorXd dof(ThermodynamicsAlgorithms::internalDOF(temperatures,this->species));
-
-    return ThermodynamicsAlgorithms::totalEnergy(concentrations,temperatures,dof);
+    return ThermodynamicsAlgorithms::totalEnergy(concentrations,temperatures,this->species);
 }
