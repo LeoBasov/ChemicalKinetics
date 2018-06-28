@@ -37,5 +37,5 @@ public:
 
 private:
     std::vector<ThermodynamicsAlgorithms::Species> species;
-    double totalEnerg = 0.0;
+    double energy = 0.0;
 };

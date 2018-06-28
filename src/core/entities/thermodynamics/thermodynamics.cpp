@@ -9,11 +9,11 @@ void Thermodynamics::setSpecies(std::vector<ThermodynamicsAlgorithms::Species> s
 }
 
 void Thermodynamics::setTotalEnergy(const double& energy){
-    this->totalEnerg = energy;
+    this->energy = energy;
 }
 
 void Thermodynamics::addEnergy(const double& energyDelta){
-    this->totalEnerg += energyDelta;
+    this->energy += energyDelta;
 }
 
 double Thermodynamics::totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures) const{
