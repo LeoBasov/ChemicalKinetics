@@ -34,4 +34,5 @@ public:
 private slots:
     void internamDOF() const;
     void totalEnergyTest() const;
+    void temperatureTest() const;
 };

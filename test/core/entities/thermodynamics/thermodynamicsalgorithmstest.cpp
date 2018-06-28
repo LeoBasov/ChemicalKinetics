@@ -57,3 +57,25 @@ void ThermodynamicsAlgorithmsTest::totalEnergyTest() const{
 
     QCOMPARE(res,ref.sum());
 }
+
+void ThermodynamicsAlgorithmsTest::temperatureTest() const{
+    const double temperature(500.0);
+    const VectorXd concentrations(std::vector<double>{0.1,0.9});
+    const VectorXd temperatures(std::vector<double>{temperature,temperature});
+    const std::vector<ThermodynamicsAlgorithms::Species>
+    species{ThermodynamicsAlgorithms::Species(500.0,ThermodynamicsAlgorithms::Species::diatomic)
+           ,ThermodynamicsAlgorithms::Species(100.0,ThermodynamicsAlgorithms::Species::monoatomic)};
+    const double energy(ThermodynamicsAlgorithms::totalEnergy(concentrations,temperatures,species));
+    const double epsilon(0.01);
+
+
+    const double temperatureNew1 = ThermodynamicsAlgorithms::temperature(concentrations,species,temperature + 400.0,energy,epsilon);
+    const double temperatureNew2 = ThermodynamicsAlgorithms::temperature(concentrations,species,temperature - 400.0,energy,epsilon);
+    const VectorXd newTemperatures1(std::vector<double>{temperatureNew1,temperatureNew1});
+    const VectorXd newTemperatures2(std::vector<double>{temperatureNew2,temperatureNew2});
+    const double newEnergy1(ThermodynamicsAlgorithms::totalEnergy(concentrations,newTemperatures1,species));
+    const double newEnergy2(ThermodynamicsAlgorithms::totalEnergy(concentrations,newTemperatures2,species));
+
+    QVERIFY((std::abs(energy - newEnergy1)/energy) < epsilon);
+    QVERIFY((std::abs(energy - newEnergy2)/energy) < epsilon);
+}
