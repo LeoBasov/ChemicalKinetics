@@ -1,15 +1,38 @@
+/* =============================================================================================
+ * ChemicalKinetics
+ *
+ * A tool to calculate chemistry kinetics
+ * ---------------------------------------------------------------------------------------------
+ * Copyright (C) 2018  Leo Basov
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public Licens
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * =============================================================================================
+ */
+
 #include "thermodynamicsalgorithms.h"
 
-double ThermodynamicsAlgorithms::internalDOF(const double& temperature,const double& characteresticVibrationalsTemp,const Type& species){
-    switch (species) {
-    case monoatomic:
+double ThermodynamicsAlgorithms::internalDOF(const double& temperature, const Species &species){
+    switch (species.type) {
+    case Species::monoatomic:
         return 0.0;
         break;
-    case diatomic:
-        return diatomicInternalDOF(temperature,characteresticVibrationalsTemp);
+    case Species::diatomic:
+        return diatomicInternalDOF(temperature,species.characteresticVibrationalsTemp);
         break;
     default:
-        throw Exception();
+        throw Exception("Type <" +std::to_string(species.type) + "> not defines."
+                       ,"ThermodynamicsAlgorithms::" + std::string(__FUNCTION__));
         break;
     }
 }
@@ -21,13 +44,17 @@ double ThermodynamicsAlgorithms::diatomicInternalDOF(const double& temperature,c
     return 2.0 + 2.0*fraction/denum;
 }
 
-VectorXd ThermodynamicsAlgorithms::internalDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps,const std::vector<Type>& species){
+VectorXd ThermodynamicsAlgorithms::internalDOF(const VectorXd& temperatures,const std::vector<Species> &species){
     VectorXd vec(temperatures.size());
 
-    temperatures.validateSize(characteresticVibrationalsTemps);
+    if(temperatures.size()!=species.size()){
+        throw Exception("Length of temperatures <" + std::to_string(temperatures.size())
+                       +"> != length species <" + std::to_string(species.size()) + ">."
+                       ,"ThermodynamicsAlgorithms::" + std::string(__FUNCTION__));
+    }
 
     for(size_t i(0);i<vec.size();++i){
-        vec.at(i) = internalDOF(temperatures.at(i),characteresticVibrationalsTemps.at(i),species.at(i));
+        vec.at(i) = internalDOF(temperatures.at(i),species.at(i));
     }
 
     return vec;
