@@ -5,6 +5,7 @@
 
 namespace ThermodynamicsAlgorithms{
 
+VectorXd internamDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps);
 double totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const VectorXd& internalDOF);
 
 }

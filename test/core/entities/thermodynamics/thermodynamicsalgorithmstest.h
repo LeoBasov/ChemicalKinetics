@@ -10,5 +10,6 @@ public:
     ThermodynamicsAlgorithmsTest(const std::string& name);
 
 private slots:
+    void internamDOF() const;
     void totalEnergyTest() const;
 };
