@@ -22,8 +22,20 @@
 
 #pragma once
 
+#include "thermodynamicsalgorithms.h"
+
 class Thermodynamics
 {
 public:
     Thermodynamics();
+
+    void setSpecies(std::vector<ThermodynamicsAlgorithms::Species> species);
+    void setTotalEnergy(const double& energy);
+    void addEnergy(const double& energyDelta);
+
+    double totalEnergy(const VectorXd &concentrations,const VectorXd& temperatures) const;
+
+private:
+    std::vector<ThermodynamicsAlgorithms::Species> species;
+    double totalEnerg = 0.0;
 };
