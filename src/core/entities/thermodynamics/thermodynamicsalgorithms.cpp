@@ -21,15 +21,13 @@ double ThermodynamicsAlgorithms::diatomicInternalDOF(const double& temperature,c
     return 2.0 + 2.0*fraction/denum;
 }
 
-VectorXd ThermodynamicsAlgorithms::internalDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps){
+VectorXd ThermodynamicsAlgorithms::internalDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps,const std::vector<Species>& species){
     VectorXd vec(temperatures.size());
 
     temperatures.validateSize(characteresticVibrationalsTemps);
 
     for(size_t i(0);i<vec.size();++i){
-        const double frac(characteresticVibrationalsTemps.at(i)/temperatures.at(i));
-
-        vec.at(i) = 2.0 + 2.0*(frac/(std::exp(frac) - 1.0));
+        vec.at(i) = internalDOF(temperatures.at(i),characteresticVibrationalsTemps.at(i),species.at(i));
     }
 
     return vec;

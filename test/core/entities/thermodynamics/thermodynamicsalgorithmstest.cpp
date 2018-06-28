@@ -31,9 +31,10 @@ void ThermodynamicsAlgorithmsTest::internamDOF() const{
     const VectorXd temperatures({1.0,2.0,3.0});
     const VectorXd vibrTemperatures({4.0,5.0,6.0});
     const VectorXd ref({2.0 + 2.0*((vibrTemperatures.at(0)/temperatures.at(0))/(std::exp(vibrTemperatures.at(0)/temperatures.at(0)) - 1.0))
-                       ,2.0 + 2.0*((vibrTemperatures.at(1)/temperatures.at(1))/(std::exp(vibrTemperatures.at(1)/temperatures.at(1)) - 1.0))
+                       ,0.0
                        ,2.0 + 2.0*((vibrTemperatures.at(2)/temperatures.at(2))/(std::exp(vibrTemperatures.at(2)/temperatures.at(2)) - 1.0))});
-    const VectorXd res(ThermodynamicsAlgorithms::internalDOF(temperatures,vibrTemperatures));
+    std::vector<ThermodynamicsAlgorithms::Species> species{ThermodynamicsAlgorithms::diatomic,ThermodynamicsAlgorithms::monoatomic,ThermodynamicsAlgorithms::diatomic};
+    const VectorXd res(ThermodynamicsAlgorithms::internalDOF(temperatures,vibrTemperatures,species));
 
     QCOMPARE(res.at(0),ref.at(0));
     QCOMPARE(res.at(1),ref.at(1));
