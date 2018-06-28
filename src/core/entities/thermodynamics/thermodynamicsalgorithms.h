@@ -45,4 +45,10 @@ VectorXd internalDOF(const VectorXd& temperatures,const std::vector<Species>& sp
 double totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const VectorXd& internalDOF);
 double totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const std::vector<Species>& species);
 
+double temperature(const VectorXd& concentrations
+                  ,const std::vector<Species>& species
+                  ,const double& startTemp
+                  ,const double& energyRef
+                  ,const double& epsilon);
+
 }

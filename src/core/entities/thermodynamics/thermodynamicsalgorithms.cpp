@@ -72,3 +72,19 @@ double ThermodynamicsAlgorithms::totalEnergy(const VectorXd& concentrations,cons
 
     return ThermodynamicsAlgorithms::totalEnergy(concentrations,temperatures,dof);
 }
+
+double ThermodynamicsAlgorithms::temperature(const VectorXd& concentrations
+                                            ,const std::vector<Species>& species
+                                            ,const double& startTemp
+                                            ,const double& energyRef
+                                            ,const double& epsilon){
+    double temperature(startTemp);
+    double energy(totalEnergy(concentrations,VectorXd(concentrations.size(),temperature),species));
+
+    while((std::abs(energyRef - energy)/energyRef) > epsilon){
+        temperature = energy>energyRef ? temperature + temperature*0.5 : temperature - temperature*0.5;
+        energy = totalEnergy(concentrations,VectorXd(concentrations.size(),temperature),species);
+    }
+
+    return temperature;
+}
