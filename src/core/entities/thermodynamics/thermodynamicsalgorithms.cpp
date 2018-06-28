@@ -82,7 +82,7 @@ double ThermodynamicsAlgorithms::temperature(const VectorXd& concentrations
     double energy(totalEnergy(concentrations,VectorXd(concentrations.size(),temperature),species));
 
     while((std::abs(energyRef - energy)/energyRef) > epsilon){
-        temperature = energy>energyRef ? temperature + temperature*0.5 : temperature - temperature*0.5;
+        temperature = energy>energyRef ? temperature - temperature*0.5 : temperature + temperature*0.5;
         energy = totalEnergy(concentrations,VectorXd(concentrations.size(),temperature),species);
     }
 
