@@ -18,4 +18,5 @@ private slots:
 
     void moduleTest() const;
     void sumTest() const;
+    void elemWiseMultTest() const;
 };

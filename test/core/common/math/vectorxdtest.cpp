@@ -128,3 +128,19 @@ void VectorXdTest::sumTest() const{
 
     QCOMPARE(vec1.sum(),vals1.at(0) + vals1.at(1) + vals1.at(2));
 }
+
+void VectorXdTest::elemWiseMultTest() const{
+    const VectorXd vec1({1.0,2.0,3.0});
+    const VectorXd vec2({4.0,5.0,6.0});
+    const VectorXd ref({4.0,10.0,18.0});
+    const VectorXd res1(VectorXd::elemWiseMult(vec1,vec2));
+    const VectorXd res2(vec1.elemWiseMult(vec2));
+
+    QCOMPARE(res1.at(0),ref.at(0));
+    QCOMPARE(res1.at(1),ref.at(1));
+    QCOMPARE(res1.at(2),ref.at(2));
+
+    QCOMPARE(res2.at(0),ref.at(0));
+    QCOMPARE(res2.at(1),ref.at(1));
+    QCOMPARE(res2.at(2),ref.at(2));
+}

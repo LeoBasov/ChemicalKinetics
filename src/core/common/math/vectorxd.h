@@ -40,6 +40,8 @@ public:
 
     double module() const;
     double sum() const;
+    VectorXd elemWiseMult(const VectorXd& other) const;
+    static VectorXd elemWiseMult(const VectorXd& lhs,const VectorXd& rhs);
 
     size_v size() const;
     void resize(const size_v& size,const double &values);

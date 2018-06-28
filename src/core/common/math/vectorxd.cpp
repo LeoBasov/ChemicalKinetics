@@ -149,6 +149,22 @@ double VectorXd::sum() const{
     return sum;
 }
 
+VectorXd VectorXd::elemWiseMult(const VectorXd& other) const{
+    return elemWiseMult(*this,other);
+}
+
+VectorXd VectorXd::elemWiseMult(const VectorXd& lhs,const VectorXd& rhs){
+    VectorXd vec(lhs.size());
+
+    validateSize(lhs,rhs);
+
+    for(size_t i(0);i<lhs.size();++i){
+        vec.at(i) = lhs.at(i)*rhs.at(i);
+    }
+
+    return vec;
+}
+
 VectorXd::size_v VectorXd::size() const{
     return this->values.size();
 }
