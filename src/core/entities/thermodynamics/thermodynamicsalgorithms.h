@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../common/math/vectorxd.h"
+#include "../../common/constants.h"
 
 namespace ThermodynamicsAlgorithms{
 

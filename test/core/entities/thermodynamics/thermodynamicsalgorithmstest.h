@@ -8,4 +8,7 @@ class ThermodynamicsAlgorithmsTest : public UnitTest
     Q_OBJECT
 public:
     ThermodynamicsAlgorithmsTest(const std::string& name);
+
+private slots:
+    void totalEnergyTest() const;
 };
