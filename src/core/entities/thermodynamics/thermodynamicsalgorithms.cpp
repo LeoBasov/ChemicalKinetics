@@ -1,6 +1,27 @@
 #include "thermodynamicsalgorithms.h"
 
-VectorXd ThermodynamicsAlgorithms::internamDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps){
+double ThermodynamicsAlgorithms::internalDOF(const double& temperature,const double& characteresticVibrationalsTemp,const Species& species){
+    switch (species) {
+    case monoatomic:
+        return 0.0;
+        break;
+    case diatomic:
+        return diatomicInternalDOF(temperature,characteresticVibrationalsTemp);
+        break;
+    default:
+        throw Exception();
+        break;
+    }
+}
+
+double ThermodynamicsAlgorithms::diatomicInternalDOF(const double& temperature,const double& characteresticVibrationalsTemp){
+    const double fraction(characteresticVibrationalsTemp/temperature);
+    const double denum(std::exp(fraction) - 1.0);
+
+    return 2.0 + 2.0*fraction/denum;
+}
+
+VectorXd ThermodynamicsAlgorithms::internalDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps){
     VectorXd vec(temperatures.size());
 
     temperatures.validateSize(characteresticVibrationalsTemps);
