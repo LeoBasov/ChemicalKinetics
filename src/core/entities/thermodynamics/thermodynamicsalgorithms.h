@@ -27,11 +27,11 @@
 
 namespace ThermodynamicsAlgorithms{
 
-enum Species{monoatomic=1,diatomic=2,none=0};
+enum Type{monoatomic=1,diatomic=2,none=0};
 
-double internalDOF(const double& temperature,const double& characteresticVibrationalsTemp,const Species& species);
+double internalDOF(const double& temperature,const double& characteresticVibrationalsTemp,const Type& species);
 double diatomicInternalDOF(const double& temperature,const double& characteresticVibrationalsTemp);
-VectorXd internalDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps,const std::vector<Species>& species);
+VectorXd internalDOF(const VectorXd& temperatures,const VectorXd& characteresticVibrationalsTemps,const std::vector<Type>& species);
 double totalEnergy(const VectorXd& concentrations,const VectorXd& temperatures,const VectorXd& internalDOF);
 
 }
