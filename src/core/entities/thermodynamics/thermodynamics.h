@@ -32,10 +32,15 @@ public:
     void setSpecies(std::vector<ThermodynamicsAlgorithms::Species> species);
     void setTotalEnergy(const double& energy);
     void addEnergy(const double& energyDelta);
+    void setLastTemperature(const double& temperature);
+    void setTemperatureCalcAccuracy(const double& epsilon);
 
     double totalEnergy(const VectorXd &concentrations,const VectorXd& temperatures) const;
+    double temperature(const VectorXd& concentrations) const;
 
 private:
     std::vector<ThermodynamicsAlgorithms::Species> species;
     double energy = 0.0;
+    double lastTemperature = 0.0;
+    double epsilon = 0.0;
 };
