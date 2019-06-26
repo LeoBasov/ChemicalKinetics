@@ -22,8 +22,6 @@
 
 #pragma once
 
-#include <fstream>
-
 #include "../../core/output_boundary/viewmodel.h"
 
 class View : public Observer, public std::enable_shared_from_this<View>
@@ -34,6 +32,6 @@ public:
 
     void subscribe(const std::shared_ptr<ViewModel>& viewModel);
 
-private:
+protected:
     std::shared_ptr<ViewModel> viewModel;
 };

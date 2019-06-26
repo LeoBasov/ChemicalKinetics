@@ -31,6 +31,7 @@ Presenter::~Presenter(){
 }
 
 void Presenter::update(){
+    this->viewModel->setState(this->state->getState());
     this->viewModel->notify();
 }
 

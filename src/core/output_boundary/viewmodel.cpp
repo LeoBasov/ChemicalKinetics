@@ -29,3 +29,11 @@ ViewModel::ViewModel(){
 ViewModel::~ViewModel(){
 
 }
+
+void ViewModel::setState(const State& state){
+    this->state = state;
+}
+
+State ViewModel::getState() const{
+    return this->state;
+}

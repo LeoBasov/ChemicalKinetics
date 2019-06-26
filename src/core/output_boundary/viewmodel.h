@@ -23,6 +23,7 @@
 #pragma once
 
 #include "../common/abstractions/subject.h"
+#include "../common/data_types/state.h"
 
 class ViewModel : public Subject
 {
@@ -30,6 +31,9 @@ public:
     ViewModel();
     ~ViewModel() override;
 
-private:
+    void setState(const State& state);
+    State getState() const;
 
+private:
+    State state;
 };

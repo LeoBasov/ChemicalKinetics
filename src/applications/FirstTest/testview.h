@@ -25,20 +25,15 @@
 #include <iostream>
 #include  <fstream>
 
-#include "../../core/common/abstractions/observer.h"
-#include "../../core/use_case_interactor/simulationstate.h"
+#include "../../core/view_boundary/view.h"
 
-class TestPresenter : public Observer, public std::enable_shared_from_this<TestPresenter>
+class TestView : public View
 {
 public:
-    TestPresenter();
-    ~TestPresenter() override;
+    TestView();
 
     void update() override;
 
-    void subscribe(const std::shared_ptr<SimulationState>& state);
-
 private:
-    std::shared_ptr<SimulationState> state;
     std::ofstream stream;
 };

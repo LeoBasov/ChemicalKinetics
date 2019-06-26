@@ -20,19 +20,14 @@
  * =============================================================================================
  */
 
-#include "testpresenter.h"
+#include "testview.h"
 
-TestPresenter::TestPresenter()
-{
-
+TestView::TestView(){
+    this->stream.open("concentrations.csv");
 }
 
-TestPresenter::~TestPresenter(){
-
-}
-
-void TestPresenter::update(){
-    const State& locSt(this->state->getState());
+void TestView::update(){
+    const State& locSt(this->viewModel->getState());
 
     std::cout << "Temperature = " << locSt.temperature <<  std::endl;
 
@@ -46,10 +41,4 @@ void TestPresenter::update(){
     this->stream << std::endl;
     std::cout << std::endl;
     std::cout << "--------------------------------------------------------------------------------" << std::endl;
-}
-
-void TestPresenter::subscribe(const std::shared_ptr<SimulationState>& state){
-    this->state = state;
-    this->state->attach(shared_from_this());
-    this->stream.open("concentrations.csv");
 }

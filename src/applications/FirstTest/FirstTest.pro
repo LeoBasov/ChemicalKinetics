@@ -31,7 +31,7 @@ SOURCES += \
     ../../core/use_case_interactor/abortcriterium.cpp \
     ../../core/use_case_interactor/converter.cpp \
     ../../core/use_case_interactor/usecaseinteractor.cpp \
-    testpresenter.cpp
+    testview.cpp
 
 HEADERS += \
     ../../core/common/abstractions/observer.h \
@@ -61,4 +61,4 @@ HEADERS += \
     ../../core/view_boundary/view.h \
     ../../third_party/tinyxml/tinystr.h \
     ../../third_party/tinyxml/tinyxml.h \
-    testpresenter.h
+    testview.h
