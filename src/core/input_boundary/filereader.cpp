@@ -25,3 +25,11 @@
 FileReader::FileReader(){
 
 }
+
+void FileReader::clear(){
+    this->data = InputData();
+}
+
+InputData FileReader::getData() const{
+    return this->data;
+}

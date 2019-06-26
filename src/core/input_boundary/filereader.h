@@ -22,8 +22,19 @@
 
 #pragma once
 
+#include <string>
+
+#include "../common/data_types/inputdata.h"
+
 class FileReader
 {
 public:
     FileReader();
+
+    void clear();
+    virtual void read(const std::string& fileName) = 0;
+    InputData getData() const;
+
+protected:
+    InputData data;
 };
