@@ -21,3 +21,11 @@
  */
 
 #include "viewmodel.h"
+
+ViewModel::ViewModel(){
+
+}
+
+ViewModel::~ViewModel(){
+
+}

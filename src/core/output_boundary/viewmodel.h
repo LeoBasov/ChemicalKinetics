@@ -22,6 +22,14 @@
 
 #pragma once
 
-struct ViewModel
+#include "../common/abstractions/subject.h"
+
+class ViewModel : public Subject
 {
+public:
+    ViewModel();
+    ~ViewModel() override;
+
+private:
+
 };

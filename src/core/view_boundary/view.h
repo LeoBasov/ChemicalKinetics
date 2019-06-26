@@ -24,16 +24,16 @@
 
 #include <fstream>
 
-#include "../../core/common/data_types/state.h"
+#include "../../core/output_boundary/viewmodel.h"
 
-class View
+class View : public Observer, public std::enable_shared_from_this<View>
 {
 public:
     View();
+    ~View() override;
 
-    void open(const std::string& file);
-    void plot(const State& state);
+    void subscribe(const std::shared_ptr<ViewModel>& viewModel);
 
 private:
-    std::ofstream stream;
+    std::shared_ptr<ViewModel> viewModel;
 };

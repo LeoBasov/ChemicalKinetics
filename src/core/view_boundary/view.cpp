@@ -22,21 +22,15 @@
 
 #include "view.h"
 
-View::View()
-{
+View::View(){
 
 }
 
-void View::open(const std::string& file){
-    this->stream.open(file);
+View::~View(){
+
 }
 
-void View::plot(const State& state){
-    this->stream << state.time << ",";
-
-    for(size_t i(0);i<state.concentrations.size();i++){
-        this->stream <<state.concentrations.at(i) << ", ";
-    }
-
-   this->stream << std::endl;
+void View::subscribe(const std::shared_ptr<ViewModel>& viewModel){
+    this->viewModel = viewModel;
+    this->viewModel->attach(shared_from_this());
 }
