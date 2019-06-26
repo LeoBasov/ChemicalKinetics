@@ -22,17 +22,14 @@
 
 #pragma once
 
-#include <iostream>
-#include  <fstream>
-
 #include "../../core/common/abstractions/observer.h"
 #include "../../core/use_case_interactor/simulationstate.h"
 
-class TestPresenter : public Observer, public std::enable_shared_from_this<TestPresenter>
+class Presenter : public Observer, public std::enable_shared_from_this<Presenter>
 {
 public:
-    TestPresenter();
-    ~TestPresenter() override;
+    Presenter();
+    ~Presenter() override;
 
     void update() override;
 
@@ -40,5 +37,4 @@ public:
 
 private:
     std::shared_ptr<SimulationState> state;
-    std::ofstream stream;
 };

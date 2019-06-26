@@ -20,25 +20,21 @@
  * =============================================================================================
  */
 
-#pragma once
+#include "presenter.h"
 
-#include <iostream>
-#include  <fstream>
+Presenter::Presenter(){
 
-#include "../../core/common/abstractions/observer.h"
-#include "../../core/use_case_interactor/simulationstate.h"
+}
 
-class TestPresenter : public Observer, public std::enable_shared_from_this<TestPresenter>
-{
-public:
-    TestPresenter();
-    ~TestPresenter() override;
+Presenter::~Presenter(){
 
-    void update() override;
+}
 
-    void subscribe(const std::shared_ptr<SimulationState>& state);
+void Presenter::update(){
 
-private:
-    std::shared_ptr<SimulationState> state;
-    std::ofstream stream;
-};
+}
+
+void Presenter::subscribe(const std::shared_ptr<SimulationState>& state){
+    this->state = state;
+    this->state->attach(shared_from_this());
+}

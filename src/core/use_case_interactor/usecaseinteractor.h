@@ -28,7 +28,7 @@
 #include "../entities/chemistry/chemistry.h"
 #include "../entities/integrator/integrator.h"
 #include "converter.h"
-#include "../output_boundary/simulationstate.h"
+#include "simulationstate.h"
 
 class UseCaseInteractor
 {
