@@ -8,6 +8,8 @@ SOURCES += \
     ../../core/input_boundary/controller.cpp \
     ../../core/input_boundary/filereader.cpp \
     ../../core/input_boundary/xmlreader.cpp \
+    ../../core/view_boundary/view.cpp \
+    ../../core/view_boundary/viewmodel.cpp \
     ../../third_party/tinyxml/tinystr.cpp \
     ../../third_party/tinyxml/tinyxml.cpp \
     ../../third_party/tinyxml/tinyxmlerror.cpp \
@@ -28,8 +30,7 @@ SOURCES += \
     ../../core/use_case_interactor/abortcriterium.cpp \
     ../../core/use_case_interactor/converter.cpp \
     ../../core/use_case_interactor/usecaseinteractor.cpp \
-    testpresenter.cpp \
-    view.cpp
+    testpresenter.cpp
 
 HEADERS += \
     ../../core/common/data_types/datanode.h \
@@ -54,7 +55,8 @@ HEADERS += \
     ../../core/use_case_interactor/abortcriterium.h \
     ../../core/use_case_interactor/converter.h \
     ../../core/use_case_interactor/usecaseinteractor.h \
+    ../../core/view_boundary/view.h \
+    ../../core/view_boundary/viewmodel.h \
     ../../third_party/tinyxml/tinystr.h \
     ../../third_party/tinyxml/tinyxml.h \
-    testpresenter.h \
-    view.h
+    testpresenter.h
