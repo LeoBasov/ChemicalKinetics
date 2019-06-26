@@ -24,6 +24,7 @@
 
 #include "filereader.h"
 #include "../../third_party/tinyxml/tinyxml.h"
+#include "../exceptions/exception.h"
 
 class XMLReader : public FileReader
 {

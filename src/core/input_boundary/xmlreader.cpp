@@ -30,6 +30,7 @@ void XMLReader::read(const std::string& fileName){
     TiXmlDocument xmlDoc;
 
     if(!xmlDoc.LoadFile(fileName.c_str())){
-        //throw Exception("InputModule::" + std::string(__FUNCTION__),"File <" + fileName + "> could not be loaded");
+        throw Exception("XMl file with name <" + fileName + "> could not be loaded"
+                       ,"XMLReader::" + std::string(__FUNCTION__));
     }
 }
