@@ -22,9 +22,13 @@
 
 #pragma once
 
+#include <memory>
+#include <sstream>
+
 #include "filereader.h"
 #include "../../third_party/tinyxml/tinyxml.h"
 #include "../exceptions/exception.h"
+#include "../common/data_types/datanode.h"
 
 class XMLReader : public FileReader
 {
@@ -34,5 +38,14 @@ public:
     virtual void read(const std::string& fileName) override;
 
 private:
+    std::string relativeDirectory;
+    DataNode xmlData;
 
+    void parseXMLFile(const std::string &fileName);
+    void parseXMLFile(const std::string &fileName, DataNode& node) const;
+    DataNode processElement(const TiXmlElement* element) const;
+    std::vector<std::string> processText(const std::string &text) const;
+    void getRelDirectory(const std::string &fileName);
+
+    void convertData();
 };
