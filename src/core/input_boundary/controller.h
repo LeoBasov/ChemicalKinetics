@@ -24,6 +24,7 @@
 
 #include "../use_case_interactor/simulationstate.h"
 #include "../use_case_interactor/usecaseinteractor.h"
+#include "../common/data_types/inputdata.h"
 
 class Controller
 {
@@ -31,6 +32,7 @@ public:
     Controller();
 
     std::shared_ptr<SimulationState> getState();
+    void startSim(const InputData& data);
 
 private:
     std::shared_ptr<SimulationState> state;

@@ -30,3 +30,7 @@ Controller::Controller():state(std::make_shared<SimulationState>())
 std::shared_ptr<SimulationState> Controller::getState(){
     return this->state;
 }
+
+void Controller::startSim(const InputData& data){
+    this->interactor.start(data);
+}

@@ -22,13 +22,14 @@
 
 #include <iostream>
 
-#include "testpresenter.h"
 #include "../../core/use_case_interactor/usecaseinteractor.h"
+#include "../../core/input_boundary/controller.h"
+#include "../../core/output_boundary/presenter.h"
 
 InputData setUpInputData();
 InputData dsmcTest();
 
-int main()
+/*int main()
 {
     std::shared_ptr<TestPresenter> presenter(std::make_shared<TestPresenter>());
     std::shared_ptr<SimulationState> state(std::make_shared<SimulationState>());
@@ -43,6 +44,37 @@ int main()
 
     try{
         interactor.start(data);
+    }catch(OutOfRange& e){
+        std::cout << "==================================OUT OF RANGE==================================" << std::endl;
+        std::cout << "WAHT: " << e.what() << std::endl << "WHERE: " << e.where() << std::endl;
+        std::cout << "================================================================================" << std::endl;
+    }catch(Exception& e){
+        std::cout << "==================================EXCEPTION=====================================" << std::endl;
+        std::cout << "WAHT: " << e.what() << std::endl << "WHERE: " << e.where() << std::endl;
+        std::cout << "================================================================================" << std::endl;
+    }catch(std::exception e){
+        std::cout << "==================================STD::EXCEPTION=====================================" << std::endl;
+        std::cout << "WAHT: " << e.what() << std::endl;
+        std::cout << "================================================================================" << std::endl;
+    }
+
+    std::cout << "==================================DONE==========================================" << std::endl;
+
+    return 0;
+}*/
+
+int main(){
+    std::cout << "=================================CHEMICAL KINETICS==============================" << std::endl;
+    std::cout << "Combustion of octan at 2000 K." << std::endl;
+    std::cout << "================================================================================" << std::endl;
+
+    try{
+        InputData data(dsmcTest());
+        Controller controller;
+        std::shared_ptr<Presenter> presenter(std::make_shared<Presenter>());
+
+        presenter->subscribe(controller.getState());
+        controller.startSim(data);
     }catch(OutOfRange& e){
         std::cout << "==================================OUT OF RANGE==================================" << std::endl;
         std::cout << "WAHT: " << e.what() << std::endl << "WHERE: " << e.where() << std::endl;
