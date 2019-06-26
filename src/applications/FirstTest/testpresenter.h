@@ -25,7 +25,7 @@
 #include <iostream>
 #include  <fstream>
 
-#include "../../core/output_boundary/observer.h"
+#include "../../core/common/abstractions/observer.h"
 #include "../../core/output_boundary/simulationstate.h"
 
 class TestPresenter : public Observer, public std::enable_shared_from_this<TestPresenter>

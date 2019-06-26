@@ -4,6 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    ../../core/common/abstractions/observer.cpp \
+    ../../core/common/abstractions/subject.cpp \
     ../../core/common/data_types/datanode.cpp \
     ../../core/input_boundary/controller.cpp \
     ../../core/input_boundary/filereader.cpp \
@@ -24,15 +26,15 @@ SOURCES += \
     ../../core/entities/integrator/integratoralgorithms.cpp \
     ../../core/exceptions/logic_errors/outofrange.cpp \
     ../../core/exceptions/exception.cpp \
-    ../../core/output_boundary/observer.cpp \
     ../../core/output_boundary/simulationstate.cpp \
-    ../../core/output_boundary/subject.cpp \
     ../../core/use_case_interactor/abortcriterium.cpp \
     ../../core/use_case_interactor/converter.cpp \
     ../../core/use_case_interactor/usecaseinteractor.cpp \
     testpresenter.cpp
 
 HEADERS += \
+    ../../core/common/abstractions/observer.h \
+    ../../core/common/abstractions/subject.h \
     ../../core/common/data_types/datanode.h \
     ../../core/common/data_types/inputdata.h \
     ../../core/common/data_types/interpolationtable.h \
@@ -49,9 +51,7 @@ HEADERS += \
     ../../core/input_boundary/controller.h \
     ../../core/input_boundary/filereader.h \
     ../../core/input_boundary/xmlreader.h \
-    ../../core/output_boundary/observer.h \
     ../../core/output_boundary/simulationstate.h \
-    ../../core/output_boundary/subject.h \
     ../../core/use_case_interactor/abortcriterium.h \
     ../../core/use_case_interactor/converter.h \
     ../../core/use_case_interactor/usecaseinteractor.h \

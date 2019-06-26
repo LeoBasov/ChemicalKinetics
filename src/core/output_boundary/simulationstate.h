@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include "subject.h"
+#include "../common/abstractions/subject.h"
 #include "../common/data_types/state.h"
 
 class SimulationState : public Subject
