@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    ../../core/common/data_types/datanode.cpp \
     ../../core/input_boundary/filereader.cpp \
     ../../core/input_boundary/xmlreader.cpp \
     ../../third_party/tinyxml/tinystr.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
     view.cpp
 
 HEADERS += \
+    ../../core/common/data_types/datanode.h \
     ../../core/common/data_types/inputdata.h \
     ../../core/common/data_types/interpolationtable.h \
     ../../core/common/data_types/state.h \
