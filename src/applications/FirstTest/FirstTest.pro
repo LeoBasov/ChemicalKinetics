@@ -5,6 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
     ../../core/common/data_types/datanode.cpp \
+    ../../core/input_boundary/controller.cpp \
     ../../core/input_boundary/filereader.cpp \
     ../../core/input_boundary/xmlreader.cpp \
     ../../third_party/tinyxml/tinystr.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     ../../core/entities/integrator/integratoralgorithms.h \
     ../../core/exceptions/logic_errors/outofrange.h \
     ../../core/exceptions/exception.h \
+    ../../core/input_boundary/controller.h \
     ../../core/input_boundary/filereader.h \
     ../../core/input_boundary/xmlreader.h \
     ../../core/output_boundary/observer.h \
