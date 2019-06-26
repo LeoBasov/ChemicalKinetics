@@ -24,6 +24,7 @@
 
 #include "../../core/common/abstractions/observer.h"
 #include "../../core/use_case_interactor/simulationstate.h"
+#include "viewmodel.h"
 
 class Presenter : public Observer, public std::enable_shared_from_this<Presenter>
 {
@@ -34,7 +35,9 @@ public:
     void update() override;
 
     void subscribe(const std::shared_ptr<SimulationState>& state);
+    std::shared_ptr<ViewModel> getViewModel();
 
 private:
     std::shared_ptr<SimulationState> state;
+    std::shared_ptr<ViewModel> viewModel;
 };

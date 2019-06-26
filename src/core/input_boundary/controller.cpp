@@ -26,3 +26,7 @@ Controller::Controller():state(std::make_shared<SimulationState>())
                         ,interactor(state){
 
 }
+
+std::shared_ptr<SimulationState> Controller::getState(){
+    return this->state;
+}

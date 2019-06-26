@@ -22,7 +22,7 @@
 
 #include "presenter.h"
 
-Presenter::Presenter(){
+Presenter::Presenter():viewModel(std::make_shared<ViewModel>()){
 
 }
 
@@ -31,10 +31,14 @@ Presenter::~Presenter(){
 }
 
 void Presenter::update(){
-
+    this->viewModel->notify();
 }
 
 void Presenter::subscribe(const std::shared_ptr<SimulationState>& state){
     this->state = state;
     this->state->attach(shared_from_this());
+}
+
+std::shared_ptr<ViewModel> Presenter::getViewModel(){
+    return this->viewModel;
 }

@@ -30,6 +30,8 @@ class Controller
 public:
     Controller();
 
+    std::shared_ptr<SimulationState> getState();
+
 private:
     std::shared_ptr<SimulationState> state;
     UseCaseInteractor interactor;
