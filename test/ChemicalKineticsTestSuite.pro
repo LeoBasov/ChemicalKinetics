@@ -6,6 +6,7 @@ CONFIG += console c++14
 CONFIG -= app_bundle
 
 SOURCES += main.cpp \
+    ../src/core/input_boundary/filereader.cpp \
     unittest.cpp \
     ../src/core/common/math/vectorxd.cpp \
     ../src/core/exceptions/exception.cpp \
@@ -35,6 +36,7 @@ SOURCES += main.cpp \
     core/entities/thermodynamics/thermodynamicsalgorithmstest.cpp
 
 HEADERS += \
+    ../src/core/input_boundary/filereader.h \
     unittest.h \
     ../src/core/common/math/vectorxd.h \
     ../src/core/exceptions/exception.h \

@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    ../../core/input_boundary/filereader.cpp \
         main.cpp \
     ../../core/common/data_types/interpolationtable.cpp \
     ../../core/common/math/matrixxd.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     ../../core/entities/integrator/integratoralgorithms.h \
     ../../core/exceptions/logic_errors/outofrange.h \
     ../../core/exceptions/exception.h \
+    ../../core/input_boundary/filereader.h \
     ../../core/output_boundary/observer.h \
     ../../core/output_boundary/simulationstate.h \
     ../../core/output_boundary/subject.h \
