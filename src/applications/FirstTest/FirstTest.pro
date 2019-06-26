@@ -5,6 +5,11 @@ CONFIG -= qt
 
 SOURCES += \
     ../../core/input_boundary/filereader.cpp \
+    ../../core/input_boundary/xmlreader.cpp \
+    ../../third_party/tinyxml/tinystr.cpp \
+    ../../third_party/tinyxml/tinyxml.cpp \
+    ../../third_party/tinyxml/tinyxmlerror.cpp \
+    ../../third_party/tinyxml/tinyxmlparser.cpp \
         main.cpp \
     ../../core/common/data_types/interpolationtable.cpp \
     ../../core/common/math/matrixxd.cpp \
@@ -38,11 +43,14 @@ HEADERS += \
     ../../core/exceptions/logic_errors/outofrange.h \
     ../../core/exceptions/exception.h \
     ../../core/input_boundary/filereader.h \
+    ../../core/input_boundary/xmlreader.h \
     ../../core/output_boundary/observer.h \
     ../../core/output_boundary/simulationstate.h \
     ../../core/output_boundary/subject.h \
     ../../core/use_case_interactor/abortcriterium.h \
     ../../core/use_case_interactor/converter.h \
     ../../core/use_case_interactor/usecaseinteractor.h \
+    ../../third_party/tinyxml/tinystr.h \
+    ../../third_party/tinyxml/tinyxml.h \
     testpresenter.h \
     view.h
