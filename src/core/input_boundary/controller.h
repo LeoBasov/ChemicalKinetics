@@ -22,8 +22,15 @@
 
 #pragma once
 
+#include "../use_case_interactor/simulationstate.h"
+#include "../use_case_interactor/usecaseinteractor.h"
+
 class Controller
 {
 public:
     Controller();
+
+private:
+    std::shared_ptr<SimulationState> state;
+    UseCaseInteractor interactor;
 };

@@ -22,6 +22,7 @@
 
 #include "controller.h"
 
-Controller::Controller(){
+Controller::Controller():state(std::make_shared<SimulationState>())
+                        ,interactor(state){
 
 }
