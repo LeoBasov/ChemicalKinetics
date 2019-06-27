@@ -27,6 +27,7 @@ XMLReader::XMLReader(){
 }
 
 void XMLReader::read(const std::string& fileName){
+    getRelDirectory(fileName);
     parseXMLFile(fileName);
     convertData();
 }

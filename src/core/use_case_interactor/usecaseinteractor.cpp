@@ -53,7 +53,7 @@ void UseCaseInteractor::initializeState(const InputData& data){
 
     this->state.reactionMap = this->converter.getReactionMap();
     this->state.speciesMap = this->converter.getSpeciesMap();
-    this->state.temperature = data.chemistryData.temperature;
+    this->state.temperature = data.thermodynamicData.temperature;
     this->state.concentrations = this->converter.concentrations(data.chemistryData.species);
     this->state.concentrationDiffs = this->converter.concentrationsDiffs(data.chemistryData.species);
     this->state.reactionRates = this->converter.reactionRates(data.chemistryData.reactions);
