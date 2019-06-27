@@ -1,0 +1,35 @@
+<simulation>
+	<integrator_data mode="var_dt" parameter="0.1" time_step="0.1"/>
+	<chemistry_data>
+		<participating_species>
+			<species name="C8H18" concentration="4.0"/>
+			<species name="O2" concentration="4.0"/>
+			<species name="CO2" concentration="0.0"/>
+			<species name="H2O" concentration="0.0"/>
+		</participating_species>
+		<reactions>
+			<reaction name="combustion">
+				<rate_constant const="true" value="2.83583586672916e-15"/>
+				<educts>
+					<stoichiometric_coeff species="C8H18" value="1.0"/>
+					<stoichiometric_coeff species="O2" value="7.0/2.0"/>
+					<stoichiometric_coeff species="CO2" value="0.0"/>
+					<stoichiometric_coeff species="H2O" value="0.0"/>
+				</educts>
+				<products>
+					<stoichiometric_coeff species="C8H18" value="0.0"/>
+					<stoichiometric_coeff species="O2" value="0.0"/>
+					<stoichiometric_coeff species="CO2" value="2.0"/>
+					<stoichiometric_coeff species="H2O" value="3.0"/>
+				</products>
+				<reaction_powers>
+					<reaction_power species="C8H18" value="0.1"/>
+					<reaction_power species="O2" value="1.65"/>
+					<reaction_power species="CO2" value="0.0"/>
+					<reaction_power species="H2O" value="0.0"/>
+				</reaction_powers>
+			</reaction>
+		</reactions>
+	</chemistry_data>
+	<thermodynamic_data mode="const_T" temperature="2000"/>
+</simulation>
