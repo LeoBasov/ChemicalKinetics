@@ -7,6 +7,7 @@ SOURCES += \
     ../../core/common/abstractions/observer.cpp \
     ../../core/common/abstractions/subject.cpp \
     ../../core/common/data_types/datanode.cpp \
+    ../../core/common/utility.cpp \
     ../../core/input_boundary/controller.cpp \
     ../../core/input_boundary/filereader.cpp \
     ../../core/input_boundary/xmlreader.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     ../../core/common/math/matrixxd.h \
     ../../core/common/math/vectorxd.h \
     ../../core/common/constants.h \
+    ../../core/common/utility.hpp \
     ../../core/entities/chemistry/chemistry.h \
     ../../core/entities/chemistry/chemistryalgorithms.h \
     ../../core/entities/integrator/integrator.h \

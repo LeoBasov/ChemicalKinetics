@@ -27,16 +27,21 @@
 #include "../../core/output_boundary/presenter.h"
 #include "../../core/view_boundary/terminalview.hpp"
 #include "csvwriterviewtest.h"
+#include "../../core/input_boundary/xmlreader.h"
 
 InputData setUpInputData();
 InputData dsmcTest();
 
-int main(){
+int main(int ,const char *argv[]){
     std::cout << "=================================CHEMICAL KINETICS==============================" << std::endl;
     std::cout << "Combustion of octan at 2000 K." << std::endl;
     std::cout << "================================================================================" << std::endl;
 
     try{
+        XMLReader reader;
+
+        reader.read(argv[1]);
+
         InputData data(dsmcTest());
         Controller controller;
         std::shared_ptr<Presenter> presenter(std::make_shared<Presenter>());
