@@ -37,5 +37,7 @@ std::vector<InputData::Species> getSpeciesData(const DataNode& dataNode);
 std::vector<InputData::Reaction> getReactionsData(const DataNode& dataNode);
 InputData::Reaction getReactionData(const DataNode& dataNode);
 
+std::vector<InputData::SpeciesValuePair> getSpeciesValuePairs(const std::vector<DataNode>& nodes);
+
 };
 

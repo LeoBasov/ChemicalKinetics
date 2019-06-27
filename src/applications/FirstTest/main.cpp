@@ -39,14 +39,15 @@ int main(int ,const char *argv[]){
 
     try{
         XMLReader reader;
-
-        reader.read(argv[1]);
-
-        InputData data(dsmcTest());
+        InputData data;
+        //InputData data(dsmcTest());
         Controller controller;
         std::shared_ptr<Presenter> presenter(std::make_shared<Presenter>());
         std::shared_ptr<CSVWriterViewTest> csvWriterViewTest(std::make_shared<CSVWriterViewTest>());
         std::shared_ptr<TerminalView> terminalView(std::make_shared<TerminalView>());
+
+        reader.read(argv[1]);
+        data = reader.getData();
 
         presenter->subscribe(controller.getState());
 

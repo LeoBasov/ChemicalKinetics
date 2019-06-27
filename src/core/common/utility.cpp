@@ -109,5 +109,26 @@ std::vector<InputData::Reaction> Utility::getReactionsData(const DataNode& node)
 InputData::Reaction Utility::getReactionData(const DataNode& node){
     InputData::Reaction reaction;
 
+    reaction.name = node.getAttribute("name");
+
+    reaction.stoichiometricCoeffEducts = getSpeciesValuePairs(node.getNode("educts").getNodes());
+    reaction.stoichiometricCoeffProducts = getSpeciesValuePairs(node.getNode("products").getNodes());
+    reaction.reactionPowers = getSpeciesValuePairs(node.getNode("reaction_powers").getNodes());
+
     return reaction;
+}
+
+std::vector<InputData::SpeciesValuePair> Utility::getSpeciesValuePairs(const std::vector<DataNode>& nodes){
+    std::vector<InputData::SpeciesValuePair> pairs;
+
+    for(const auto& node : nodes){
+        InputData::SpeciesValuePair pair;
+
+        pair.species = node.getAttribute("species");
+        pair.value = std::stod(node.getAttribute("value"));
+
+        pairs.push_back(pair);
+    }
+
+    return pairs;
 }
