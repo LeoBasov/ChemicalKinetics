@@ -107,6 +107,7 @@ std::vector<InputData::Reaction> Utility::getReactionsData(const DataNode& node)
 }
 
 InputData::Reaction Utility::getReactionData(const DataNode& node){
+    const std::string modeStr(node.getNode("rate_constant").getAttribute("mode"));
     InputData::Reaction reaction;
 
     reaction.name = node.getAttribute("name");
@@ -114,6 +115,13 @@ InputData::Reaction Utility::getReactionData(const DataNode& node){
     reaction.stoichiometricCoeffEducts = getSpeciesValuePairs(node.getNode("educts").getNodes());
     reaction.stoichiometricCoeffProducts = getSpeciesValuePairs(node.getNode("products").getNodes());
     reaction.reactionPowers = getSpeciesValuePairs(node.getNode("reaction_powers").getNodes());
+
+    if(modeStr == "const_k"){
+        reaction.mode = InputData::Reaction::const_k;
+        reaction.rateConstant = std::stod(node.getNode("rate_constant").getAttribute("value"));
+    }else{
+        throw Exception("Undefined mode <" + modeStr + ">", "Utility::" + std::string(__FUNCTION__));
+    }
 
     return reaction;
 }
