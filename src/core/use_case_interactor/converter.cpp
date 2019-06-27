@@ -223,6 +223,20 @@ Integrator::Mode Converter::integratorMode(const InputData::IntegratorData::Mode
     }
 }
 
+AbortCriterium::Mode Converter::abortCriteriumMode(const InputData::AbortCriterion::Mode &mode) const{
+    switch(mode){
+    case InputData::AbortCriterion::var_steps:
+        return AbortCriterium::Mode::var_steps;
+        break;
+    case InputData::AbortCriterion::const_steps:
+        return AbortCriterium::Mode::const_steps;
+        break;
+    default:
+        throw Exception("Unknown mode <" + std::to_string(mode) + ">.","AbortCriterium::" + std::string(__FUNCTION__));
+        break;
+    }
+}
+
 Chemistry::Mode Converter::chemMode(const InputData::Reaction::Mode& mode) const{
     switch(mode){
     case InputData::Reaction::const_k:

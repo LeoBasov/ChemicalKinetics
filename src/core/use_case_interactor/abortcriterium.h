@@ -29,6 +29,8 @@
 class AbortCriterium
 {
 public:
+    enum Mode{const_steps = 1, var_steps = 2, none = 0};
+
     AbortCriterium();
 
     void reset();
@@ -36,11 +38,21 @@ public:
 
     bool valid(const State &state);
 
+    void setParameter(const double& parametr);
+    void setTimeStepNumber(const unsigned int& maxTimeStepNumber);
+    void setMode(const Mode& mode);
+
 private:
     bool validVal = true;
     bool firstRun = true;
     State lastState;
     double biggesDiff = std::numeric_limits<double>::min();
+    double parameter = 0.1;
+    unsigned int maxTimeStepNumber = 0;
+    unsigned int currentTimeStepNumber = 0;
+    Mode mode = none;
 
     bool checkCriterium(const State &state);
+
+    bool varSteps(const State &state);
 };

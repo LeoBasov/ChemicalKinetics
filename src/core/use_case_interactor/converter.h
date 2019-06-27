@@ -30,6 +30,7 @@
 #include "../common/data_types/inputdata.h"
 #include "../entities/chemistry/chemistry.h"
 #include "../entities/integrator/integrator.h"
+#include "abortcriterium.h"
 
 class Converter
 {
@@ -51,6 +52,8 @@ public:
     std::vector<std::pair<double,double>> arrheniusCoefficients(const std::vector<InputData::Reaction>& reactions) const;
 
     Integrator::Mode integratorMode(const InputData::IntegratorData::Mode &mode) const;
+
+    AbortCriterium::Mode abortCriteriumMode(const InputData::AbortCriterion::Mode &mode) const;
 
     const std::map<std::size_t,std::string>& getSpeciesMap() const;
     const std::map<std::size_t,std::string>& getReactionMap() const;

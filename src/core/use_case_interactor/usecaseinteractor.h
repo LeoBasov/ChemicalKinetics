@@ -50,7 +50,7 @@ private:
     void initializeState(const InputData& data);
     void initializeIntergrator(const InputData::IntegratorData& data);
     void initializeChemistry(const InputData::ChemistryData& data);
-    void initializeAbortCriterium();
+    void initializeAbortCriterium(const InputData::AbortCriterion &abortCriterion);
 
     void execute();
     void report();

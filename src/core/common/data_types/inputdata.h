@@ -97,6 +97,16 @@ struct InputData{
         double parameter = 0.0;
     };
 
+    struct AbortCriterion{
+        enum Mode{const_steps = 1, var_steps = 2, none = 0};
+
+        Mode mode = none;
+
+        unsigned int timeStepNumber = 0;
+        double parameter = 0.2;
+    };
+
     ChemistryData chemistryData;
     IntegratorData integratorData;
+    AbortCriterion abortCriterion;
 };

@@ -47,9 +47,36 @@ void AbortCriterium::reset(){
     this->validVal = true;
     this->firstRun = true;
     this->lastState = State();
+    this->biggesDiff = std::numeric_limits<double>::min();
+    this->parameter = 0.1;
+    this->maxTimeStepNumber = 0;
+    this->currentTimeStepNumber = 0;
+}
+
+void AbortCriterium::setParameter(const double& parametr){
+    this->parameter = parametr;
+}
+
+void AbortCriterium::setTimeStepNumber(const unsigned int& timeStepNumber){
+    this->maxTimeStepNumber = timeStepNumber;
+}
+
+void AbortCriterium::setMode(const Mode& mode){
+    this->mode = mode;
 }
 
 bool AbortCriterium::checkCriterium(const State &state){
+    switch(this->mode){
+    case Mode::var_steps:
+        return varSteps(state);
+        break;
+    default:
+        throw Exception("Undefined mode<" + std::to_string(mode) + ">", "AbortCriterium::" + std::string(__FUNCTION__));
+        break;
+    }
+}
+
+bool AbortCriterium::varSteps(const State &state){
     double locMax(std::numeric_limits<double>::min());
 
     for(size_t st = 0; st < state.concentrationDiffs.size(); ++st){
@@ -62,7 +89,7 @@ bool AbortCriterium::checkCriterium(const State &state){
         }
     }
 
-    if((locMax/this->biggesDiff) < 0.001){
+    if((locMax/this->biggesDiff) < this->parameter){
         return false;
     }else{
         return true;

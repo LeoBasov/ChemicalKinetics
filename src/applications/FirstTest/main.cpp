@@ -106,6 +106,9 @@ InputData setUpInputData(){
     state.integratorData.parameter = 0.1;
     state.integratorData.timeStep = 0.1;
 
+    state.abortCriterion.mode = InputData::AbortCriterion::var_steps;
+    state.abortCriterion.parameter = 0.001;
+
     state.chemistryData.species.push_back(spec1);
     state.chemistryData.species.push_back(spec2);
     state.chemistryData.species.push_back(spec3);
@@ -272,6 +275,9 @@ InputData dsmcTest(){
     state.integratorData.mode = InputData::IntegratorData::var_dt;
     state.integratorData.parameter = 0.1;
     state.integratorData.timeStep = 0.1;
+
+    state.abortCriterion.mode = InputData::AbortCriterion::var_steps;
+    state.abortCriterion.parameter = 0.001;
 
     state.chemistryData.species.push_back(spec1);
     state.chemistryData.species.push_back(spec2);

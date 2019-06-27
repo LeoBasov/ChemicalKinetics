@@ -45,7 +45,7 @@ void UseCaseInteractor::initialize(const InputData& data){
     initializeState(data);
     initializeIntergrator(data.integratorData);
     initializeChemistry(data.chemistryData);
-    initializeAbortCriterium();
+    initializeAbortCriterium(data.abortCriterion);
 }
 
 void UseCaseInteractor::initializeState(const InputData& data){
@@ -78,8 +78,11 @@ void UseCaseInteractor::initializeChemistry(const InputData::ChemistryData& data
     this->chemistry.setExcessEnergies(this->converter.excessEnergies(data.reactions));
 }
 
-void UseCaseInteractor::initializeAbortCriterium(){
+void UseCaseInteractor::initializeAbortCriterium(const InputData::AbortCriterion& abortCriterion){
     this->abortCriterium.reset();
+    this->abortCriterium.setParameter(abortCriterion.parameter);
+    this->abortCriterium.setTimeStepNumber(abortCriterion.timeStepNumber);
+    this->abortCriterium.setMode(this->converter.abortCriteriumMode(abortCriterion.mode));
 }
 
 void UseCaseInteractor::execute(){
