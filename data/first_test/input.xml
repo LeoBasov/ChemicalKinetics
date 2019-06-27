@@ -9,7 +9,7 @@
 		</participating_species>
 		<reactions>
 			<reaction name="combustion">
-				<rate_constant const="true" value="2.83583586672916e-15"/>
+				<rate_constant mode="const_k" value="2.83583586672916e-15"/>
 				<educts>
 					<stoichiometric_coeff species="C8H18" value="1.0"/>
 					<stoichiometric_coeff species="O2" value="7.0/2.0"/>
