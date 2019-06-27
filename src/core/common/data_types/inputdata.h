@@ -88,6 +88,10 @@ struct InputData{
         std::vector<Reaction> reactions;
     };
 
+    struct ThermodynamicData{
+        double temperature = 0.0;
+    };
+
     struct IntegratorData{
         enum Mode{const_dt=1,var_dt=2,none=0};
 
@@ -107,6 +111,7 @@ struct InputData{
     };
 
     ChemistryData chemistryData;
+    ThermodynamicData thermodynamicData;
     IntegratorData integratorData;
     AbortCriterion abortCriterion;
 };
