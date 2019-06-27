@@ -45,8 +45,19 @@ InputData::ThermodynamicData Utility::getThermodynamicData(const DataNode& ){
     return data;
 }
 
-InputData::IntegratorData Utility::getIntegratorData(const DataNode& ){
+InputData::IntegratorData Utility::getIntegratorData(const DataNode& node){
+    const std::string modeStr(node.getAttribute("mode"));
     InputData::IntegratorData data;
+
+    if(modeStr == "var_dt"){
+        data.mode = InputData::IntegratorData::var_dt;
+        data.parameter = std::stod(node.getAttribute("parameter"));
+    }else if(modeStr == "const_dt"){
+        data.mode = InputData::IntegratorData::const_dt;
+        data.timeStep = std::stod(node.getAttribute("time_step"));
+    }else{
+        throw Exception("Undefined mode <" + modeStr + ">", "Utility::" + std::string(__FUNCTION__));
+    }
 
     return data;
 }
