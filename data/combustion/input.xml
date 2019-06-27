@@ -32,4 +32,5 @@
 		</reactions>
 	</chemistry_data>
 	<thermodynamic_data mode="const_T" temperature="2000"/>
+	<abort_criterion mode="var_steps" parameter="0.001"/>
 </simulation>
