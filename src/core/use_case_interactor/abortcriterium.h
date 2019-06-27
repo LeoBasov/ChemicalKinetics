@@ -22,6 +22,8 @@
 
 #pragma once
 
+#include <limits>
+
 #include  "../common/data_types/state.h"
 
 class AbortCriterium
@@ -38,6 +40,7 @@ private:
     bool validVal = true;
     bool firstRun = true;
     State lastState;
+    double biggesDiff = std::numeric_limits<double>::min();
 
-    bool checkCriterium(const State &state) const;
+    bool checkCriterium(const State &state);
 };

@@ -49,12 +49,20 @@ void AbortCriterium::reset(){
     this->lastState = State();
 }
 
-bool AbortCriterium::checkCriterium(const State &state) const{
-    //DUMMY
+bool AbortCriterium::checkCriterium(const State &state){
+    double locMax(std::numeric_limits<double>::min());
 
-    const double timeStep(state.time - this->lastState.time);
+    for(size_t st = 0; st < state.concentrationDiffs.size(); ++st){
+        if(state.concentrationDiffs.at(st) > locMax){
+            locMax = state.concentrationDiffs.at(st);
 
-    if(timeStep>50.0e+12){
+            if(locMax > this->biggesDiff){
+                this->biggesDiff = locMax;
+            }
+        }
+    }
+
+    if((locMax/this->biggesDiff) < 0.001){
         return false;
     }else{
         return true;
