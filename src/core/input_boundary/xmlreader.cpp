@@ -35,7 +35,7 @@ void XMLReader::parseXMLFile(const std::string &fileName){
     TiXmlDocument xmlDoc;
 
     if(!xmlDoc.LoadFile(fileName.c_str())){
-        throw Exception("InputModule::" + std::string(__FUNCTION__),"File <" + fileName + "> could not be loaded");
+        throw Exception("File <" + fileName + "> could not be loaded", "XMLReader::" + std::string(__FUNCTION__));
     }
 
     this->xmlData = processElement(xmlDoc.FirstChildElement());
@@ -46,7 +46,7 @@ void XMLReader::parseXMLFile(const std::string &fileName,DataNode& node) const{
     std::string newName(this->relativeDirectory + "./" + fileName);
 
     if(!xmlDoc.LoadFile(newName.c_str())){
-        throw Exception("InputModule::" + std::string(__FUNCTION__),"File <" + newName + "> could not be loaded");
+        throw Exception("File <" + newName + "> could not be loaded", "XMLReader::" + std::string(__FUNCTION__));
     }
     auto firstChildElem = xmlDoc.FirstChildElement();
     if(!firstChildElem){
