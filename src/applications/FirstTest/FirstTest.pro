@@ -13,11 +13,13 @@ SOURCES += \
     ../../core/output_boundary/presenter.cpp \
     ../../core/output_boundary/viewmodel.cpp \
     ../../core/use_case_interactor/simulationstate.cpp \
+    ../../core/view_boundary/terminalview.cpp \
     ../../core/view_boundary/view.cpp \
     ../../third_party/tinyxml/tinystr.cpp \
     ../../third_party/tinyxml/tinyxml.cpp \
     ../../third_party/tinyxml/tinyxmlerror.cpp \
     ../../third_party/tinyxml/tinyxmlparser.cpp \
+    csvwriterviewtest.cpp \
         main.cpp \
     ../../core/common/data_types/interpolationtable.cpp \
     ../../core/common/math/matrixxd.cpp \
@@ -30,8 +32,7 @@ SOURCES += \
     ../../core/exceptions/exception.cpp \
     ../../core/use_case_interactor/abortcriterium.cpp \
     ../../core/use_case_interactor/converter.cpp \
-    ../../core/use_case_interactor/usecaseinteractor.cpp \
-    testview.cpp
+    ../../core/use_case_interactor/usecaseinteractor.cpp
 
 HEADERS += \
     ../../core/common/abstractions/observer.h \
@@ -58,7 +59,8 @@ HEADERS += \
     ../../core/use_case_interactor/converter.h \
     ../../core/use_case_interactor/simulationstate.h \
     ../../core/use_case_interactor/usecaseinteractor.h \
+    ../../core/view_boundary/terminalview.hpp \
     ../../core/view_boundary/view.h \
     ../../third_party/tinyxml/tinystr.h \
     ../../third_party/tinyxml/tinyxml.h \
-    testview.h
+    csvwriterviewtest.h

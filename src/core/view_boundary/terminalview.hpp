@@ -23,17 +23,13 @@
 #pragma once
 
 #include <iostream>
-#include  <fstream>
 
-#include "../../core/view_boundary/view.h"
+#include "view.h"
 
-class TestView : public View
+class TerminalView : public View
 {
 public:
-    TestView();
+    TerminalView();
 
     void update() override;
-
-private:
-    std::ofstream stream;
 };

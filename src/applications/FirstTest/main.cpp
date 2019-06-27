@@ -25,7 +25,8 @@
 #include "../../core/use_case_interactor/usecaseinteractor.h"
 #include "../../core/input_boundary/controller.h"
 #include "../../core/output_boundary/presenter.h"
-#include "testview.h"
+#include "../../core/view_boundary/terminalview.hpp"
+#include "csvwriterviewtest.h"
 
 InputData setUpInputData();
 InputData dsmcTest();
@@ -39,10 +40,13 @@ int main(){
         InputData data(dsmcTest());
         Controller controller;
         std::shared_ptr<Presenter> presenter(std::make_shared<Presenter>());
-        std::shared_ptr<TestView> testView(std::make_shared<TestView>());
+        std::shared_ptr<CSVWriterViewTest> csvWriterViewTest(std::make_shared<CSVWriterViewTest>());
+        std::shared_ptr<TerminalView> terminalView(std::make_shared<TerminalView>());
 
         presenter->subscribe(controller.getState());
-        testView->subscribe(presenter->getViewModel());
+
+        csvWriterViewTest->subscribe(presenter->getViewModel());
+        terminalView->subscribe(presenter->getViewModel());
 
         controller.startSim(data);
     }catch(OutOfRange& e){

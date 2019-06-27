@@ -20,25 +20,23 @@
  * =============================================================================================
  */
 
-#include "testview.h"
+#pragma once
 
-TestView::TestView(){
-    this->stream.open("concentrations.csv");
-}
+#include <iostream>
+#include  <fstream>
 
-void TestView::update(){
-    const State& locSt(this->viewModel->getState());
+#include "../../core/view_boundary/view.h"
 
-    std::cout << "Temperature = " << locSt.temperature <<  std::endl;
+class CSVWriterViewTest : public View
+{
+public:
+    CSVWriterViewTest();
 
-    this->stream << locSt.time << ",";
+    void update() override;
 
-    for(size_t i(0);i<locSt.concentrations.size();i++){
-        std::cout << locSt.speciesMap.at(i) << " = " << locSt.concentrations.at(i) << ", ";
-        this->stream << locSt.concentrations.at(i) << ",";
-    }
+private:
+    std::ofstream stream;
 
-    this->stream << std::endl;
-    std::cout << std::endl;
-    std::cout << "--------------------------------------------------------------------------------" << std::endl;
-}
+private:
+    bool first = true;
+};
