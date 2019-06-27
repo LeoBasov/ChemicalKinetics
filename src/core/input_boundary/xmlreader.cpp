@@ -116,7 +116,6 @@ void XMLReader::getRelDirectory(const std::string &fileName){
 }
 
 void XMLReader::convertData(){
-    //DUMMY!!!
-
+    this->data = Utility::converDataNodeToInputData(this->xmlData);
     this->xmlData.clear();
 }

@@ -29,6 +29,7 @@
 #include "../../third_party/tinyxml/tinyxml.h"
 #include "../exceptions/exception.h"
 #include "../common/data_types/datanode.h"
+#include "../common/utility.hpp"
 
 class XMLReader : public FileReader
 {
