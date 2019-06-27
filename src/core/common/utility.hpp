@@ -33,5 +33,9 @@ InputData::ThermodynamicData getThermodynamicData(const DataNode& dataNode);
 InputData::IntegratorData getIntegratorData(const DataNode& dataNode);
 InputData::AbortCriterion getAbortCriterion(const DataNode& dataNode);
 
+std::vector<InputData::Species> getSpeciesData(const DataNode& dataNode);
+std::vector<InputData::Reaction> getReactionsData(const DataNode& dataNode);
+InputData::Reaction getReactionData(const DataNode& dataNode);
+
 };
 

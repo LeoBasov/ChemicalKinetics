@@ -33,14 +33,19 @@ InputData Utility::converDataNodeToInputData(const DataNode& dataNode){
     return inputData;
 }
 
-InputData::ChemistryData Utility::getChemistryData(const DataNode& ){
+InputData::ChemistryData Utility::getChemistryData(const DataNode& node){
     InputData::ChemistryData data;
+
+    data.species = getSpeciesData(node.getNode("participating_species"));
+    data.reactions = getReactionsData(node.getNode("reactions"));
 
     return data;
 }
 
-InputData::ThermodynamicData Utility::getThermodynamicData(const DataNode& ){
+InputData::ThermodynamicData Utility::getThermodynamicData(const DataNode& node){
     InputData::ThermodynamicData data;
+
+    data.temperature = std::stod(node.getAttribute("temperature"));
 
     return data;
 }
@@ -62,8 +67,47 @@ InputData::IntegratorData Utility::getIntegratorData(const DataNode& node){
     return data;
 }
 
-InputData::AbortCriterion Utility::getAbortCriterion(const DataNode& ){
+InputData::AbortCriterion Utility::getAbortCriterion(const DataNode& node){
+    const std::string modeStr(node.getAttribute("mode"));
     InputData::AbortCriterion data;
 
+    if(modeStr == "var_steps"){
+        data.mode = InputData::AbortCriterion::var_steps;
+        data.parameter = std::stod(node.getAttribute("parameter"));
+    }else{
+        throw Exception("Undefined mode <" + modeStr + ">", "Utility::" + std::string(__FUNCTION__));
+    }
+
     return data;
+}
+
+std::vector<InputData::Species> Utility::getSpeciesData(const DataNode& node){
+    std::vector<InputData::Species> species;
+
+    for(auto locNode : node.getNodes("species")){
+        InputData::Species locSpecies;
+
+        locSpecies.name = locNode.getAttribute("name");
+        locSpecies.concentration = std::stod(locNode.getAttribute("concentration"));
+
+        species.push_back(locSpecies);
+    }
+
+    return species;
+}
+
+std::vector<InputData::Reaction> Utility::getReactionsData(const DataNode& node){
+    std::vector<InputData::Reaction> reactions;
+
+    for(auto locNode : node.getNodes("reaction")){
+        reactions.push_back(getReactionData(locNode));
+    }
+
+    return reactions;
+}
+
+InputData::Reaction Utility::getReactionData(const DataNode& node){
+    InputData::Reaction reaction;
+
+    return reaction;
 }
