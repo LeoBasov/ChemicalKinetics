@@ -119,6 +119,9 @@ InputData::Reaction Utility::getReactionData(const DataNode& node){
     if(modeStr == "const_k"){
         reaction.mode = InputData::Reaction::const_k;
         reaction.rateConstant = std::stod(node.getNode("rate_constant").getAttribute("value"));
+    }else if(modeStr == "interpol_k"){
+        reaction.mode = InputData::Reaction::interpol_k;
+        reaction.rateConstantTable =  getRateConstantPairs(node.getNode("rate_constant").getNode("rate_constants").getNodes());
     }else{
         throw Exception("Undefined mode <" + modeStr + ">", "Utility::" + std::string(__FUNCTION__));
     }
@@ -134,6 +137,21 @@ std::vector<InputData::SpeciesValuePair> Utility::getSpeciesValuePairs(const std
 
         pair.species = node.getAttribute("species");
         pair.value = std::stod(node.getAttribute("value"));
+
+        pairs.push_back(pair);
+    }
+
+    return pairs;
+}
+
+std::vector<InputData::RateConstPair> Utility::getRateConstantPairs(const std::vector<DataNode>& nodes){
+    std::vector<InputData::RateConstPair> pairs;
+
+    for(const auto& node : nodes){
+        InputData::RateConstPair pair;
+
+        pair.temperature = std::stod(node.getAttribute("temperature"));
+        pair.rateConstant = std::stod(node.getAttribute("rate_constant"));
 
         pairs.push_back(pair);
     }
