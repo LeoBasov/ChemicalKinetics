@@ -2,12 +2,12 @@
 	<integrator_data mode="var_dt" parameter="0.1" time_step="0.1"/>
 	<chemistry_data>
 		<participating_species>
-			<species name="e-" concentration="2500.0e+15"/>
-			<species name="Ar" concentration="5000.0e+15"/>
+			<species name="e-" concentration="2.5"/>
+			<species name="Ar" concentration="5."/>
 			<species name="Ar+" concentration="0.0"/>
 		</participating_species>
 		<reactions>
-			<reaction name="ionization">
+			<reaction name="ionization" excess_energy="-2.52487257365607e-18">
 				<rate_constant mode="interpol_k">
 					<load>rate_constants.xml</load>
 				</rate_constant>

@@ -115,6 +115,7 @@ InputData::Reaction Utility::getReactionData(const DataNode& node){
     reaction.stoichiometricCoeffEducts = getSpeciesValuePairs(node.getNode("educts").getNodes());
     reaction.stoichiometricCoeffProducts = getSpeciesValuePairs(node.getNode("products").getNodes());
     reaction.reactionPowers = getSpeciesValuePairs(node.getNode("reaction_powers").getNodes());
+    reaction.excessEnergy = std::stod(node.getAttribute("excess_energy"));
 
     if(modeStr == "const_k"){
         reaction.mode = InputData::Reaction::const_k;
