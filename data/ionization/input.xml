@@ -29,6 +29,6 @@
 			</reaction>
 		</reactions>
 	</chemistry_data>
-	<thermodynamic_data mode="const_T" temperature="60000"/>
+	<thermodynamic_data mode="var_T" temperature="60000" temperature_calc_accuracy="0.001"/>
 	<abort_criterion mode="var_steps" parameter="0.001"/>
 </simulation>

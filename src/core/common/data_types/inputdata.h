@@ -87,7 +87,12 @@ struct InputData{
     };
 
     struct ThermodynamicData{
+        enum Mode{const_T=1,var_T=2,none=0};
+
+        Mode mode = none;
+
         double temperature = 0.0;
+        double temperatureCalcAccuracy = 0.0;
     };
 
     struct IntegratorData{

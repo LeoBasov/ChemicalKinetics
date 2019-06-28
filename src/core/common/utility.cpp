@@ -43,7 +43,17 @@ InputData::ChemistryData Utility::getChemistryData(const DataNode& node){
 }
 
 InputData::ThermodynamicData Utility::getThermodynamicData(const DataNode& node){
+    const std::string modeStr(node.getAttribute("mode"));
     InputData::ThermodynamicData data;
+
+    if(modeStr == "var_T"){
+        data.mode = InputData::ThermodynamicData::var_T;
+        data.temperatureCalcAccuracy = std::stod(node.getAttribute("temperature_calc_accuracy"));
+    }else if(modeStr == "const_T"){
+        data.mode = InputData::ThermodynamicData::const_T;
+    }else{
+        throw Exception("Undefined mode <" + modeStr + ">", "Utility::" + std::string(__FUNCTION__));
+    }
 
     data.temperature = std::stod(node.getAttribute("temperature"));
 
