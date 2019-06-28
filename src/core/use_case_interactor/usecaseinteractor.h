@@ -27,6 +27,7 @@
 #include "abortcriterium.h"
 #include "../entities/chemistry/chemistry.h"
 #include "../entities/integrator/integrator.h"
+#include "../entities/thermodynamics/thermodynamics.h"
 #include "converter.h"
 #include "simulationstate.h"
 
@@ -44,6 +45,7 @@ private:
     AbortCriterium abortCriterium;
     Chemistry chemistry;
     Integrator integrator;
+    Thermodynamics thermodynamics;
     std::shared_ptr<SimulationState> simulationState;
 
     void initialize(const InputData& data);
@@ -51,6 +53,10 @@ private:
     void initializeIntergrator(const InputData::IntegratorData& data);
     void initializeChemistry(const InputData::ChemistryData& data);
     void initializeAbortCriterium(const InputData::AbortCriterion &abortCriterion);
+    void initializeThermodynamics(const InputData::ThermodynamicData& thermodynamicData);
+
+    std::vector<ThermodynamicsAlgorithms::Species> getThermodynamicsSpecies() const;
+    double getTotalEnergy() const;
 
     void execute();
     void report();

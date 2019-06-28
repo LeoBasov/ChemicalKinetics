@@ -46,6 +46,7 @@ void UseCaseInteractor::initialize(const InputData& data){
     initializeIntergrator(data.integratorData);
     initializeChemistry(data.chemistryData);
     initializeAbortCriterium(data.abortCriterion);
+    initializeThermodynamics(data.thermodynamicData);
 }
 
 void UseCaseInteractor::initializeState(const InputData& data){
@@ -83,6 +84,35 @@ void UseCaseInteractor::initializeAbortCriterium(const InputData::AbortCriterion
     this->abortCriterium.setParameter(abortCriterion.parameter);
     this->abortCriterium.setTimeStepNumber(abortCriterion.timeStepNumber);
     this->abortCriterium.setMode(this->converter.abortCriteriumMode(abortCriterion.mode));
+}
+
+void UseCaseInteractor::initializeThermodynamics(const InputData::ThermodynamicData& thermodynamicData){
+    this->thermodynamics.setSpecies(getThermodynamicsSpecies());
+    this->thermodynamics.setTotalEnergy(getTotalEnergy());
+    this->thermodynamics.setLastTemperature(thermodynamicData.temperature);
+    this->thermodynamics.setTemperatureCalcAccuracy(thermodynamicData.temperatureCalcAccuracy);
+}
+
+std::vector<ThermodynamicsAlgorithms::Species> UseCaseInteractor::getThermodynamicsSpecies() const{
+    std::vector<ThermodynamicsAlgorithms::Species> allSpecies;
+
+    for(size_t st(0); st < this->state.concentrations.size(); ++st){
+        ThermodynamicsAlgorithms::Species species(0.0, ThermodynamicsAlgorithms::Species::monoatomic);
+
+        allSpecies.push_back(species);
+    }
+
+    return allSpecies;
+}
+
+double UseCaseInteractor::getTotalEnergy() const{
+    VectorXd temperatures(this->state.concentrations.size());
+
+    for(size_t st(0); st < this->state.concentrations.size(); ++st){
+        temperatures.at(st) = this->state.temperature;
+    }
+
+    return this->thermodynamics.totalEnergy(this->state.concentrations, temperatures);
 }
 
 void UseCaseInteractor::execute(){
