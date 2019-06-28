@@ -63,7 +63,7 @@ int main(int ,const char *argv[]){
         std::cout << "WAHT: " << e.what() << std::endl << "WHERE: " << e.where() << std::endl;
         std::cout << "================================================================================" << std::endl;
     }catch(std::exception e){
-        std::cout << "==================================STD::EXCEPTION=====================================" << std::endl;
+        std::cout << "==================================STD::EXCEPTION================================" << std::endl;
         std::cout << "WAHT: " << e.what() << std::endl;
         std::cout << "================================================================================" << std::endl;
     }
