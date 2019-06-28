@@ -31,6 +31,7 @@ void CSVWriterViewTest::update(){
 
     if(this->first){
         this->stream << "#time" << ",";
+        this->stream << "#temperature" << ",";
 
         for(size_t i(0);i<locSt.concentrations.size();i++){
             this->stream << "#" << locSt.speciesMap.at(i) << ",";
@@ -41,6 +42,7 @@ void CSVWriterViewTest::update(){
     }
 
     this->stream << locSt.time << ",";
+    this->stream << locSt.temperature << ",";
 
     for(size_t i(0);i<locSt.concentrations.size();i++){
         this->stream << locSt.concentrations.at(i) << ",";
