@@ -72,8 +72,8 @@ VectorXd Chemistry::getConcentrationDiff(const VectorXd& reactionRates) const{
     return ChemistryAlgorithms::concentrationDifferential(this->stoichiometricMatrix,reactionRates);
 }
 
-double Chemistry::getEnergyDiff(const VectorXd& reactionRates) const{
-    return reactionRates*this->excessEnergies;
+double Chemistry::getEnergyDiff(const VectorXd& reactionRates, const double& timeStep) const{
+    return reactionRates*this->excessEnergies*timeStep;
 }
 
 double Chemistry::getRateConstant(const double& temperature, const size_t &pos) const{

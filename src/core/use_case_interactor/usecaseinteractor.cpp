@@ -134,7 +134,8 @@ void UseCaseInteractor::execute(){
     this->state.reactionRates =  this->chemistry.getReactionRates(this->state.concentrations,this->state.rateConstants);
     this->state.concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.reactionRates);
     this->state.concentrations =  this->integrator.integrate(this->state.concentrations,this->state.concentrationDiffs);
-    this->state.temperature = this->thermodynamics.getNewTemperature(this->state.concentrations, this->chemistry.getEnergyDiff(this->state.reactionRates));
+    this->state.temperature = this->thermodynamics.getNewTemperature(this->state.concentrations
+                                                                    ,this->chemistry.getEnergyDiff(this->state.reactionRates, this->integrator.getTimeStep()));
     this->state.time = this->state.time + this->integrator.getTimeStep();
 }
 
