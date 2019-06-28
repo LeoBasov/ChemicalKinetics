@@ -27,6 +27,8 @@
 class Thermodynamics
 {
 public:
+    enum Mode{var_T=1, const_T=2, none=0};
+
     Thermodynamics();
 
     void setSpecies(std::vector<ThermodynamicsAlgorithms::Species> species);
@@ -34,6 +36,9 @@ public:
     void addEnergy(const double& energyDelta);
     void setLastTemperature(const double& temperature);
     void setTemperatureCalcAccuracy(const double& epsilon);
+    void setMode(const Mode& mode);
+
+    double getNewTemperature(const VectorXd& concentrations, const double &energyDiff);
 
     double totalEnergy(const VectorXd &concentrations,const VectorXd& temperatures) const;
     double temperature(const VectorXd& concentrations) const;
@@ -43,4 +48,5 @@ private:
     double energy = 0.0;
     double lastTemperature = 0.0;
     double epsilon = 0.0;
+    Mode mode = none;
 };

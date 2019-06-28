@@ -87,6 +87,20 @@ void UseCaseInteractor::initializeAbortCriterium(const InputData::AbortCriterion
 }
 
 void UseCaseInteractor::initializeThermodynamics(const InputData::ThermodynamicData& thermodynamicData){
+    Thermodynamics::Mode mode;
+
+    switch (thermodynamicData.mode){
+    case InputData::ThermodynamicData::var_T:
+        mode = Thermodynamics::Mode::var_T;
+        break;
+    case InputData::ThermodynamicData::const_T:
+        mode = Thermodynamics::Mode::const_T;
+        break;
+    default:
+        throw Exception("Undefined mode <" + std::to_string(thermodynamicData.mode) + ">", "UseCaseInteractor::" + std::string(__FUNCTION__));
+    }
+
+    this->thermodynamics.setMode(mode);
     this->thermodynamics.setSpecies(getThermodynamicsSpecies());
     this->thermodynamics.setTotalEnergy(getTotalEnergy());
     this->thermodynamics.setLastTemperature(thermodynamicData.temperature);
@@ -120,6 +134,7 @@ void UseCaseInteractor::execute(){
     this->state.reactionRates =  this->chemistry.getReactionRates(this->state.concentrations,this->state.rateConstants);
     this->state.concentrationDiffs = this->chemistry.getConcentrationDiff(this->state.reactionRates);
     this->state.concentrations =  this->integrator.integrate(this->state.concentrations,this->state.concentrationDiffs);
+    this->state.temperature = this->thermodynamics.getNewTemperature(this->state.concentrations, this->chemistry.getEnergyDiff(this->state.reactionRates));
     this->state.time = this->state.time + this->integrator.getTimeStep();
 }
 
