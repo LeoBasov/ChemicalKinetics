@@ -8,6 +8,8 @@ SOURCES += \
     ../../core/common/abstractions/subject.cpp \
     ../../core/common/data_types/datanode.cpp \
     ../../core/common/utility.cpp \
+    ../../core/entities/thermodynamics/thermodynamics.cpp \
+    ../../core/entities/thermodynamics/thermodynamicsalgorithms.cpp \
     ../../core/input_boundary/controller.cpp \
     ../../core/input_boundary/filereader.cpp \
     ../../core/input_boundary/xmlreader.cpp \
@@ -50,6 +52,8 @@ HEADERS += \
     ../../core/entities/chemistry/chemistryalgorithms.h \
     ../../core/entities/integrator/integrator.h \
     ../../core/entities/integrator/integratoralgorithms.h \
+    ../../core/entities/thermodynamics/thermodynamics.h \
+    ../../core/entities/thermodynamics/thermodynamicsalgorithms.h \
     ../../core/exceptions/logic_errors/outofrange.h \
     ../../core/exceptions/exception.h \
     ../../core/input_boundary/controller.h \
