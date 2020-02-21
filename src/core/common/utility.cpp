@@ -84,6 +84,9 @@ InputData::AbortCriterion Utility::getAbortCriterion(const DataNode& node){
     if(modeStr == "var_steps"){
         data.mode = InputData::AbortCriterion::var_steps;
         data.parameter = std::stod(node.getAttribute("parameter"));
+    }else if(modeStr == "const_steps"){
+        data.mode = InputData::AbortCriterion::const_steps;
+        data.parameter = std::stod(node.getAttribute("parameter"));
     }else{
         throw Exception("Undefined mode <" + modeStr + ">", "Utility::" + std::string(__FUNCTION__));
     }

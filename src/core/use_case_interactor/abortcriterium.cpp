@@ -70,6 +70,9 @@ bool AbortCriterium::checkCriterium(const State &state){
     case Mode::var_steps:
         return varSteps(state);
         break;
+    case Mode::const_steps:
+        return (this->parameter > ++this->currentTimeStepNumber);
+        break;
     default:
         throw Exception("Undefined mode<" + std::to_string(mode) + ">", "AbortCriterium::" + std::string(__FUNCTION__));
         break;
