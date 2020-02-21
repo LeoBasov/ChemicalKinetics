@@ -101,7 +101,7 @@ std::vector<InputData::Species> Utility::getSpeciesData(const DataNode& node){
         InputData::Species locSpecies;
 
         locSpecies.name = locNode.getAttribute("name");
-        locSpecies.concentration = std::stod(locNode.getAttribute("concentration"));
+        locSpecies.concentration = std::stod(locNode.getAttribute("molar_concentration"));
 
         species.push_back(locSpecies);
     }

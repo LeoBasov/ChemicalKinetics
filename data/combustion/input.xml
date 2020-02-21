@@ -2,10 +2,10 @@
 	<integrator_data mode="var_dt" parameter="0.1" time_step="0.1"/>
 	<chemistry_data>
 		<participating_species>
-			<species name="C8H18" concentration="4.0"/>
-			<species name="O2" concentration="4.0"/>
-			<species name="CO2" concentration="0.0"/>
-			<species name="H2O" concentration="0.0"/>
+			<species name="C8H18" molar_concentration="4.0"/>
+			<species name="O2" molar_concentration="4.0"/>
+			<species name="CO2" molar_concentration="0.0"/>
+			<species name="H2O" molar_concentration="0.0"/>
 		</participating_species>
 		<reactions>
 			<reaction name="combustion" excess_energy="0.0">
