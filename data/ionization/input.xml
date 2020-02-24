@@ -1,15 +1,15 @@
 <simulation>
-	<integrator_data mode="var_dt" parameter="0.01" time_step="0.1"/>
+	<integrator_data mode="const_dt" parameter="0.01" time_step="1.0e-6"/>
 	<chemistry_data>
 		<participating_species>
-			<species name="e-" concentration="1"/>
-			<species name="Ar" concentration="1"/>
+			<species name="e-" concentration="1e+18"/>
+			<species name="Ar" concentration="1e+18"/>
 			<species name="Ar+" concentration="0.0"/>
 		</participating_species>
 		<reactions>
-			<reaction name="ionization" excess_energy="-2.52487257365607e-18">
+			<reaction name="ionization" excess_energy="-5.049745147e-36">
 				<rate_constant mode="interpol_k">
-					<load>rate_constants.xml</load>
+					<load>rate_constants_old.xml</load>
 				</rate_constant>
 				<educts>
 					<stoichiometric_coeff species="e-" value="1.0"/>
@@ -29,6 +29,6 @@
 			</reaction>
 		</reactions>
 	</chemistry_data>
-	<thermodynamic_data mode="var_T" temperature="100000" temperature_calc_accuracy="0.001"/>
-	<abort_criterion mode="var_steps" parameter="0.001"/>
+	<thermodynamic_data mode="var_T" temperature="60000" temperature_calc_accuracy="0.001"/>
+	<abort_criterion mode="const_steps" parameter="1000"/>
 </simulation>
